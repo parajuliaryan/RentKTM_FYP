@@ -19,5 +19,10 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-
+//auth middleware for authenticated user, isAdmin for admin 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+//Admin routes
+Route::middleware(['auth','isAdmin'])->group(function(){
+    
+});
