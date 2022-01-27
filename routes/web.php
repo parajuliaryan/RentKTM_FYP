@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Auth\FacebookController;
+use App\Http\Controllers\Auth\GoogleController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -26,3 +28,10 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::middleware(['auth','isAdmin'])->group(function(){
     
 });
+
+//Google login routes
+Route::get('/auth/google/redirect',[GoogleController::class, 'handleGoogleRedirect'])->name('google');
+Route::get('/auth/google/callback',[GoogleController::class, 'handleGoogleCallback']);
+//Facebook login routes
+Route::get('/auth/facebook/redirect',[FacebookController::class, 'handleFacebookRedirect'])->name('facebook');
+Route::get('/auth/facebook/callback',[FacebookController::class, 'handleFacebookCallback']);

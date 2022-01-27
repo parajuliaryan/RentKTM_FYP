@@ -82,12 +82,12 @@
                 <div class="line-separator"></div>
             </div>
             <div class="row">
-                <div class="col-md-12"> <a class="btn btn-lg btn-social btn-block btn-outline text-center" href="#"><img
+                <div class="col-md-12"> <a class="btn btn-lg btn-social btn-block btn-outline text-center" href="{{ route('facebook') }}"><img
                             src="https://img.icons8.com/external-justicon-flat-justicon/64/000000/external-facebook-social-media-justicon-flat-justicon.png"
                             class="logo-img" /> Continue With Facebook</a> </div>
             </div><br>
             <div class="row">
-                <div class="col-md-12"> <a class="btn btn-lg btn-social btn-block btn-outline" href="#"><img
+                <div class="col-md-12"> <a class="btn btn-lg btn-social btn-block btn-outline" href="{{ route('google') }}"><img
                             src="https://img.icons8.com/color/16/000000/google-logo.png" class="logo-img"> Continue With
                         Google</a> </div>
             </div>
