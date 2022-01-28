@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\FacebookController;
 use App\Http\Controllers\Auth\GoogleController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -22,11 +24,11 @@ Route::get('/', function () {
 
 Auth::routes();
 //auth middleware for authenticated user, isAdmin for admin 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 //Admin routes
 Route::middleware(['auth','isAdmin'])->group(function(){
-    
+    Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('dashboard');
 });
 
 //Google login routes
