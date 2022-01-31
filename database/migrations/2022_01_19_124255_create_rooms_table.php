@@ -19,8 +19,10 @@ class CreateRoomsTable extends Migration
             $table->string('room_type');
             $table->integer('room_price');
             $table->string('contact_number',10);
-            $table->unsignedBigInteger('address_id');
-            $table->foreign('address_id')->references('id')->on('addresses')->onDelete('cascade');
+            $table->string('city');
+            $table->string('ward');
+            $table->string('area');
+            $table->string('tole');
             $table->timestamps();
         });
     }

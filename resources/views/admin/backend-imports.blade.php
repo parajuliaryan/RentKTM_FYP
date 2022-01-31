@@ -1,3 +1,4 @@
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
 <!-- Custom CSS -->
 <link href="{{ asset('css/admin-css/chartist.min.css') }}" rel="stylesheet">
 <link rel="stylesheet" href="{{ asset('css/admin-css/chartist-plugin-tooltip.css') }}">

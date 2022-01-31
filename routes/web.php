@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\AdminAdsController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdminRoomController;
+use App\Http\Controllers\AdminRoommatesController;
 use App\Http\Controllers\Auth\FacebookController;
 use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\HomeController;
@@ -27,8 +30,11 @@ Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 //Admin routes
-Route::middleware(['auth','isAdmin'])->group(function(){
-    Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('dashboard');
+Route::prefix('admin')->name('admin.')->middleware(['auth','isAdmin'])->group(function(){
+    Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
+    Route::resource('/rooms', AdminRoomController::class);
+    Route::resource('/roommates', AdminRoommatesController::class);
+    Route::resource('/ads', AdminAdsController::class);
 });
 
 //Google login routes

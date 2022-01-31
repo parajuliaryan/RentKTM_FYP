@@ -20,9 +20,11 @@ class CreateRoommatesTable extends Migration
             $table->integer('roommate_rent_price')->unsigned();
             $table->text('roommate_description');
             $table->text('roommate_features');
-            $table->unsignedBigInteger('address_id');
-            $table->foreign('address_id')->references('id')->on('addresses')->onDelete('cascade');
             $table->string('contact_number',10);
+            $table->string('city');
+            $table->string('ward');
+            $table->string('area');
+            $table->string('tole');
             $table->timestamps();
         });
     }

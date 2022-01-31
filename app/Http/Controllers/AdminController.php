@@ -2,11 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ads;
+use App\Models\Roommates;
+use App\Models\Rooms;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
     public function index(){
-        return view('admin.dashboard');
+        $rooms = Rooms::all();
+        $roommates = Roommates::all();
+        $users = User::all();
+        $ads = Ads::all();
+        return view('admin.dashboard', compact('rooms','roommates','users','ads'));
     }
 }

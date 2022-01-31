@@ -14,6 +14,9 @@ class Rooms extends Model
         'room_type',
         'room_price',
         'contact_number',
-        'address_id'
+        'city',
+        'ward',
+        'area',
+        'tole'
     ];
 }

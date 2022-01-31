@@ -14,7 +14,10 @@ class Roommates extends Model
         'roommate_rent_price',
         'roommate_description',
         'roommate_features',
-        'address_id',
-        'contact_number'
+        'contact_number',
+        'city',
+        'ward',
+        'area',
+        'tole'
     ];
 }

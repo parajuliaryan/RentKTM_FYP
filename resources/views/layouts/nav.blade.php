@@ -1,3 +1,4 @@
+<title>{{ config('app.name', 'RentKTM') }}</title>
 <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">
@@ -35,12 +36,16 @@
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            @if ( Auth::user()->type == 'admin' )
+                                <a class="dropdown-item" href="{{ route('admin.dashboard') }}">
+                                {{ __('Dashboard') }}
+                                </a>
+                            @endif
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }}
                             </a>
-
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf
                             </form>
