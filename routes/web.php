@@ -7,6 +7,9 @@ use App\Http\Controllers\AdminRoommatesController;
 use App\Http\Controllers\Auth\FacebookController;
 use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PostAdsController;
+use App\Http\Controllers\RoommatesController;
+use App\Http\Controllers\RoomsController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -23,11 +26,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('home');
-});
+})->name('home');
 
 Auth::routes();
 //auth middleware for authenticated user, isAdmin for admin 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/rooms', [RoomsController::class, 'index'])->name('rooms');
+Route::get('/roommates', [RoommatesController::class, 'index'])->name('roommates');
+Route::get('/post-ads', [PostAdsController::class, 'index'])->name('postAds');
 
 //Admin routes
 Route::prefix('admin')->name('admin.')->middleware(['auth','isAdmin'])->group(function(){

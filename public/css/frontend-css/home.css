@@ -1,0 +1,207 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.main-section{
+    position: absolute;
+}
+
+.image-container{
+    height: 700px;
+    position: relative;
+    text-align: center;
+    overflow: hidden;
+}
+
+.slogan{
+    position: absolute;
+    top: 17%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.slogan span{
+    font-weight: bold;
+    font-size: 48px;
+}
+.slogan p{
+    font-size: 24px;
+}
+
+.image-container img{
+    object-fit: cover;
+    object-position: center;
+}
+
+.search-box{
+    position: relative;
+    top: -60px;
+    margin: 0px auto;
+    padding: 40px 24px;
+    width: 832px;
+    height: 155px;
+    background: #FFFFFF;
+    box-shadow: 0px 1.2px 3.6px rgba(0, 0, 0, 0.1), 0px 6.4px 14.4px rgba(0, 0, 0, 0.13);
+    border-radius: 4px;
+}
+
+.search-group input{
+    padding: 10px;
+    width: 537px;
+    height: 38px;
+}
+
+.search-group button{
+    background: #035EA5;
+    border: 1px solid #9FA5A8;
+    width: 65px;
+    height: 38px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    color: #F9F9F9;
+}
+
+.radio-group{
+    display: flex;
+    justify-content: space-between;
+}
+
+.popular-rooms{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 24px;
+    width: 1400px;
+    height: auto;
+    background: #F3F4F4;
+    border-radius: 4px;
+    margin: 0px auto;
+}
+
+.card{
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.popular-rooms-heading div{
+    width: 200px;
+    background-color: black;
+    height: 2px;
+    margin-bottom: 10px;
+}
+
+.popular-rooms-heading h2{
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+}
+
+.top-areas h2{
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 10px;
+}
+
+.top-areas{
+    width: 1400px;
+    margin: 0px auto;
+    padding: 24px;
+    height: auto;
+}
+
+.top-areas .area-card{
+    background-color: #CC2D4A;
+    border-radius: 0px;
+}
+
+.card-title{
+    font-weight: bold;
+}
+
+.discover-features{
+    width: 1400px;
+    margin: 0px auto;
+    padding: 24px;
+    height: auto;
+}
+
+.discover-features h2{
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 10px;
+}
+
+.image-holder{
+    width: 600px;
+    height: 600px;
+    margin: 10px;
+    overflow: hidden;
+    position: relative;
+    border-radius: 12px;  
+}
+
+.image-holder a{
+    position: absolute;
+    top: 8px;
+    right: 16px;
+    background-color: Transparent;
+    background-repeat: no-repeat;
+    border: 1px solid #9FA5A8;
+    color: black;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+}
+
+.image-holder a:hover{
+    background-color: #E5E7EB;
+    color: black;
+}
+
+.image-holder img{
+    object-fit: cover;
+    object-position: center;
+}
+
+footer{
+    background: #F3F4F4;
+}
+
+footer p a{
+    text-decoration: none;
+    color: black;
+}
+
+.page-footer{
+    width: 1400px;
+    height: auto;
+    margin: 0px auto;
+    padding: 24px;
+}
+
+.page-footer h5{
+    font-weight: bold;
+}
+
+.line{
+    width: 80%;
+    background: #E5E7EB;
+    height: 2px;
+    margin: 0px auto;
+}
+
+.sub-footer{
+    width: 1400px;
+    height: auto;
+    margin: 0px auto;
+    padding: 24px;
+}
+
+.footer-logo span{
+    font-weight: bold;
+}
+
+.social-icons-holder a{
+    text-decoration: none;
+    color: black;
+}
