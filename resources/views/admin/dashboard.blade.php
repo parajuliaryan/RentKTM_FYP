@@ -1,5 +1,5 @@
 <title>{{ config('app.name', 'RentKTM') }}</title>
-@include('layouts.nav')
+@include('admin.nav')
 @include('admin.backend-imports')
 <body>
     <!-- ============================================================== -->

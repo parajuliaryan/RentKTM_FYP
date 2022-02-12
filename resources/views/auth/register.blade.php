@@ -1,19 +1,15 @@
 @extends('layouts.app')
 <link rel="stylesheet" href="{{ asset('css/register.css') }}">
 @section('content')
-<div class="container d-flex wrapper">
-    <div class="container image-holder">
-        <img src="{{ asset('images/SignUp.jpg') }}" class="register-img">
-    </div>
-    <div class="container form-holder">
-        <ul class="nav nav-tabs">
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('login') }}">Sign In</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active" href="{{ route('register') }}">Sign Up</a>
-            </li>
-        </ul>
+<div class="main-div">
+    <div class="register-card">
+      <div class="image-holder">
+        <img src="{{ asset('images/SignUp.jpg') }}" alt="image" class="img-fluid">
+      </div>
+      <div class="form-holder">
+        <div>
+          <h2>Sign Up</h2>
+        </div>
         <form method="POST" action="{{ route('register') }}" class="register-form d-flex flex-column">
             @csrf
             <div class="form-group">
@@ -74,24 +70,17 @@
                 </a>
                 @endif
                 <br>
-                <button type="submit" class="btn btn-dark btn-block btn-outline btn-lg mt-3 btn-signup">Sign Up</button>
+                <button type="submit" class="btn btn-dark btn-block btn-outline btn-lg mt-3 sign-up-btn">Sign Up</button>
             </div>
-            <div class="or-container">
-                <div class="line-separator"></div>
-                <div class="or-label">or</div>
-                <div class="line-separator"></div>
-            </div>
-            <div class="row">
-                <div class="col-md-12"> <a class="btn btn-lg btn-social btn-block btn-outline text-center" href="{{ route('facebook') }}"><img
-                            src="https://img.icons8.com/external-justicon-flat-justicon/64/000000/external-facebook-social-media-justicon-flat-justicon.png"
-                            class="logo-img" /> Continue With Facebook</a> </div>
-            </div><br>
-            <div class="row">
-                <div class="col-md-12"> <a class="btn btn-lg btn-social btn-block btn-outline" href="{{ route('google') }}"><img
-                            src="https://img.icons8.com/color/16/000000/google-logo.png" class="logo-img"> Continue With
-                        Google</a> </div>
-            </div>
+            <div class="divider d-flex align-items-center my-4">
+                <p class="text-center fw-bold mx-3 mb-0 text-muted">OR</p>
+              </div>
+              <a class="btn btn-lg btn-block social-btn facebook mb-3" href="{{ route('facebook') }}" role="button">
+                <i class="fab fa-facebook-f"></i> Continue with Facebook</a>
+              <a class="btn btn-lg btn-block social-btn google" href="{{ route('google') }}" role="button">
+                <i class="fab fa-google"></i> Continue with Google</a>
         </form>
+      </div>
     </div>
 </div>
 @endsection

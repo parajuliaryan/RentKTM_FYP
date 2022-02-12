@@ -1,7 +1,7 @@
 @extends('layouts.app')
-@include('layouts.nav')
 <link rel="stylesheet" href="{{ asset('css/frontend-css/home.css') }}">
 @section('content')
+@include('layouts.nav')
 <div class="main-section">
     <div class="container-fluid image-container px-0">
         <div class="slogan">
@@ -38,56 +38,56 @@
                 <img class="card-img-top" src="{{ asset('images/room4.jpg') }}" alt="Card image cap">
                 <div class="card-body">
                   <p class="card-text font-weight-bold">Name of Room</p>
-                  <p class="card-text d-flex justify-content-between"><span>Location</span><span>Nrs.12000/month</span></p>
+                  <p class="card-text d-flex justify-content-between"><span><i class="fa fa-map-marker" aria-hidden="true"></i> Location</span><span>Nrs.12000/month</span></p>
                 </div>
             </div>
             <div class="card" style="width: 18rem;">
                 <img class="card-img-top" src="{{ asset('images/room4.jpg') }}" alt="Card image cap">
                 <div class="card-body">
                   <p class="card-text font-weight-bold">Name of Room</p>
-                  <p class="card-text d-flex justify-content-between"><span>Location</span><span>Nrs.12000/month</span></p>
+                  <p class="card-text d-flex justify-content-between"><span><i class="fa fa-map-marker" aria-hidden="true"></i> Location</span><span>Nrs.12000/month</span></p>
                 </div>
             </div>
             <div class="card" style="width: 18rem;">
                 <img class="card-img-top" src="{{ asset('images/room4.jpg') }}" alt="Card image cap">
                 <div class="card-body">
                   <p class="card-text font-weight-bold">Name of Room</p>
-                  <p class="card-text d-flex justify-content-between"><span>Location</span><span>Nrs.12000/month</span></p>
+                  <p class="card-text d-flex justify-content-between"><span><i class="fa fa-map-marker" aria-hidden="true"></i> Location</span><span>Nrs.12000/month</span></p>
                 </div>
             </div>
             <div class="card" style="width: 18rem;">
                 <img class="card-img-top" src="{{ asset('images/room4.jpg') }}" alt="Card image cap">
                 <div class="card-body">
                   <p class="card-text font-weight-bold">Name of Room</p>
-                  <p class="card-text d-flex justify-content-between"><span>Location</span><span>Nrs.12000/month</span></p>
+                  <p class="card-text d-flex justify-content-between"><span><i class="fa fa-map-marker" aria-hidden="true"></i> Location</span><span>Nrs.12000/month</span></p>
                 </div>
             </div>
             <div class="card" style="width: 18rem;">
                 <img class="card-img-top" src="{{ asset('images/room4.jpg') }}" alt="Card image cap">
                 <div class="card-body">
                   <p class="card-text font-weight-bold">Name of Room</p>
-                  <p class="card-text d-flex justify-content-between"><span>Location</span><span>Nrs.12000/month</span></p>
+                  <p class="card-text d-flex justify-content-between"><span><i class="fa fa-map-marker" aria-hidden="true"></i> Location</span><span>Nrs.12000/month</span></p>
                 </div>
             </div>
             <div class="card" style="width: 18rem;">
                 <img class="card-img-top" src="{{ asset('images/room4.jpg') }}" alt="Card image cap">
                 <div class="card-body">
                   <p class="card-text font-weight-bold">Name of Room</p>
-                  <p class="card-text d-flex justify-content-between"><span>Location</span><span>Nrs.12000/month</span></p>
+                  <p class="card-text d-flex justify-content-between"><span><i class="fa fa-map-marker" aria-hidden="true"></i> Location</span><span>Nrs.12000/month</span></p>
                 </div>
             </div>
             <div class="card" style="width: 18rem;">
                 <img class="card-img-top" src="{{ asset('images/room4.jpg') }}" alt="Card image cap">
                 <div class="card-body">
                   <p class="card-text font-weight-bold">Name of Room</p>
-                  <p class="card-text d-flex justify-content-between"><span>Location</span><span>Nrs.12000/month</span></p>
+                  <p class="card-text d-flex justify-content-between"><span><i class="fa fa-map-marker" aria-hidden="true"></i> Location</span><span>Nrs.12000/month</span></p>
                 </div>
             </div>
             <div class="card" style="width: 18rem;">
                 <img class="card-img-top" src="{{ asset('images/room4.jpg') }}" alt="Card image cap">
                 <div class="card-body">
                   <p class="card-text font-weight-bold">Name of Room</p>
-                  <p class="card-text d-flex justify-content-between"><span>Location</span><span>Nrs.12000/month</span></p>
+                  <p class="card-text d-flex justify-content-between"><span><i class="fa fa-map-marker" aria-hidden="true"></i> Location</span><span>Nrs.12000/month</span></p>
                 </div>
             </div>
         </div>
@@ -131,50 +131,24 @@
 
     <div class="discover-features">
         <h2>Discover Our Features</h2>
-        <div class="d-flex justify-content-between">
+        <div class="d-flex justify-content-between features-holder">
             <div class="image-holder">
-                <img src="{{ asset('images/post-ads.jpg') }}" alt="Post an Ad">
-                <a href="{{ route('postAds') }}" class="btn">Post an Ad</a>
+                <img src="{{ asset('images/find-rooms.jpg') }}" alt="Find Rooms">
+                <a href="{{ route('rooms') }}" class="btn">Find Rooms</a>
             </div>
             <div class="image-holder">
                 <img src="{{ asset('images/find-roommates.jpg') }}" alt="Find Roommates">
-                <a href="{{ route('postAds') }}" class="btn btn-primary">Find Roommates</a>
+                <a href="{{ route('roommates') }}" class="btn">Find Roommates</a>
             </div>
         </div>
     </div>
 
-    <footer>
-        <div class="page-footer d-flex">
-            <div class="d-flex flex-column align-items-start justify-content-start w-50">
-                <h5>Support</h5>
-                <div class="footer-links holder">
-                    <p><a href="#">Contact Us</a></p>
-                    <p><a href="#">Help Center</a></p>
-                    <p><a href="#">Safety Information</a></p>
-                    <p><a href="#">Covid-19 Resources</a></p>
-                </div>
-            </div>
-            <div class="d-flex flex-column align-items-start justify-content-start w-50">
-                <h5>About</h5>
-                <div class="footer-links holder">
-                    <p><a href="#">About Us</a></p>
-                    <p><a href="#">Sponsors</a></p>
-                    <p><a href="#">Privacy Policy</a></p>
-                    <p><a href="#">Terms and Conditions</a></p>
-                </div>
-            </div>
+    <div class="room-holder">
+        <div class="room-image-holder">
+            <img src="{{ asset('images/post-ads.jpg') }}" alt="Post an Ad">
+            <a href="{{ route('postAds') }}" class="btn">Post an Ad</a>
         </div>
-        <div class="line"></div>
-        <div class="sub-footer d-flex justify-content-between">
-            <div class="footer-logo">
-                <p>&copy; 2022 <span>RentKTM</span>, All Rights Reserved.</p>
-            </div>
-            <div class="social-icons-holder">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-            </div>
-        </div>
-    </footer>
+    </div>
+    @include('layouts.footer')
 </div>
 @endsection
