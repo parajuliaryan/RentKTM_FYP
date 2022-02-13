@@ -10,7 +10,7 @@
         <div>
           <h2>Sign In</h2>
         </div>
-        <form method="POST" action="{{ route('login') }}">
+        <form method="POST" action="{{ route('login') }}" class="form-container">
             @csrf
           <div class="form-group">
             <label for="email">Email</label>
@@ -49,12 +49,12 @@
             @endif
           </div>
           <div class="form-group">
-            <button type="submit" class="btn btn-lg btn-block sign-in-btn">Sign In</button>
+            <button type="submit" class="btn btn-lg btn-block sign-in-btn mb-2">Sign In</button>
           </div>
           <p>Don't Have an Account? <a href="{{ route('register') }}">Create One</a></p>
           <div class="divider d-flex align-items-center my-4">
             <p class="text-center fw-bold mx-3 mb-0 text-muted">OR</p>
-          </div>
+        </div>
           <a class="btn btn-lg btn-block social-btn facebook mb-3" href="{{ route('facebook') }}" role="button">
             <i class="fab fa-facebook-f"></i> Continue with Facebook</a>
           <a class="btn btn-lg btn-block social-btn google" href="{{ route('google') }}" role="button">

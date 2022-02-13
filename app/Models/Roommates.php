@@ -18,6 +18,7 @@ class Roommates extends Model
         'city',
         'ward',
         'area',
-        'tole'
+        'tole',
+        'roommate_image'
     ];
 }

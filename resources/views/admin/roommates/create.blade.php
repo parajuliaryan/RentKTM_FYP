@@ -1,5 +1,5 @@
-@include('layouts.nav')
 @include('admin.backend-imports')
+@include('admin.nav')
     <!-- ============================================================== -->
     <!-- Preloader - style you can find in spinners.css -->
     <!-- ============================================================== -->
@@ -44,7 +44,7 @@
                     <div class="col-sm-12">
                         <div class="white-box">
                             <h3 class="box-title">Roommate Details</h3>
-                            <form action="{{ route('admin.roommates.store') }}" method="POST">
+                            <form action="{{ route('admin.roommates.store') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group">
                                   <label for="roommate_name">Roommate Name</label>
@@ -85,6 +85,10 @@
                                 <div class="form-group">
                                     <label for="tole">Tole</label>
                                     <input type="text" class="form-control" id="tole" name="tole" placeholder="Tole">
+                                </div>
+                                <div class="form-group">
+                                    <label for="roommate_image">Upload your photo</label><br>
+                                    <input type="file" name="roommate_image" id="roommate_image">
                                 </div>
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </form>

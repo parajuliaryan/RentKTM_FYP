@@ -1,5 +1,5 @@
-@include('layouts.nav')
 @include('admin.backend-imports')
+@include('admin.nav')
     <!-- ============================================================== -->
     <!-- Preloader - style you can find in spinners.css -->
     <!-- ============================================================== -->

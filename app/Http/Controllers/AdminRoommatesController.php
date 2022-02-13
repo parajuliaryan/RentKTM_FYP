@@ -47,8 +47,25 @@ class AdminRoommatesController extends Controller
             'ward' => 'required',
             'area' => 'required',
             'tole' => 'required',
+            'roommate_image'=> 'required',
         ]);
-        Roommates::create($request->all());
+
+        $imageName = time().'.'.$request->roommate_image->extension();  
+        $request->roommate_image->move(public_path('images'), $imageName);
+        Roommates::create([
+            'roommate_name' => $request->roommate_name,
+            'roommate_age' => $request->roommate_age,
+            'roommate_rent_price' => $request->roommate_rent_price,
+            'roommate_description' => $request->roommate_description,
+            'roommate_features' => $request->roommate_features,
+            'contact_number' => $request->contact_number,
+            'city' => $request->city,
+            'ward' => $request->ward,
+            'area' => $request->area,
+            'tole' => $request->tole,
+            'roommate_image'=> $imageName,
+        ]);
+
         return redirect()->route('admin.roommates.index')->with('Success','Roommate added Successfully.');
     }
 
@@ -58,9 +75,9 @@ class AdminRoommatesController extends Controller
      * @param  \App\Models\Roommates  $roommates
      * @return \Illuminate\Http\Response
      */
-    public function show(Roommates $roommates)
+    public function show(Roommates $roommate)
     {
-        return view('admin.roommates.index');
+        return view('admin.roommates.show', $roommate);
     }
 
     /**
@@ -95,8 +112,23 @@ class AdminRoommatesController extends Controller
             'area' => 'required',
             'tole' => 'required',
         ]);
+
+        $imageName = time().'.'.$request->roommate_image->extension();  
+        $request->roommate_image->move(public_path('images'), $imageName);
     
-        $roommate->update($request->all());
+        $roommate->update([
+            'roommate_name' => $request->roommate_name,
+            'roommate_age' => $request->roommate_age,
+            'roommate_rent_price' => $request->roommate_rent_price,
+            'roommate_description' => $request->roommate_description,
+            'roommate_features' => $request->roommate_features,
+            'contact_number' => $request->contact_number,
+            'city' => $request->city,
+            'ward' => $request->ward,
+            'area' => $request->area,
+            'tole' => $request->tole,
+            'roommate_image'=> $imageName,
+        ]);
 
         return redirect()->route('admin.roommates.index')->with('Success','Roommate Updated Successfully.');
     }

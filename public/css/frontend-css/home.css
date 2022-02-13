@@ -44,7 +44,7 @@
 
 .search-group input{
     padding: 10px;
-    max-width: 537px;
+    max-width: 600px;
     height: 38px;
 }
 
@@ -56,6 +56,10 @@
     box-sizing: border-box;
     border-radius: 4px;
     color: #F9F9F9;
+}
+
+.search-group button:hover{
+    background: #01335a;
 }
 
 .radio-group{
@@ -144,20 +148,24 @@
 
 .image-holder a{
     position: absolute;
-    top: 8px;
-    right: 16px;
-    background-color: Transparent;
-    background-repeat: no-repeat;
-    border: 1px solid #9FA5A8;
-    color: black;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #000000;
+    border: none;
+    color: #ffffff;
     cursor:pointer;
     overflow: hidden;
     outline:none;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+    max-width: 300px;
+    font-size: larger;
+    font-weight: bold;
 }
 
 .image-holder a:hover{
-    background-color: #E5E7EB;
-    color: black;
+    background-color: #ffffff;
+    color: #000000;
 }
 
 .image-holder img{
@@ -165,6 +173,7 @@
     height: 100%;
     object-fit: cover;
     object-position: center;
+    filter: blur(5px);
 }
 
 .room-holder{
@@ -178,20 +187,25 @@
 
 .room-holder a{
     position: absolute;
-    top: 8px;
-    right: 16px;
-    background-color: Transparent;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #000000;
     background-repeat: no-repeat;
-    border: 1px solid #9FA5A8;
-    color: black;
+    border: none;
+    color: #ffffff;
     cursor:pointer;
     overflow: hidden;
     outline:none;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+    max-width: 300px;
+    font-size: larger;
+    font-weight: bold;
 }
 
 .room-holder a:hover{
-    background-color: #E5E7EB;
-    color: black;
+    background-color: #ffffff;
+    color: #000000;
 }
 
 .room-holder img{
@@ -199,6 +213,7 @@
     height: 100%;
     object-fit: cover;
     object-position: center;
+    filter: blur(5px);
 }
 
 footer{
@@ -356,11 +371,11 @@ footer p a{
 
     .slogan span{
         font-weight: bold;
-        font-size: 40px;
+        font-size: 32px;
     }
     
     .slogan p{
-        font-size: 23px;
+        font-size: 21px;
     }
 
     .top-areas{
@@ -378,5 +393,10 @@ footer p a{
         flex-direction: row;
         flex-wrap: wrap;
         align-items: center;
+    }
+
+    .slogan{
+        top: 23%;
+        left: 50%;
     }
 }

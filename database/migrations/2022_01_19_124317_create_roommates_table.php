@@ -25,6 +25,7 @@ class CreateRoommatesTable extends Migration
             $table->string('ward');
             $table->string('area');
             $table->string('tole');
+            $table->string('roommate_image');
             $table->timestamps();
         });
     }

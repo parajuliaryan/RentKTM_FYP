@@ -1,6 +1,6 @@
 <title>{{ config('app.name', 'RentKTM') }}</title>
-@include('admin.nav')
 @include('admin.backend-imports')
+@include('admin.nav')
 <body>
     <!-- ============================================================== -->
     <!-- Preloader - style you can find in spinners.css -->

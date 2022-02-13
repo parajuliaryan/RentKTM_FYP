@@ -17,6 +17,7 @@ class Rooms extends Model
         'city',
         'ward',
         'area',
-        'tole'
+        'tole',
+        
     ];
 }

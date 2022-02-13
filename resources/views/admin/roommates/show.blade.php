@@ -15,25 +15,10 @@
     <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
         data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
         @include('admin.sidemenu')
-        <!-- ============================================================== -->
+                <!-- ============================================================== -->
         <!-- Page wrapper  -->
         <!-- ============================================================== -->
         <div class="page-wrapper">
-            <!-- ============================================================== -->
-            <!-- Bread crumb and right sidebar toggle -->
-            <!-- ============================================================== -->
-            <div class="page-breadcrumb bg-white">
-                <div class="row align-items-center">
-                    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">ADS</h4>
-                    </div>
-                </div>
-                <!-- /.col-lg-12 -->
-            </div>
-            <!-- ============================================================== -->
-            <!-- End Bread crumb and right sidebar toggle -->
-            <!-- ============================================================== -->
-            <!-- ============================================================== -->
             <!-- Container fluid  -->
             <!-- ============================================================== -->
             <div class="container-fluid">
@@ -43,29 +28,51 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="white-box">
-                            <h3 class="box-title">Ads List</h3>
-                            <div class="table-responsive">
-                                <table class="table text-nowrap">
-                                    <thead>
-                                        <tr>
-                                            <th class="border-top-0">Ad ID</th>
-                                            <th class="border-top-0">Ad Type</th>
-                                            <th class="border-top-0">User Name</th>
-                                            <th class="border-top-0">Room ID</th>
-                                            <th class="border-top-0">Roomate ID</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Deshmukh</td>
-                                            <td>Prohaska</td>
-                                            <td>12</td>
-                                            <td>admin</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                            <h3 class="box-title">Roommate Details</h3>
+                            <table class="table table-striped">
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">Name</th>
+                                        <td>{{ $roommate_name }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Age</th>
+                                        <td>{{ $roommate_age }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Rent Price</th>
+                                        <td>{{ $roommate_rent_price }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Description</th>
+                                        <td>{{ $roommate_description }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Features</th>
+                                        <td>{{ $roommate_features }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Contact</th>
+                                        <td>{{ $contact_number }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">City</th>
+                                        <td>{{ $city }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Ward</th>
+                                        <td>{{ $ward }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Area</th>
+                                        <td>{{ $area }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Tole</th>
+                                        <td>{{ $tole }}</td>
+                                    </tr>
+                                </tbody>
+                              </table>
                         </div>
                     </div>
                 </div>
@@ -90,6 +97,3 @@
         <!-- End Page wrapper  -->
         <!-- ============================================================== -->
     </div>
-    <!-- ============================================================== -->
-    <!-- End Wrapper -->
-    <!-- ============================================================== -->

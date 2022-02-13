@@ -45,6 +45,7 @@ class AdminRoomController extends Controller
             'ward' => 'required',
             'area' => 'required',
             'tole' => 'required',
+            
         ]);
     
         Rooms::create($request->all());
@@ -57,9 +58,9 @@ class AdminRoomController extends Controller
      * @param  \App\Models\Rooms  $rooms
      * @return \Illuminate\Http\Response
      */
-    public function show(Rooms $rooms)
+    public function show(Rooms $room)
     {
-        return view('admin.rooms.index');
+        return view('admin.rooms.show', $room);
     }
 
     /**
