@@ -33,38 +33,44 @@
                                 <tbody>
                                     <tr>
                                         <th scope="row">Description</th>
-                                        <td>{{ $room_description }}</td>
+                                        <td>{{ $room->room_description }}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">Room Type</th>
-                                        <td>{{ $room_type }}</td>
+                                        <td>{{ $room->room_type }}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">Price</th>
-                                        <td>{{ $room_price }}</td>
+                                        <td>{{ $room->room_price }}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">Contact</th>
-                                        <td>{{ $contact_number }}</td>
+                                        <td>{{ $room->contact_number }}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">City</th>
-                                        <td>{{ $city }}</td>
+                                        <td>{{ $room->city }}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">Ward</th>
-                                        <td>{{ $ward }}</td>
+                                        <td>{{ $room->ward }}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">Area</th>
-                                        <td>{{ $area }}</td>
+                                        <td>{{ $room->area }}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">Tole</th>
-                                        <td>{{ $tole }}</td>
+                                        <td>{{ $room->tole }}</td>
                                     </tr>
                                 </tbody>
                               </table>
+                              @php
+                                  $image = explode('|',$images->image_url);
+                              @endphp
+                              @foreach ($image as $item )
+                                <img src="{{ URL::to($item) }}" style ="height:60px;width:60px;">
+                              @endforeach
                         </div>
                     </div>
                 </div>

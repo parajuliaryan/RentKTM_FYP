@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\RoomImages;
 use App\Models\Rooms;
 use Illuminate\Http\Request;
 
@@ -49,6 +50,27 @@ class AdminRoomController extends Controller
         ]);
     
         Rooms::create($request->all());
+        $room = Rooms::latest()->first();
+        $room_id = $room->id;
+
+        $images = array();
+        if ($room_images = $request->file('room_images')) {
+            foreach ($room_images as $room_image) {
+                $image_name = md5(rand(1000,10000));
+                $ext = strtolower($room_image->getClientOriginalExtension());
+                $image_full_name = $image_name.'.'.$ext;
+                $upload_path = 'public/room_images/';
+                $image_url = $upload_path.$image_full_name;
+                $room_image->move($upload_path, $image_full_name);
+                $images[] = $image_url;
+            }
+        }
+
+        RoomImages::create([
+            'room_id'=>$room_id,
+            'image_url'=> implode('|', $images)
+        ]);
+
         return redirect()->route('admin.rooms.index')->with('Success','Room added Successfully.');
     }
 
@@ -60,7 +82,8 @@ class AdminRoomController extends Controller
      */
     public function show(Rooms $room)
     {
-        return view('admin.rooms.show', $room);
+        $images = RoomImages::where('room_id',$room->id)->first();
+        return view('admin.rooms.show', compact('room','images'));
     }
 
     /**

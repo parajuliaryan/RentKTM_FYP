@@ -43,7 +43,7 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="white-box">
-                            <h3 class="box-title">Rooms List</h3><a href="{{ route('admin.rooms.create') }}" class="text-success">Add Room<i class="fa fa-plus"></i></a>
+                            <h3 class="box-title d-flex justify-content-between">Rooms List <a href="{{ route('admin.rooms.create') }}" class="text-success">Add Room <i class="fa fa-plus"></i></a></h3>
                             <div class="table-responsive">
                                 <table class="table text-nowrap">
                                     <thead>
@@ -62,10 +62,14 @@
                                             <td>{{ $room->room_type }}</td>
                                             <td>{{ $room->room_price }}</td>
                                             <td>{{ $room->contact_number }}</td>
-                                            <td>
+                                            <td class="d-flex">
                                                 <a href="{{ route('admin.rooms.edit',$room->id) }}"><i class="fa fa-edit"></i></a>
                                                 <a href="{{ route('admin.rooms.show', $room->id) }}"><i class="fa fa-eye"></i></a>
-                                                <a href="{{ route('admin.rooms.destroy',$room->id) }}" class="text-danger"><i class="fa fa-trash"></i></a>
+                                                <form action="{{route('admin.rooms.destroy',$room->id)}}" method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="text-danger" style="background: none; border:none;"><i class="fa fa-trash"></i></button>
+                                                </form>
                                             </td>
                                         </tr>
                                         @endforeach

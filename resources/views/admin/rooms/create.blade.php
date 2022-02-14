@@ -44,7 +44,7 @@
                     <div class="col-sm-12">
                         <div class="white-box">
                             <h3 class="box-title">Room Details</h3>
-                            <form action="{{ route('admin.rooms.store') }}" method="POST">
+                            <form action="{{ route('admin.rooms.store') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group">
                                   <label for="room_description">Room Description</label>
@@ -78,6 +78,10 @@
                                     <label for="tole">Tole</label>
                                     <input type="text" class="form-control" id="tole" name="tole" placeholder="Tole">
                                 </div>
+                                <div class="form-group">
+                                    <label for="room_images">Upload Image(s)</label>
+                                    <input type="file" name="room_images[]" multiple id="room_image">
+                                </div>  
                                 <button type="submit" class="btn btn-primary">Submit</button>
                               </form>
                         </div>

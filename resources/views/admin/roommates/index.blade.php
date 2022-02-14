@@ -37,13 +37,18 @@
             <!-- Container fluid  -->
             <!-- ============================================================== -->
             <div class="container-fluid">
+                @if ($message = Session::get('Success'))
+                <div class="alert alert-success">
+                    <p>{{ $message }}</p>
+                </div>
+                @endif
                 <!-- ============================================================== -->
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="white-box">
-                            <h3 class="box-title">Roommates List</h3><a href="{{ route('admin.roommates.create') }}" class="text-success">Add Roommate<i class="fa fa-plus"></i></a>
+                            <h3 class="box-title d-flex justify-content-between">Roommates List<a href="{{ route('admin.roommates.create') }}" class="text-success">Add Roommate <i class="fa fa-plus"></i></a></h3>
                             <div class="table-responsive">
                                 <table class="table text-nowrap">
                                     <thead>
@@ -64,10 +69,14 @@
                                             <td>{{ $roommate->roommate_age }}</td>
                                             <td>{{ $roommate->roommate_rent_price }}</td>
                                             <td>{{ $roommate->contact_number }}</td>
-                                            <td>
+                                            <td class="d-flex">
                                                 <a href="{{ route('admin.roommates.edit',$roommate->id) }}"><i class="fa fa-edit"></i></a>
                                                 <a href="{{ route('admin.roommates.show', $roommate->id) }}"><i class="fa fa-eye"></i></a>
-                                                <a href="{{ route('admin.roommates.destroy',$roommate->id) }}" class="text-danger"><i class="fa fa-trash"></i></a>
+                                                <form action="{{route('admin.roommates.destroy',$roommate->id)}}" method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="text-danger" style="background: none; border:none;"><i class="fa fa-trash"></i></button>
+                                                </form>
                                             </td>
                                         </tr>
                                         @endforeach
