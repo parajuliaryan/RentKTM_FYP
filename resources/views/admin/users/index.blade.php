@@ -15,7 +15,7 @@
     <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
         data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
         @include('admin.sidemenu')
-                <!-- ============================================================== -->
+        <!-- ============================================================== -->
         <!-- Page wrapper  -->
         <!-- ============================================================== -->
         <div class="page-wrapper">
@@ -25,7 +25,7 @@
             <div class="page-breadcrumb bg-white">
                 <div class="row align-items-center">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">Create Rooms</h4>
+                        <h4 class="page-title">USERS</h4>
                     </div>
                 </div>
                 <!-- /.col-lg-12 -->
@@ -43,47 +43,39 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="white-box">
-                            <h3 class="box-title">Room Details</h3>
-                            <form action="{{ route('admin.rooms.store') }}" method="POST" enctype="multipart/form-data">
-                                @csrf
-                                <div class="form-group">
-                                  <label for="room_description">Room Description</label>
-                                  <textarea class="form-control" id="room_description" name="room_description" placeholder="Room Description"></textarea>
-                                </div>
-                                <div class="form-group">
-                                  <label for="room_price">Room Price</label>
-                                  <input type="text" class="form-control" id="room_price" name="room_price" placeholder="Room Price">
-                                </div>
-                                <div class="form-group">
-                                    <label for="room_type">Room Type</label>
-                                    <input type="text" class="form-control" id="room_type" name="room_type" placeholder="Room Type (Eg: 1BHK, 2BHK etc.)">
-                                </div>
-                                <div class="form-group">
-                                    <label for="contact_number">Contact Number</label>
-                                    <input type="text" class="form-control" id="contact_number" name="contact_number" placeholder="Contact Number">
-                                </div>
-                                <div class="form-group">
-                                    <label for="city">City</label>
-                                    <input type="text" class="form-control" id="city" name="city" placeholder="City">
-                                </div>
-                                <div class="form-group">
-                                    <label for="ward">Ward</label>
-                                    <input type="text" class="form-control" id="ward" name="ward" placeholder="Ward">
-                                </div>
-                                <div class="form-group">
-                                    <label for="area">Area</label>
-                                    <input type="text" class="form-control" id="area" name="area" placeholder="Area">
-                                </div>
-                                <div class="form-group">
-                                    <label for="tole">Tole</label>
-                                    <input type="text" class="form-control" id="tole" name="tole" placeholder="Tole">
-                                </div>
-                                <div class="form-group">
-                                    <label for="room_images">Upload Image(s)</label>
-                                    <input type="file" name="room_images[]" multiple id="room_image">
-                                </div>  
-                                <button type="submit" class="btn btn-primary">Submit</button>
-                              </form>
+                            <h3 class="box-title d-flex justify-content-between">Users List <a href="{{ route('admin.users.create') }}" class="text-success">Add User <i class="fa fa-plus"></i></a></h3>
+                            <div class="table-responsive">
+                                <table class="table text-nowrap">
+                                    <thead>
+                                        <tr>
+                                            <th class="border-top-0">User ID</th>
+                                            <th class="border-top-0">User Type</th>
+                                            <th class="border-top-0">First Name</th>
+                                            <th class="border-top-0">Last Name</th>
+                                            <th class="border-top-0">Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($users as $user )
+                                        <tr>
+                                                <td>{{ $user->id }}</td>
+                                                <td>{{ $user->user_type }}</td>
+                                                <td>{{ $user->first_name }}</td>
+                                                <td>{{ $user->last_name }}</td>
+                                            <td class="d-flex">
+                                                <a href="{{ route('admin.users.edit',$user->id) }}"><i class="fa fa-edit"></i></a>
+                                                <a href="{{ route('admin.users.show', $user->id) }}"><i class="fa fa-eye"></i></a>
+                                                <form action="{{route('admin.users.destroy',$user->id)}}" method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="text-danger" style="background: none; border:none;"><i class="fa fa-trash"></i></button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -108,3 +100,6 @@
         <!-- End Page wrapper  -->
         <!-- ============================================================== -->
     </div>
+    <!-- ============================================================== -->
+    <!-- End Wrapper -->
+    <!-- ============================================================== -->

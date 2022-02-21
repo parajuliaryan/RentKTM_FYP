@@ -16,6 +16,13 @@
                                 <span class="hide-menu">Dashboard</span>
                             </a>
                         </li>
+                        <li class="sidebar-item pt-2">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('admin.users.index') }}"
+                                aria-expanded="false">
+                                <i class="far fa-user" aria-hidden="true"></i>
+                                <span class="hide-menu">User Management</span>
+                            </a>
+                        </li>
                         <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('admin.rooms.index') }}"
                                 aria-expanded="false">

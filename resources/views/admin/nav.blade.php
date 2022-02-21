@@ -17,7 +17,7 @@
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            @if ( Auth::user()->type == 'admin' )
+                            @if ( Auth::user()->user_type == 'admin' )
                                 <a class="dropdown-item" href="{{ route('admin.dashboard') }}">
                                 {{ __('Dashboard') }}
                                 </a>

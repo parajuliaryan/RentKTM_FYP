@@ -18,11 +18,11 @@ class AdminMiddleware
     public function handle(Request $request, Closure $next)
     {
         if (Auth::check()) {
-            if (Auth::user()->type == 'admin') {
+            if (Auth::user()->user_type == 'admin') {
                 return $next($request);
             }
             else{
-                return redirect('/home')->with('status','Access denied!, Only admin access available');
+                return redirect('/')->with('status','Access denied!, Only admin access available');
             }
         }
         else{

@@ -4,7 +4,8 @@
         <a class="navbar-brand" href="{{ url('/') }}">
             {{ config('app.name', 'RentKTM') }}
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -15,57 +16,57 @@
             <ul class="navbar-nav ms-auto">
                 <!-- Authentication Links -->
                 @guest
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('home') }}">{{ __('Home') }}</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('rooms') }}">{{ __('Rooms') }}</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('roommates') }}">{{ __('Roommates') }}</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('postAds') }}">{{ __('Post Ads') }}</a>
-                    </li>
-                    @if (Route::has('login'))
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}"><i class="fas fa-user"></i> {{ __('SignIn') }}</a>
-                        </li>
-                    @endif
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('home') }}">{{ __('Home') }}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('rooms') }}">{{ __('Rooms') }}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('roommates') }}">{{ __('Roommates') }}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('postAds') }}">{{ __('Post Ads') }}</a>
+                </li>
+                @if (Route::has('login'))
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('login') }}"><i class="fas fa-user"></i> {{ __('SignIn') }}</a>
+                </li>
+                @endif
                 @else
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('home') }}">{{ __('Home') }}</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('rooms') }}">{{ __('Rooms') }}</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('roommates') }}">{{ __('Roommates') }}</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('postAds') }}">{{ __('Post Ads') }}</a>
-                        </li>
-                    <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            {{ Auth::user()->first_name.Auth::user()->last_name }}
-                        </a>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('home') }}">{{ __('Home') }}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('rooms') }}">{{ __('Rooms') }}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('roommates') }}">{{ __('Roommates') }}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('postAds') }}">{{ __('Post Ads') }}</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        {{ Auth::user()->first_name.Auth::user()->last_name }}
+                    </a>
 
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            @if ( Auth::user()->type == 'admin' )
-                                <a class="dropdown-item" href="{{ route('admin.dashboard') }}">
-                                {{ __('Dashboard') }}
-                                </a>
-                            @endif
-                            <a class="dropdown-item" href="{{ route('logout') }}"
-                               onclick="event.preventDefault();
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        @if ( Auth::user()->user_type == 'admin' )
+                        <a class="dropdown-item" href="{{ route('admin.dashboard') }}">
+                            {{ __('Dashboard') }}
+                        </a>
+                        @endif
+                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
-                            </a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                @csrf
-                            </form>
-                        </div>
-                    </li>
+                            {{ __('Logout') }}
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+                    </div>
+                </li>
                 @endguest
             </ul>
         </div>

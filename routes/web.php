@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminAdsController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminRoomController;
 use App\Http\Controllers\AdminRoommatesController;
+use App\Http\Controllers\AdminUsersController;
 use App\Http\Controllers\Auth\FacebookController;
 use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\HomeController;
@@ -40,6 +41,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth','isAdmin'])->group(fu
     Route::resource('/rooms', AdminRoomController::class);
     Route::resource('/roommates', AdminRoommatesController::class);
     Route::resource('/ads', AdminAdsController::class);
+    Route::resource('/users', AdminUsersController::class);
 });
 
 //Google login routes

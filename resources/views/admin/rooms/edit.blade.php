@@ -25,7 +25,7 @@
             <div class="page-breadcrumb bg-white">
                 <div class="row align-items-center">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">List of Rooms</h4>
+                        <h4 class="page-title">Edit Rooms</h4>
                     </div>
                 </div>
                 <!-- /.col-lg-12 -->
@@ -46,6 +46,13 @@
                             <h3 class="box-title">Room Details</h3>
                             <form action="{{ route('admin.rooms.update', $room->id) }}" method="POST">
                                 @csrf
+                                <div class="form-group">
+                                    <select name="user_type" class="form-control" id="usertype" required>
+                                        <option value="user">User</option>
+                                        <option value="admin">Admin</option>
+                                        <option value="student">Student</option>
+                                    </select>
+                                </div>
                                 <div class="form-group">
                                   <label for="room_description">Room Description</label>
                                   <textarea class="form-control" id="room_description" name="room_description" placeholder="Room Description"></textarea>
