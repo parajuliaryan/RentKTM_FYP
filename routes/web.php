@@ -30,10 +30,16 @@ Route::get('/', function () {
 })->name('home');
 
 Auth::routes();
-//auth middleware for authenticated user, isAdmin for admin 
+//auth middleware for authenticated user, isAdmin for admin
+Route::get('/profile', [HomeController::class, 'profile'])->name('profile'); 
 Route::get('/rooms', [RoomsController::class, 'index'])->name('rooms');
 Route::get('/roommates', [RoommatesController::class, 'index'])->name('roommates');
 Route::get('/post-ads', [PostAdsController::class, 'index'])->name('postAds');
+Route::prefix('post-ads')->name('post-ads.')->group(function(){
+    Route::get('/',[PostAdsController::class , 'index'])->name('index');
+    Route::resource('/rooms', RoomsController::class);
+    Route::resource('/roommates', RoommatesController::class);
+});
 
 //Admin routes
 Route::prefix('admin')->name('admin.')->middleware(['auth','isAdmin'])->group(function(){

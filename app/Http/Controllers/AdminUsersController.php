@@ -44,27 +44,52 @@ class AdminUsersController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8'],
         ]);
-        if ($request->roommate_image) {
-            $imageName = time() . '.' . $request->roommate_image->extension();
-            $request->roommate_image->move(public_path('images'), $imageName);
-            User::create([
-                'user_type' => $request->user_type,
-                'first_name' => $request->first_name,
-                'last_name' => $request->last_name,
-                'email' => $request->email,
-                'password' => Hash::make($request->password),
-                'identification' => $imageName,
-            ]);
-        } else {
-            User::create([
-                'user_type' => $request->user_type,
-                'first_name' => $request->first_name,
-                'last_name' => $request->last_name,
-                'email' => $request->email,
-                'password' => Hash::make($request->password),
-            ]);
-        }
 
+        if ($request->user_type == "student") {
+            if ($request->roommate_image) {
+                $imageName = time() . '.' . $request->roommate_image->extension();
+                $request->roommate_image->move(public_path('images'), $imageName);
+                User::create([
+                    'user_type' => $request->user_type,
+                    'first_name' => $request->first_name,
+                    'last_name' => $request->last_name,
+                    'email' => $request->email,
+                    'password' => Hash::make($request->password),
+                    'student_check' => "on",
+                    'identification' => $imageName,
+                ]);
+            } else {
+                User::create([
+                    'user_type' => $request->user_type,
+                    'first_name' => $request->first_name,
+                    'last_name' => $request->last_name,
+                    'email' => $request->email,
+                    'password' => Hash::make($request->password),
+                    'student_check' => "on",
+                ]);
+            }
+        } else {
+            if ($request->roommate_image) {
+                $imageName = time() . '.' . $request->roommate_image->extension();
+                $request->roommate_image->move(public_path('images'), $imageName);
+                User::create([
+                    'user_type' => $request->user_type,
+                    'first_name' => $request->first_name,
+                    'last_name' => $request->last_name,
+                    'email' => $request->email,
+                    'password' => Hash::make($request->password),
+                    'identification' => $imageName,
+                ]);
+            } else {
+                User::create([
+                    'user_type' => $request->user_type,
+                    'first_name' => $request->first_name,
+                    'last_name' => $request->last_name,
+                    'email' => $request->email,
+                    'password' => Hash::make($request->password),
+                ]);
+            }
+        }
 
         return redirect()->route('admin.users.index')->with('Success', 'User Added Successfully.');
     }
@@ -108,13 +133,51 @@ class AdminUsersController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
 
-        $user->update([
-            'user_type' => $request->user_type,
-            'first_name' => $request->first_name,
-            'last_name' => $request->last_name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
+        if ($request->user_type == "student") {
+            if ($request->roommate_image) {
+                $imageName = time() . '.' . $request->roommate_image->extension();
+                $request->roommate_image->move(public_path('images'), $imageName);
+                $user->update([
+                    'user_type' => $request->user_type,
+                    'first_name' => $request->first_name,
+                    'last_name' => $request->last_name,
+                    'email' => $request->email,
+                    'password' => Hash::make($request->password),
+                    'identification' => $imageName,
+                    'student_check' => "on",
+                ]);
+            } else {
+                $user->update([
+                    'user_type' => $request->user_type,
+                    'first_name' => $request->first_name,
+                    'last_name' => $request->last_name,
+                    'email' => $request->email,
+                    'password' => Hash::make($request->password),
+                    'student_check' => "on",
+                ]);
+            }
+        }else{
+            if ($request->roommate_image) {
+                $imageName = time() . '.' . $request->roommate_image->extension();
+                $request->roommate_image->move(public_path('images'), $imageName);
+                $user->update([
+                    'user_type' => $request->user_type,
+                    'first_name' => $request->first_name,
+                    'last_name' => $request->last_name,
+                    'email' => $request->email,
+                    'password' => Hash::make($request->password),
+                    'identification' => $imageName,
+                ]);
+            } else {
+                $user->update([
+                    'user_type' => $request->user_type,
+                    'first_name' => $request->first_name,
+                    'last_name' => $request->last_name,
+                    'email' => $request->email,
+                    'password' => Hash::make($request->password),
+                ]);
+            }
+        }
 
 
         return redirect()->route('admin.users.index')->with('Success', 'User Updated Successfully.');

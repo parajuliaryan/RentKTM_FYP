@@ -26,7 +26,7 @@
                     <a class="nav-link" href="{{ route('roommates') }}">{{ __('Roommates') }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('postAds') }}">{{ __('Post Ads') }}</a>
+                    <a class="nav-link" href="{{ route('post-ads.index') }}">{{ __('Post Ads') }}</a>
                 </li>
                 @if (Route::has('login'))
                 <li class="nav-item">
@@ -44,7 +44,7 @@
                     <a class="nav-link" href="{{ route('roommates') }}">{{ __('Roommates') }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('postAds') }}">{{ __('Post Ads') }}</a>
+                    <a class="nav-link" href="{{ route('post-ads.index') }}">{{ __('Post Ads') }}</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
@@ -54,9 +54,13 @@
 
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                         @if ( Auth::user()->user_type == 'admin' )
-                        <a class="dropdown-item" href="{{ route('admin.dashboard') }}">
-                            {{ __('Dashboard') }}
-                        </a>
+                            <a class="dropdown-item" href="{{ route('admin.dashboard') }}">
+                                {{ __('Dashboard') }}
+                            </a>
+                        @else
+                            <a class="dropdown-item" href="{{ route('profile') }}">
+                                {{ __('Profile') }}
+                            </a>
                         @endif
                         <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();">

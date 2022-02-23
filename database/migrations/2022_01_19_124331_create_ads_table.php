@@ -17,8 +17,8 @@ class CreateAdsTable extends Migration
             $table->id();
             $table->enum('ad_type',['room','roommate']);
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('room_id');
-            $table->unsignedBigInteger('roommate_id');
+            $table->unsignedBigInteger('room_id')->nullable();
+            $table->unsignedBigInteger('roommate_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('room_id')->references('id')->on('rooms')->onDelete('cascade');
             $table->foreign('roommate_id')->references('id')->on('roommates')->onDelete('cascade');

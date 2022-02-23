@@ -37,57 +37,65 @@
             <div class="card" style="width: 18rem;">
                 <img class="card-img-top" src="{{ asset('images/room4.jpg') }}" alt="Card image cap">
                 <div class="card-body">
-                  <p class="card-text font-weight-bold">Name of Room</p>
-                  <p class="card-text d-flex justify-content-between"><span><i class="fa fa-map-marker" aria-hidden="true"></i> Location</span><span>Nrs.12000/month</span></p>
+                    <p class="card-text font-weight-bold">Name of Room</p>
+                    <p class="card-text d-flex justify-content-between"><span><i class="fa fa-map-marker"
+                                aria-hidden="true"></i> Location</span><span>Nrs.12000/month</span></p>
                 </div>
             </div>
             <div class="card" style="width: 18rem;">
                 <img class="card-img-top" src="{{ asset('images/room4.jpg') }}" alt="Card image cap">
                 <div class="card-body">
-                  <p class="card-text font-weight-bold">Name of Room</p>
-                  <p class="card-text d-flex justify-content-between"><span><i class="fa fa-map-marker" aria-hidden="true"></i> Location</span><span>Nrs.12000/month</span></p>
+                    <p class="card-text font-weight-bold">Name of Room</p>
+                    <p class="card-text d-flex justify-content-between"><span><i class="fa fa-map-marker"
+                                aria-hidden="true"></i> Location</span><span>Nrs.12000/month</span></p>
                 </div>
             </div>
             <div class="card" style="width: 18rem;">
                 <img class="card-img-top" src="{{ asset('images/room4.jpg') }}" alt="Card image cap">
                 <div class="card-body">
-                  <p class="card-text font-weight-bold">Name of Room</p>
-                  <p class="card-text d-flex justify-content-between"><span><i class="fa fa-map-marker" aria-hidden="true"></i> Location</span><span>Nrs.12000/month</span></p>
+                    <p class="card-text font-weight-bold">Name of Room</p>
+                    <p class="card-text d-flex justify-content-between"><span><i class="fa fa-map-marker"
+                                aria-hidden="true"></i> Location</span><span>Nrs.12000/month</span></p>
                 </div>
             </div>
             <div class="card" style="width: 18rem;">
                 <img class="card-img-top" src="{{ asset('images/room4.jpg') }}" alt="Card image cap">
                 <div class="card-body">
-                  <p class="card-text font-weight-bold">Name of Room</p>
-                  <p class="card-text d-flex justify-content-between"><span><i class="fa fa-map-marker" aria-hidden="true"></i> Location</span><span>Nrs.12000/month</span></p>
+                    <p class="card-text font-weight-bold">Name of Room</p>
+                    <p class="card-text d-flex justify-content-between"><span><i class="fa fa-map-marker"
+                                aria-hidden="true"></i> Location</span><span>Nrs.12000/month</span></p>
                 </div>
             </div>
             <div class="card" style="width: 18rem;">
                 <img class="card-img-top" src="{{ asset('images/room4.jpg') }}" alt="Card image cap">
                 <div class="card-body">
-                  <p class="card-text font-weight-bold">Name of Room</p>
-                  <p class="card-text d-flex justify-content-between"><span><i class="fa fa-map-marker" aria-hidden="true"></i> Location</span><span>Nrs.12000/month</span></p>
+                    <p class="card-text font-weight-bold">Name of Room</p>
+                    <p class="card-text d-flex justify-content-between"><span><i class="fa fa-map-marker"
+                                aria-hidden="true"></i> Location</span><span>Nrs.12000/month</span></p>
                 </div>
             </div>
             <div class="card" style="width: 18rem;">
                 <img class="card-img-top" src="{{ asset('images/room4.jpg') }}" alt="Card image cap">
                 <div class="card-body">
-                  <p class="card-text font-weight-bold">Name of Room</p>
-                  <p class="card-text d-flex justify-content-between"><span><i class="fa fa-map-marker" aria-hidden="true"></i> Location</span><span>Nrs.12000/month</span></p>
+                    <p class="card-text font-weight-bold">Name of Room</p>
+                    <p class="card-text d-flex justify-content-between"><span><i class="fa fa-map-marker"
+                                aria-hidden="true"></i> Location</span><span>Nrs.12000/month</span></p>
                 </div>
             </div>
             <div class="card" style="width: 18rem;">
                 <img class="card-img-top" src="{{ asset('images/room4.jpg') }}" alt="Card image cap">
                 <div class="card-body">
-                  <p class="card-text font-weight-bold">Name of Room</p>
-                  <p class="card-text d-flex justify-content-between"><span><i class="fa fa-map-marker" aria-hidden="true"></i> Location</span><span>Nrs.12000/month</span></p>
+                    <p class="card-text font-weight-bold">Name of Room</p>
+                    <p class="card-text d-flex justify-content-between"><span><i class="fa fa-map-marker"
+                                aria-hidden="true"></i> Location</span><span>Nrs.12000/month</span></p>
                 </div>
             </div>
             <div class="card" style="width: 18rem;">
                 <img class="card-img-top" src="{{ asset('images/room4.jpg') }}" alt="Card image cap">
                 <div class="card-body">
-                  <p class="card-text font-weight-bold">Name of Room</p>
-                  <p class="card-text d-flex justify-content-between"><span><i class="fa fa-map-marker" aria-hidden="true"></i> Location</span><span>Nrs.12000/month</span></p>
+                    <p class="card-text font-weight-bold">Name of Room</p>
+                    <p class="card-text d-flex justify-content-between"><span><i class="fa fa-map-marker"
+                                aria-hidden="true"></i> Location</span><span>Nrs.12000/month</span></p>
                 </div>
             </div>
         </div>
@@ -146,7 +154,7 @@
     <div class="room-holder">
         <div class="room-image-holder">
             <img src="{{ asset('images/post-ads.jpg') }}" alt="Post an Ad">
-            <a href="{{ route('postAds') }}" class="btn">Post an Ad</a>
+            <a href="{{ route('post-ads.index') }}" class="btn">Post an Ad</a>
         </div>
     </div>
     @include('layouts.footer')

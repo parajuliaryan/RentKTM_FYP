@@ -1,0 +1,19 @@
+.holder{
+    margin-top: 10px;
+    background: red;
+    min-width: 318px;
+}
+
+.mini-nav ul{
+    display: flex;
+    flex-direction: column;
+}
+
+.mini-nav ul li{
+    list-style-type: none;
+}
+
+.mini-nav ul li a{
+    text-decoration: none;
+    color: #000000;
+}
