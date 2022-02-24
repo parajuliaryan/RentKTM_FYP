@@ -58,7 +58,7 @@
                                 {{ __('Dashboard') }}
                             </a>
                         @else
-                            <a class="dropdown-item" href="{{ route('profile') }}">
+                            <a class="dropdown-item" href="{{ route('user.index') }}">
                                 {{ __('Profile') }}
                             </a>
                         @endif

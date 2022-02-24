@@ -2,9 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
-use Illuminate\Http\Request;
-
 class HomeController extends Controller
 {
     /**
@@ -27,9 +24,4 @@ class HomeController extends Controller
         return view('home');
     }
 
-    public function profile(){
-        $user_id = auth()->user()->id;
-        $user = User::select('*')->where('id', $user_id)->get();
-        return view('user.profile', $user);
-    }
 }

@@ -1,19 +1,29 @@
 .holder{
-    margin-top: 10px;
-    background: red;
-    min-width: 318px;
-}
-
-.mini-nav ul{
     display: flex;
     flex-direction: column;
 }
 
-.mini-nav ul li{
-    list-style-type: none;
+.wrapper{
+    margin-top: 10px;
+    min-width: 320px;
 }
 
-.mini-nav ul li a{
-    text-decoration: none;
-    color: #000000;
+@media only screen and (min-width: 769px){
+    .holder{
+        margin-top: 200px;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .wrapper{
+        flex-direction: row;
+        max-width: 1022px;
+        min-width: 768px;
+        width: 100%;
+    }
+
+    .table-holder{
+        box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 30px;
+    }
 }
