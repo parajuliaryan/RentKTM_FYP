@@ -1,7 +1,7 @@
 @include('layouts.app')
 @include('layouts.nav')
 
-<form action="{{ route('post-ads.roommates.store') }}" method="POST" enctype="multipart/form-data">
+<form action="{{ route('post-ads.rooms.update') }}" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="form-group">
         <label for="roommate_name">Roommate Name</label>

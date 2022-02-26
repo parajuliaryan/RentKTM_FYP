@@ -31,6 +31,7 @@ class RoommatesController extends Controller
             'roommate_description' => 'required',
             'roommate_features' => 'required',
             'contact_number' => 'required',
+            'gender' => 'required',
             'city' => 'required',
             'ward' => 'required',
             'area' => 'required',
@@ -47,6 +48,7 @@ class RoommatesController extends Controller
             'roommate_rent_price' => $request->roommate_rent_price,
             'roommate_description' => $request->roommate_description,
             'roommate_features' => $request->roommate_features,
+            'gender' => $request->gender,
             'contact_number' => $request->contact_number,
             'city' => $request->city,
             'ward' => $request->ward,
@@ -102,6 +104,7 @@ class RoommatesController extends Controller
             'roommate_description' => 'required',
             'roommate_features' => 'required',
             'contact_number' => 'required',
+            'gender' => 'required',
             'city' => 'required',
             'ward' => 'required',
             'area' => 'required',
@@ -117,6 +120,7 @@ class RoommatesController extends Controller
             'roommate_rent_price' => $request->roommate_rent_price,
             'roommate_description' => $request->roommate_description,
             'roommate_features' => $request->roommate_features,
+            'gender' => $request->gender,
             'contact_number' => $request->contact_number,
             'city' => $request->city,
             'ward' => $request->ward,
@@ -125,7 +129,7 @@ class RoommatesController extends Controller
             'roommate_image'=> $imageName,
         ]);
 
-        return redirect()->route('admin.roommates.index')->with('Success','Roommate Updated Successfully.');
+        return redirect()->route('user.index')->with('Success','Roommate Updated Successfully.');
     }
 
     /**
@@ -137,6 +141,6 @@ class RoommatesController extends Controller
     public function destroy(Roommates $roommate)
     {
         $roommate->delete();
-        return redirect()->route('admin.roommates.index')->with('Success','Roommate Deleted Successfully.');
+        return redirect()->route('user.index')->with('Success','Roommate Deleted Successfully.');
     }
 }

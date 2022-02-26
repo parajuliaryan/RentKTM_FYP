@@ -53,6 +53,10 @@
                                     <label for="roommate_features">Roommate Features</label>
                                     <textarea class="form-control" id="roommate_features" placeholder="Roommate Features"></textarea>
                                 </div>
+                                <select name="gender" class="form-control" id="gender" required>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                </select>
                                 <div class="form-group">
                                     <label for="contact_number">Contact Number</label>
                                     <input type="text" class="form-control" id="contact_number" value="{{ old('contact_number', $roommate->contact_number) }}" name="contact_number" placeholder="Contact Number">

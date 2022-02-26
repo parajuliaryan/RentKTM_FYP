@@ -15,4 +15,18 @@ class Ads extends Model
         'room_id',
         'roommate_id'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function room()
+    {
+        return $this->belongsTo(Rooms::class);
+    }
+
+    public function roommate(){
+        return $this->belongsTo(Roommates::class);
+    }
 }

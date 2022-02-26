@@ -20,6 +20,7 @@ class CreateRoommatesTable extends Migration
             $table->integer('roommate_rent_price')->unsigned();
             $table->text('roommate_description');
             $table->text('roommate_features');
+            $table->enum('gender', ['male', 'female']);
             $table->string('contact_number',10);
             $table->string('city');
             $table->string('ward');

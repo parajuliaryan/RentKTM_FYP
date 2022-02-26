@@ -35,7 +35,8 @@ Auth::routes();
 //user profile routes
 Route::prefix('user')->name('user.')->group(function(){
     Route::get('/profile', [UserProfileController::class, 'index'])->name('index');
-    Route::get('/profile/edit', [UserProfileController::class, 'edit'])->name('edit');
+    Route::get('/profile/{id}/edit', [UserProfileController::class, 'edit'])->name('edit');
+    Route::put('/profile/{id}', [UserProfileController::class, 'update'])->name('update');
 });
 Route::get('/rooms', [RoomsController::class, 'index'])->name('rooms');
 Route::get('/roommates', [RoommatesController::class, 'index'])->name('roommates');

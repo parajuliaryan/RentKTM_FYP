@@ -1,29 +1,115 @@
 .holder{
     display: flex;
     flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 20px;
 }
 
-.wrapper{
-    margin-top: 10px;
+.user-info{
     min-width: 320px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.image-container{
+    max-width: 320px;
+    height: 320px;
+}
+
+.text-container{
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0px;
+    font-weight: bold;
+}
+
+.text-container .edit-btn span{
+    background-color: aliceblue;
+    border-radius: 5px;
+    padding: 5px;
+    letter-spacing: 1px;
+}
+
+.ad-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 320px;
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #F3F4F4;
+}
+
+.ad{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 10px;
+    background-color: #ffffff;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.ad-topic{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 1.2rem;
+}
+
+.ad-image{
+    max-width: 320px;
+    height: 320px;
+}
+
+.ad-about{
+    margin-top: 10px;
 }
 
 @media only screen and (min-width: 769px){
     .holder{
-        margin-top: 200px;
         align-items: center;
         justify-content: center;
         width: 100%;
     }
 
-    .wrapper{
+    .user-info{
         flex-direction: row;
+        max-width: 1022px;
+        min-width: 768px;
+        width: 100%;
+        border-radius: 15px;
+    }
+
+    .text-container{
+        flex-direction: row;
+        justify-content: space-around;
+        width: 100%;
+    }
+
+    .ad-container{
         max-width: 1022px;
         min-width: 768px;
         width: 100%;
     }
 
-    .table-holder{
-        box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 30px;
+    .ad{
+        flex-direction: row;
+        justify-content: space-around;
     }
+
+    .ad-topic{
+        flex-direction: row;
+    }
+
+    .ad-about{
+        display: flex;
+        flex-direction: column;
+    }
+
 }

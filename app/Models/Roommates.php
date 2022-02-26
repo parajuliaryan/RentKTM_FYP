@@ -14,6 +14,7 @@ class Roommates extends Model
         'roommate_rent_price',
         'roommate_description',
         'roommate_features',
+        'gender',
         'contact_number',
         'city',
         'ward',
