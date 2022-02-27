@@ -1,0 +1,85 @@
+.main-container{
+    display: flex;
+    flex-direction: column;
+    min-width: 320px;
+    width: 100%;
+}
+
+.room-ad-container{
+    position: relative;
+}
+
+.room-ad-container img{
+    height: 100%;
+    filter: blur(2px);
+}
+
+.roommate-ad-container{
+    position: relative;
+    margin-top: 20px;
+}
+
+.roommate-ad-container img{
+    height: 100%;
+    filter: blur(2px);
+}
+
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 260px;
+    text-align: center;
+    padding: 12px;
+    background-color: #000000;  
+}
+
+.centered a{
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.centered:hover{
+    background-color: #ffffff;
+}
+
+.centered a:hover{
+    color: #000000;
+}
+
+.alternate{
+    background-color: #ffffff;
+}
+
+.alternate:hover{
+    background-color: #000000;
+}
+
+.alternate a{
+    color: #000000;
+}
+
+.alternate a:hover{
+    color: #ffffff;
+}
+
+@media only screen and (min-width: 769px){
+    .main-container{
+        flex-direction: row;
+    }
+
+    .roommate-ad-container{
+        margin: 0px;
+    }
+
+    /* .room-ad-container{
+        margin-right: 20px;
+    } */
+
+    .centered{
+        top: 42%;
+    }
+}

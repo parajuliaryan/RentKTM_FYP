@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="{{ asset('css/frontend-css/footer.css') }}">
 <footer>
     <div class="page-footer d-flex">
         <div class="d-flex flex-column align-items-start justify-content-start w-50">

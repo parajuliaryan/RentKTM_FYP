@@ -14,7 +14,8 @@ class AdminAdsController extends Controller
      */
     public function index()
     {
-        return view('admin.ads.index');
+        $ads = Ads::all();
+        return view('admin.ads.index', compact('ads'));
     }
 
     /**

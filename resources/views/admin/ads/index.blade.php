@@ -53,16 +53,28 @@
                                             <th class="border-top-0">User Name</th>
                                             <th class="border-top-0">Room ID</th>
                                             <th class="border-top-0">Roomate ID</th>
+                                            <th class="border-top-0">Show</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @foreach ($ads as $ad)
                                         <tr>
-                                            <td>1</td>
-                                            <td>Deshmukh</td>
-                                            <td>Prohaska</td>
-                                            <td>12</td>
-                                            <td>admin</td>
-                                        </tr>
+                                            <td>{{ $ad->id }}</td>
+                                            <td>{{ $ad->ad_type }}</td>
+                                            <td>{{ $ad->user->first_name .' '. $ad->user->last_name }}</td>
+                                            @if ($ad->room != null)
+                                            <td>{{ $ad->room->id }}</td>
+                                            @else
+                                            <td>null</td>
+                                            @endif
+                                            @if ($ad->roommate != null)
+                                            <td>{{ $ad->roommate->id }}</td>
+                                            @else
+                                            <td>null</td>
+                                            @endif
+                                            <td><a href="#"><i class="fa fa-eye"></i></a></td>
+                                        </tr>               
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
