@@ -1,4 +1,4 @@
 @include('layouts.app')
 @include('layouts.nav')
 
-@include('layouts.footer')
+{{-- @include('layouts.footer') --}}

@@ -1,5 +1,6 @@
 @include('layouts.app')
 @include('layouts.nav')
+<link rel="stylesheet" href="{{ asset('css/frontend-css/room-ads.css') }}">
 <form action="{{ route('post-ads.rooms.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="form-group">

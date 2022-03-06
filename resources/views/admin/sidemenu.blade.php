@@ -44,6 +44,13 @@
                                 <span class="hide-menu">Ads</span>
                             </a>
                         </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('admin.ads.index') }}"
+                                aria-expanded="false">
+                                <i class="fab fa-buysellads" aria-hidden="true"></i>
+                                <span class="hide-menu">Ad Requests</span>
+                            </a>
+                        </li>
                     </ul>
 
                 </nav>

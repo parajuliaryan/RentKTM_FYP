@@ -18,11 +18,11 @@
             </div>
             <div class="form-group radio-group mx-3 my-3 p-2">
                 <div class="room-radio">
-                    <input type="radio" name="rooms" id="rooms">
+                    <input type="radio" name="search-value" id="rooms">
                     <label for="rooms">Rooms</label>
                 </div>
                 <div class="roommate-radio">
-                    <input type="radio" name="roommates" id="roommates">
+                    <input type="radio" name="search-value" id="roommates">
                     <label for="roommmates">Roommates</label>
                 </div>
             </div>
