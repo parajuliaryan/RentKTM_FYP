@@ -17,18 +17,30 @@
 
 .filterbar{
     display: flex;
-    /* justify-content: space-between; */
-    background-color: red;
+    justify-content: space-around;
+    background: #FAFAFA;
 }
 
-.filter-title h3{
-    font-weight: bold;
+.filter-title{
+    display: none;
+}
+
+.filter-option{
+    margin-bottom: 20px;
+}
+
+.filter-option p{
+    font-weight: 500;
+    font-size: 1.2rem;
+}
+
+.filter-option .form-group label{
+    font-size: 1rem;
 }
 
 .rooms-container{
     max-width: 1200px;
     margin: 0 auto;
-    /* background-color: green; */
 }
 
 .rooms-holder{
@@ -48,18 +60,41 @@
 .room img{
     height: 200px;
     width: 100%;
-    object-fit: cover;
+    object-fit: contain;
+}
+
+.room-title{
+    display: flex;
+    justify-content: space-between;
 }
 
 .room-title h3{
     font-weight: bold;
 }
 
+.room-btns button{
+    border: none;
+    background-color: #000000;
+}
+
+.room-btns button:hover{
+    background-color: #ffffff;
+}
+
+.room-btns button a:hover{
+    color: #000000;
+}
+
+.room-btns button a{
+    text-decoration: none;
+    color: #ffffff;
+}
+
 @media (min-width: 600px) {
     .rooms-holder {
         grid-template-columns: repeat(2, 1fr); 
     }
-  }
+}
 
 @media (min-width: 900px) {
     .page-wrapper{
@@ -70,12 +105,25 @@
     .main-container{
         flex-direction: row;
         padding: 24px;
-        /* background-color: blueviolet; */
     }
 
     .filterbar{
+        justify-content: flex-start;
         flex-direction: column;
         min-width: 280px;
+    }
+
+    .filter-title{
+        display: flex;
+        margin-bottom: 20px;
+    }
+
+    .filter-option p{
+        border-bottom: 2px solid #E5E7EB;
+    }
+
+    .filter-title h3{
+        font-weight: bold;
     }
 
     .rooms-holder { 

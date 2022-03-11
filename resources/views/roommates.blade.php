@@ -1,4 +1,107 @@
 @include('layouts.app')
 @include('layouts.nav')
+<link rel="stylesheet" href="{{ asset('css/frontend-css/roommates.css') }}">
+<div class="page-wrapper">
+    <div class="main-container">
+        <div class="filterbar">
+            <div class="filter-title">
+                <h3>Filter Options</h3>
+            </div>
+            <div class="filter-option">
+                <p>Price Options</p>
+                <div class="form-group">
+                    <input type="radio" name="price-filter" id="high-low">
+                    <label for="high-low">Price High to Low</label>
+                </div>
+                <div class="form-group">
+                    <input type="radio" name="price-filter" id="low-high">
+                    <label for="high-low">Price Low to High</label>
+                </div>
+            </div>
+            <div class="filter-option">
+                <p>Room Type</p>
+                <div class="form-group">
+                    <input type="checkbox" name="room_type" id="room_type">
+                    <label for="room_type">1BHK</label>
+                </div>
+                <div class="form-group">
+                    <input type="checkbox" name="room_type" id="room_type">
+                    <label for="room_type">2BHK</label>
+                </div>
+                <div class="form-group">
+                    <input type="checkbox" name="room_type" id="room_type">
+                    <label for="room_type">3BHK</label>
+                </div>
+            </div>
+        </div>
 
-{{-- @include('layouts.footer') --}}
+        <div class="roommates-container">
+            <div class="roommate-title">
+                <h3>Roommates List</h3>
+                <div class="sort-btns">
+                    <div class="form-group">
+                        <label for="sort">Sort By:</label>
+                        <select name="sort" id="sort">
+                            <option value="latest">Latest</option>
+                            <option value="oldest">Oldest</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="roommates-holder">
+                <div class="roommate">
+                    <div class="roommate-image">
+                        <img src="{{ asset('images/roommate.jpg') }}" alt="roommate-image">
+                    </div>
+                    <div class="roommate-texts">
+                        <div class="roommate-name">
+                            <h4>Aryan Parajuli</h4>
+                            <a href="#">View Roommate</a>
+                        </div>
+                        <div class="roommate-description">
+                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Autem quidem aliquam est illum atque deleniti assumenda quis magni, quam et sed magnam adipisci fuga provident veritatis at culpa hic cum reiciendis nemo voluptate repudiandae! Dolor eaque suscipit sed quaerat sint nulla quam excepturi consequatur, nesciunt accusantium repudiandae temporibus, esse sequi modi similique ducimus soluta voluptate est quidem nemo fugit in.</p>
+                        </div>
+                        <div class="roommate-rent-price">
+                            <p>Price: Nrs.12000/month</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="roommate">
+                    <div class="roommate-image">
+                        <img src="{{ asset('images/roommate.jpg') }}" alt="roommate-image">
+                    </div>
+                    <div class="roommate-texts">
+                        <div class="roommate-name">
+                            <h4>Aryan Parajuli</h4>
+                            <a href="#">View Roommate</a>
+                        </div>
+                        <div class="roommate-description">
+                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Autem quidem aliquam est illum atque deleniti assumenda quis magni, quam et sed magnam adipisci fuga provident veritatis at culpa hic cum reiciendis nemo voluptate repudiandae! Dolor eaque suscipit sed quaerat sint nulla quam excepturi consequatur, nesciunt accusantium repudiandae temporibus, esse sequi modi similique ducimus soluta voluptate est quidem nemo fugit in.</p>
+                        </div>
+                        <div class="roommate-rent-price">
+                            <p>Price: Nrs.12000/month</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="roommate">
+                    <div class="roommate-image">
+                        <img src="{{ asset('images/roommate.jpg') }}" alt="roommate-image">
+                    </div>
+                    <div class="roommate-texts">
+                        <div class="roommate-name">
+                            <h4>Aryan Parajuli</h4>
+                            <a href="#">View Roommate</a>
+                        </div>
+                        <div class="roommate-description">
+                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Autem quidem aliquam est illum atque deleniti assumenda quis magni, quam et sed magnam adipisci fuga provident veritatis at culpa hic cum reiciendis nemo voluptate repudiandae! Dolor eaque suscipit sed quaerat sint nulla quam excepturi consequatur, nesciunt accusantium repudiandae temporibus, esse sequi modi similique ducimus soluta voluptate est quidem nemo fugit in.</p>
+                        </div>
+                        <div class="roommate-rent-price">
+                            <p>Price: Nrs.12000/month</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@include('layouts.footer')

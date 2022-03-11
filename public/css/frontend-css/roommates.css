@@ -1,0 +1,161 @@
+.page-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 320px;
+    background: #ffffff;
+    width: 100%;
+}
+
+.main-container{
+    display: flex;
+    flex-direction: column;
+    min-width: 320px;
+    max-width: 1400px;
+    width: 100%;
+    margin: 20px 0px;
+}
+
+.filterbar{
+    display: flex;
+    justify-content: space-around;
+    background: #FAFAFA;
+}
+
+.filter-title{
+    display: none;
+}
+
+.filter-option{
+    margin-bottom: 20px;
+}
+
+.filter-option p{
+    font-weight: 500;
+    font-size: 1.2rem;
+}
+
+.filter-option .form-group label{
+    font-size: 1rem;
+}
+
+.roommates-container{
+    display: flex;
+    flex-direction: column;
+    max-width: 1200px;
+}
+
+.roommate-title{
+    display: flex;
+    flex-direction: column;
+}
+
+.roommate{
+    background: #FAFAFA;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    margin-bottom: 20px;
+}
+
+.roommate-image{
+    min-width: 300px;
+}
+
+.roommate img{
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.roommate-texts{
+    display: flex;
+    flex-direction: column;
+}
+
+.roommate-name{
+    display: flex;
+    flex-direction: column;
+}
+
+.roommate-name a{
+    border: none;
+    border-radius: 10px;
+    background-color: #000000;
+    text-align: center;
+    text-decoration: none;
+    color: #ffffff;
+    max-width: 250px;
+    padding: 10px;
+}
+
+.roommate-name a:hover{
+    background-color: #ffffff;
+    color: #000000;
+}
+
+@media (min-width: 769px) {
+    .page-wrapper{
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .main-container{
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .filterbar{
+        justify-content: flex-start;
+        flex-direction: column;
+        min-width: 280px;
+    }
+
+    .filter-title{
+        display: flex;
+        margin-bottom: 20px;
+    }
+
+    .filter-option p{
+        border-bottom: 2px solid #E5E7EB;
+    }
+
+    .filter-title h3{
+        font-weight: bold;
+    }
+
+    .roommate-title{
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .roommate{
+        border-radius: 10px;
+        flex-direction: row;
+    }
+
+    .roommate img{
+        height: 300px;
+    }
+
+    .roommate-name{
+       flex-direction: row;
+       justify-content: space-between;
+       margin-bottom: 20px;
+    }
+
+    .roommate-name h4{
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+    }
+
+    .roommate-texts{
+        padding: 10px;
+        max-width: 700px;
+    }
+
+
+
+}
+

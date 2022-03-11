@@ -1,0 +1,80 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+.main-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background: #ffffff;
+}
+
+.roommate-ad-holder{
+    display: flex;
+    flex-direction: column;
+    min-width: 320px;
+    align-items: center;
+}
+
+.image-holder{
+    width: 100%;
+}
+
+.image-holder img{
+    object-fit: cover;
+    object-position: center;
+}
+
+.form-group input{
+    max-width: 380px;
+    min-width: 240px;
+    width: 100%;
+}
+
+.form-holder{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-group{
+    margin-bottom: 10px;
+}
+
+@media only screen and (min-width: 769px){
+    .roommate-ad-holder{
+        flex-direction: row;
+        max-width: 1022px;
+        min-width: 768px;
+        width: 100%;
+    }
+
+    .form-holder{
+        padding: 25px;
+        width: 40%;
+    }
+
+    .image-holder{
+        height: 100%;
+    }
+
+    .image-holder img{
+        height: 100%;
+    }
+}
+
+@media only screen and (min-width: 1025px) {
+    .roommate-ad-holder{
+        max-width: 1400px;
+        min-width: 1024px;
+    }
+}

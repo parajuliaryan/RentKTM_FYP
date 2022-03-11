@@ -3,6 +3,10 @@
     padding: 0;
 }
 
+.main-section{
+    background: #ffffff;
+}
+
 .image-container{
     max-height: 700px;
     position: relative;
