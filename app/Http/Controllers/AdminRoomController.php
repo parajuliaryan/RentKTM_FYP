@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\RoomImages;
 use App\Models\Rooms;
+use App\Models\RoomType;
 use Illuminate\Http\Request;
 
 class AdminRoomController extends Controller
@@ -26,7 +27,8 @@ class AdminRoomController extends Controller
      */
     public function create()
     {
-        return view('admin.rooms.create');
+        $roomTypes = RoomType::all();
+        return view('admin.rooms.create', compact('roomTypes'));
     }
 
     /**
@@ -45,8 +47,7 @@ class AdminRoomController extends Controller
             'city' => 'required',
             'ward' => 'required',
             'area' => 'required',
-            'tole' => 'required',
-            
+            'tole' => 'required', 
         ]);
     
         Rooms::create($request->all());

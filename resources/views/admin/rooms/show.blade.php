@@ -43,6 +43,12 @@
                                         <th scope="row">Price</th>
                                         <td>{{ $room->room_price }}</td>
                                     </tr>
+                                    @if ($room->student_price != null)
+                                        <tr>
+                                            <th scope="row">Price for Students</th>
+                                            <td>{{ $room->student_price }}</td>
+                                        </tr>
+                                    @endif
                                     <tr>
                                         <th scope="row">Contact</th>
                                         <td>{{ $room->contact_number }}</td>

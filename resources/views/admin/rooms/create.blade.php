@@ -52,7 +52,11 @@
                                 </div>
                                 <div class="form-group">
                                   <label for="room_price">Room Price</label>
-                                  <input type="text" class="form-control" id="room_price" name="room_price" placeholder="Room Price">
+                                  <input type="text" class="form-control" id="room_price" name="room_price" placeholder="Room Price (per month)">
+                                </div>
+                                <div class="form-group">
+                                  <label for="student_price">Room Price</label>
+                                  <input type="text" class="form-control" id="student_price" name="student_price" placeholder="Price for Students">
                                 </div>
                                 <div class="form-group">
                                     <label for="room_type">Room Type</label>
