@@ -35,7 +35,7 @@
     background-color: #000000;  
 }
 
-.centered a{
+.centered {
     text-decoration: none;
     color: #ffffff;
     font-size: 1rem;
@@ -44,25 +44,16 @@
 
 .centered:hover{
     background-color: #ffffff;
-}
-
-.centered a:hover{
     color: #000000;
 }
 
 .alternate{
     background-color: #ffffff;
+    color: #000000;
 }
 
 .alternate:hover{
     background-color: #000000;
-}
-
-.alternate a{
-    color: #000000;
-}
-
-.alternate a:hover{
     color: #ffffff;
 }
 

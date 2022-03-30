@@ -48,7 +48,24 @@
                 </div>
             </div>
             <div class="rooms-holder">
+                @foreach ($rooms as $room )
                 <div class="room">
+                    <div class="room-image">
+                        <img src="{{ asset('images/room4.jpg') }}" alt="room-image">
+                    </div>
+                    <div class="room-text">
+                        <h3>{{ $room->room_type }}</h3>
+                        <p>{{ $room->room_description }}</p>
+                        <p class="d-flex justify-content-between"><span><i class="fa fa-map-marker"
+                                aria-hidden="true"></i> {{ $room->area }}</span><span>Nrs.{{ $room->room_price }}/month</span></p>
+                    </div>
+                    <div class="room-btns">
+                        <button><a href="#">View Room</a></button>
+                    </div>
+                </div>
+                @endforeach
+
+                {{-- <div class="room">
                     <div class="room-image">
                         <img src="{{ asset('images/room4.jpg') }}" alt="room-image">
                     </div>
@@ -159,21 +176,7 @@
                     <div class="room-btns">
                         <button><a href="#">View Room</a></button>
                     </div>
-                </div>
-                <div class="room">
-                    <div class="room-image">
-                        <img src="{{ asset('images/room4.jpg') }}" alt="room-image">
-                    </div>
-                    <div class="room-text">
-                        <h3>Room Title</h3>
-                        <p>room description</h3>
-                        <p class="d-flex justify-content-between"><span><i class="fa fa-map-marker"
-                                aria-hidden="true"></i> Location</span><span>Nrs.12000/month</span></p>
-                    </div>
-                    <div class="room-btns">
-                        <button><a href="#">View Room</a></button>
-                    </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>

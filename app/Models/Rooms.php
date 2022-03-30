@@ -13,6 +13,7 @@ class Rooms extends Model
         'room_description',
         'room_type',
         'room_price',
+        'student_price',
         'contact_number',
         'city',
         'ward',

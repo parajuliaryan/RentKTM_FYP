@@ -13,7 +13,8 @@ class Ads extends Model
         'ad_type',
         'user_id',
         'room_id',
-        'roommate_id'
+        'roommate_id',
+        'status'
     ];
 
     public function user()

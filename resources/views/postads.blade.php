@@ -4,15 +4,11 @@
 <div class="main-container">
     <div class="room-ad-container">
         <img src="{{ asset('images/rooms.jpg') }}" class="img-fluid" alt="Rent Room">
-        <div class="centered">
-            <a href="{{ route('post-ads.rooms.create') }}">Advertisement for a Room</a>
-        </div>
+        <a href="{{ route('post-ads.rooms.create') }}" class="centered">Advertisement for a Room</a>
     </div>
     <div class="roommate-ad-container">
         <img src="{{ asset('images/roommates.jpg') }}" class="img-fluid" alt="Roommate Available">
-        <div class="centered alternate">
-            <a href="{{ route('post-ads.roommates.create') }}">Advertisement for a Roommate</a>
-        </div>
+        <a href="{{ route('post-ads.roommates.create') }}" class="centered alternate">Advertisement for a Roommate</a>
     </div>
 </div>
 @include('layouts.footer')

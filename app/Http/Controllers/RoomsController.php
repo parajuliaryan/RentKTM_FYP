@@ -11,7 +11,8 @@ class RoomsController extends Controller
 {
     public function index()
     {
-        return view('rooms');
+        $rooms = Rooms::all();
+        return view('rooms', compact('rooms'));
     }
 
     public function create()
@@ -59,6 +60,7 @@ class RoomsController extends Controller
             'ad_type' => 'room',
             'user_id' => $user_id,
             'room_id' => $room_id,
+            'status' => 'pending',
         ]);
 
         return redirect()->back()->with('Success', 'Room added Successfully.');

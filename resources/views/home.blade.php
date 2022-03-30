@@ -11,18 +11,18 @@
         <img src="{{ asset('images/home.jpg') }}" class="img-fluid">
     </div>
     <div class="search-box form-group d-flex flex-direction-column justify-content-center align-items-center">
-        <form action="/">
+        <form action="{{ route('search') }}">
             <div class="form-group search-group">
-                <input type="text" name="search" id="search" placeholder="Search">
+                <input type="search" name="search" id="search" placeholder="Search by Location">
                 <button type="submit">Search</button>
             </div>
             <div class="form-group radio-group mx-3 my-3 p-2">
                 <div class="room-radio">
-                    <input type="radio" name="search-value" id="rooms">
+                    <input type="radio" name="search-value" id="rooms" value="rooms">
                     <label for="rooms">Rooms</label>
                 </div>
                 <div class="roommate-radio">
-                    <input type="radio" name="search-value" id="roommates">
+                    <input type="radio" name="search-value" id="roommates" value="roommates">
                     <label for="roommmates">Roommates</label>
                 </div>
             </div>

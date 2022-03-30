@@ -18,6 +18,7 @@ class CreateRoomsTable extends Migration
             $table->text('room_description');
             $table->string('room_type');
             $table->integer('room_price');
+            $table->integer('student_price')->nullable();
             $table->string('contact_number',10);
             $table->string('city');
             $table->string('ward');

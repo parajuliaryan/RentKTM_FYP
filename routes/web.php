@@ -38,6 +38,8 @@ Route::prefix('user')->name('user.')->group(function(){
     Route::get('/profile/{id}/edit', [UserProfileController::class, 'edit'])->name('edit');
     Route::put('/profile/{id}', [UserProfileController::class, 'update'])->name('update');
 });
+
+Route::get('/search', [HomeController::class, 'search'])->name('search');
 Route::get('/rooms', [RoomsController::class, 'index'])->name('rooms');
 Route::get('/roommates', [RoommatesController::class, 'index'])->name('roommates');
 Route::get('/post-ads', [PostAdsController::class, 'index'])->name('postAds');

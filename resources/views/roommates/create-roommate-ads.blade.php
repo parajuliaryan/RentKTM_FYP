@@ -30,9 +30,10 @@
                         placeholder="Roommate Description"></textarea>
                 </div>
                 <div class="form-group">
-                    <label for="roommate_features">Roommate Features</label>
-                    <textarea class="form-control" id="roommate_features" name="roommate_features"
-                        placeholder="Roommate Features"></textarea>
+                    <label for="roommate_feature">Roommate Feature</label>
+                    <input type="text" name="roommate_feature[]" class="form-control" placeholder="Add Feature (Eg: Non-Smoker)" value="" maxlength="255" />
+                    <button type="button" class="btn btn-warning addMore">New Feature</button>
+                    <button type="button" class="btn btn-danger remove_button"><i class="fa fa-trash"></i></button>
                 </div>
                 <select name="gender" class="form-control" id="gender" required>
                     <option value="male">Male</option>
@@ -69,3 +70,33 @@
     </div>
 </div>
 @include('layouts.footer')
+<script>
+        $(document).ready(function () {
+            console.log('Document works');
+            // var addButton = $('.addMore'); //Add button selector
+            // var wrapper = $('.sizes'); //Input field wrapper
+            // var fieldHTML = 
+            // '<div class="form-group">'+
+            //     '<label for="roommate_feature">Roommate Feature</label>'+
+            //     '<input type="text" name="roommate_feature[]" class="form-control" placeholder="Add Feature (Eg: Non-Smoker)" value="" maxlength="255" />'+
+            //     '<button type="button" class="btn btn-warning addMore">New Feature</button>'+
+            //     '<button type="button" class="btn btn-danger remove_button"><i class="fa fa-trash"></i></button>'+
+            // '</div>';    
+
+            // var x = 1; //Initial field counter is 1
+            
+            // //Once remove button is clicked
+            // $(wrapper).on('click', '.remove_button', function (e) {
+            //     e.preventDefault();
+            //     $(this).parent('div').parent('div').remove(); //Remove field html
+            //     x--; //Decrement field counter
+            // });
+
+            // //Once add button is clicked
+            // $(wrapper).on('click', '.addMore', function (e) {
+            //     e.preventDefault();
+            //     $(wrapper).append(fieldHTML);
+            //     x++; //Increment field counter
+            // });            
+            });
+</script>
