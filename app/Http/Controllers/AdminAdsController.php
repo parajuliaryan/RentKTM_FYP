@@ -56,9 +56,9 @@ class AdminAdsController extends Controller
      * @param  \App\Models\Ads  $ads
      * @return \Illuminate\Http\Response
      */
-    public function edit(Ads $ads)
+    public function edit(Ads $ad)
     {
-        return view('admin.ads.edit');
+        return view('admin.ads.edit', $ad);
     }
 
     /**
@@ -68,9 +68,13 @@ class AdminAdsController extends Controller
      * @param  \App\Models\Ads  $ads
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Ads $ads)
+    public function update(Request $request, Ads $ad)
     {
-        //
+        $ad->update([
+            'status' => $request->status,
+        ]);
+
+        return redirect()->route('admin.ads.index')->with('Success','Roommate Updated Successfully.');
     }
 
     /**
@@ -82,5 +86,24 @@ class AdminAdsController extends Controller
     public function destroy(Ads $ads)
     {
         //
+    }
+
+    public function adRequests(){
+        $ads = Ads::where('status','=','pending')->get();
+        return view('admin.ad-requests.index', compact('ads'));
+    }
+
+    public function editAdRequests(Request $request){
+        $ad = Ads::where('id','=', $request->id)->first();
+        return view('admin.ad-requests.edit', $ad);
+    }
+
+    public function updateAdRequests(Request $request){
+        $ad = Ads::where('id','=', $request->id)->first();
+        $ad->update([
+            'status' => $request->status,
+        ]);
+
+        return redirect()->route('admin.ad-requests')->with('Success','Roommate Updated Successfully.');
     }
 }

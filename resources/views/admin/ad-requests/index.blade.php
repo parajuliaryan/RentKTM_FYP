@@ -25,7 +25,7 @@
             <div class="page-breadcrumb bg-white">
                 <div class="row align-items-center">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">ADS</h4>
+                        <h4 class="page-title">Pending Ads</h4>
                     </div>
                 </div>
                 <!-- /.col-lg-12 -->
@@ -43,7 +43,7 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="white-box">
-                            <h3 class="box-title">Ads List</h3>
+                            <h3 class="box-title">Ad Requests List</h3>
                             <div class="table-responsive">
                                 <table class="table text-nowrap">
                                     <thead>
@@ -75,8 +75,13 @@
                                             @endif
                                             <td>{{ $ad->status }}</td>
                                             <td>
-                                                <a href="#"><i class="fa fa-eye"></i></a>
-                                                <a href="#"><i class="fa fa-pencil"></i></a>
+                                                @if ($ad->room != null)
+                                                    <a href="{{ route('admin.rooms.show', $ad->room->id) }}"><i class="fa fa-eye"></i></a>
+                                                @endif
+                                                @if ($ad->roommate != null)
+                                                    <a href="{{ route('admin.roommates.show', $ad->roommate->id) }}"><i class="fa fa-eye"></i></a>
+                                                @endif
+                                                    <a href="{{ route('admin.ad-requests.edit', $ad->id) }}"><i class="fa fa-edit"></i></a>
                                             </td>
                                         </tr>               
                                         @endforeach

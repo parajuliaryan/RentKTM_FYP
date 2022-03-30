@@ -53,7 +53,8 @@
                                             <th class="border-top-0">User Name</th>
                                             <th class="border-top-0">Room ID</th>
                                             <th class="border-top-0">Roomate ID</th>
-                                            <th class="border-top-0">Show</th>
+                                            <th class="border-top-0">Status</th>
+                                            <th class="border-top-0">Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -72,7 +73,16 @@
                                             @else
                                             <td>null</td>
                                             @endif
-                                            <td><a href="#"><i class="fa fa-eye"></i></a></td>
+                                            <td>{{ $ad->status }}</td>
+                                            <td>
+                                                @if ($ad->room != null)
+                                                    <a href="{{ route('admin.rooms.show', $ad->room->id) }}"><i class="fa fa-eye"></i></a>
+                                                @endif
+                                                @if ($ad->roommate != null)
+                                                    <a href="{{ route('admin.roommates.show', $ad->roommate->id) }}"><i class="fa fa-eye"></i></a>
+                                                @endif
+                                                    <a href="{{ route('admin.ads.edit', $ad->id) }}"><i class="fa fa-edit"></i></a>
+                                            </td>
                                         </tr>               
                                         @endforeach
                                     </tbody>

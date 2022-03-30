@@ -55,6 +55,9 @@ Route::prefix('admin')->name('admin.')->middleware(['auth','isAdmin'])->group(fu
     Route::resource('/rooms', AdminRoomController::class);
     Route::resource('/roommates', AdminRoommatesController::class);
     Route::resource('/ads', AdminAdsController::class);
+    Route::get('/ad-requests', [AdminAdsController::class, 'adRequests'])->name('ad-requests');
+    Route::get('/ad-requests/edit/{id}', [AdminAdsController::class, 'editAdRequests'])->name('ad-requests.edit');
+    Route::put('/ad-requests/update/{id}', [AdminAdsController::class, 'updateAdRequests'])->name('ad-requests.update');
     Route::resource('/users', AdminUsersController::class);
 });
 

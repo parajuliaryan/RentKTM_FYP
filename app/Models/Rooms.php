@@ -19,6 +19,5 @@ class Rooms extends Model
         'ward',
         'area',
         'tole',
-        
     ];
 }

@@ -45,7 +45,7 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('admin.ads.index') }}"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('admin.ad-requests') }}"
                                 aria-expanded="false">
                                 <i class="fab fa-buysellads" aria-hidden="true"></i>
                                 <span class="hide-menu">Ad Requests</span>
