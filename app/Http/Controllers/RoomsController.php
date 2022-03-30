@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Ads;
 use App\Models\RoomImages;
 use App\Models\Rooms;
+use App\Models\RoomType;
 use Illuminate\Http\Request;
 
 class RoomsController extends Controller
@@ -12,7 +13,8 @@ class RoomsController extends Controller
     public function index()
     {
         $rooms = Rooms::all();
-        return view('rooms', compact('rooms'));
+        $roomTypes = RoomType::all();
+        return view('rooms', compact('rooms', 'roomTypes'));
     }
 
     public function create()

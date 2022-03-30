@@ -68,41 +68,6 @@
                     </div>
                 </div>
                 @endforeach
-
-                {{-- <div class="roommate">
-                    <div class="roommate-image">
-                        <img src="{{ asset('images/roommate.jpg') }}" alt="roommate-image">
-                    </div>
-                    <div class="roommate-texts">
-                        <div class="roommate-name">
-                            <h4>Aryan Parajuli</h4>
-                            <a href="#">View Roommate</a>
-                        </div>
-                        <div class="roommate-description">
-                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Autem quidem aliquam est illum atque deleniti assumenda quis magni, quam et sed magnam adipisci fuga provident veritatis at culpa hic cum reiciendis nemo voluptate repudiandae! Dolor eaque suscipit sed quaerat sint nulla quam excepturi consequatur, nesciunt accusantium repudiandae temporibus, esse sequi modi similique ducimus soluta voluptate est quidem nemo fugit in.</p>
-                        </div>
-                        <div class="roommate-rent-price">
-                            <p>Price: Nrs.12000/month</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="roommate">
-                    <div class="roommate-image">
-                        <img src="{{ asset('images/roommate.jpg') }}" alt="roommate-image">
-                    </div>
-                    <div class="roommate-texts">
-                        <div class="roommate-name">
-                            <h4>Aryan Parajuli</h4>
-                            <a href="#">View Roommate</a>
-                        </div>
-                        <div class="roommate-description">
-                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Autem quidem aliquam est illum atque deleniti assumenda quis magni, quam et sed magnam adipisci fuga provident veritatis at culpa hic cum reiciendis nemo voluptate repudiandae! Dolor eaque suscipit sed quaerat sint nulla quam excepturi consequatur, nesciunt accusantium repudiandae temporibus, esse sequi modi similique ducimus soluta voluptate est quidem nemo fugit in.</p>
-                        </div>
-                        <div class="roommate-rent-price">
-                            <p>Price: Nrs.12000/month</p>
-                        </div>
-                    </div>
-                </div> --}}
             </div>
         </div>
     </div>

@@ -19,19 +19,13 @@
                 </div>  
             </div>
             <div class="filter-option">
-                <p>Room Type</p> 
-                <div class="form-group">
-                    <input type="checkbox" name="room_type" id="room_type">
-                    <label for="room_type">1BHK</label>
-                </div>
-                <div class="form-group">
-                    <input type="checkbox" name="room_type" id="room_type">
-                    <label for="room_type">2BHK</label>
-                </div>
-                <div class="form-group">
-                    <input type="checkbox" name="room_type" id="room_type">
-                    <label for="room_type">3BHK</label>
-                </div>
+                <p>Room Type</p>
+                @foreach ($roomTypes as $roomType)
+                    <div class="form-group">
+                        <input type="checkbox" name="room_type" id="room_type">
+                        <label for="room_type">{{ $roomType->room_type }}</label>
+                    </div>
+                @endforeach 
             </div>  
         </div>
         <div class="rooms-container">
@@ -64,119 +58,6 @@
                     </div>
                 </div>
                 @endforeach
-
-                {{-- <div class="room">
-                    <div class="room-image">
-                        <img src="{{ asset('images/room4.jpg') }}" alt="room-image">
-                    </div>
-                    <div class="room-text">
-                        <h3>Room Title</h3>
-                        <p>room description</h3>
-                        <p class="d-flex justify-content-between"><span><i class="fa fa-map-marker"
-                                aria-hidden="true"></i> Location</span><span>Nrs.12000/month</span></p>
-                    </div>
-                    <div class="room-btns">
-                        <button><a href="#">View Room</a></button>
-                    </div>
-                </div>
-                <div class="room">
-                    <div class="room-image">
-                        <img src="{{ asset('images/room4.jpg') }}" alt="room-image">
-                    </div>
-                    <div class="room-text">
-                        <h3>Room Title</h3>
-                        <p>room description</h3>
-                        <p class="d-flex justify-content-between"><span><i class="fa fa-map-marker"
-                                aria-hidden="true"></i> Location</span><span>Nrs.12000/month</span></p>
-                    </div>
-                    <div class="room-btns">
-                        <button><a href="#">View Room</a></button>
-                    </div>
-                </div>
-                <div class="room">
-                    <div class="room-image">
-                        <img src="{{ asset('images/room4.jpg') }}" alt="room-image">
-                    </div>
-                    <div class="room-text">
-                        <h3>Room Title</h3>
-                        <p>room description</h3>
-                        <p class="d-flex justify-content-between"><span><i class="fa fa-map-marker"
-                                aria-hidden="true"></i> Location</span><span>Nrs.12000/month</span></p>
-                    </div>
-                    <div class="room-btns">
-                        <button><a href="#">View Room</a></button>
-                    </div>
-                </div>
-                <div class="room">
-                    <div class="room-image">
-                        <img src="{{ asset('images/room4.jpg') }}" alt="room-image">
-                    </div>
-                    <div class="room-text">
-                        <h3>Room Title</h3>
-                        <p>room description</h3>
-                        <p class="d-flex justify-content-between"><span><i class="fa fa-map-marker"
-                                aria-hidden="true"></i> Location</span><span>Nrs.12000/month</span></p>
-                    </div>
-                    <div class="room-btns">
-                        <button><a href="#">View Room</a></button>
-                    </div>
-                </div>
-                <div class="room">
-                    <div class="room-image">
-                        <img src="{{ asset('images/room4.jpg') }}" alt="room-image">
-                    </div>
-                    <div class="room-text">
-                        <h3>Room Title</h3>
-                        <p>room description</h3>
-                        <p class="d-flex justify-content-between"><span><i class="fa fa-map-marker"
-                                aria-hidden="true"></i> Location</span><span>Nrs.12000/month</span></p>
-                    </div>
-                    <div class="room-btns">
-                        <button><a href="#">View Room</a></button>
-                    </div>
-                </div>
-                <div class="room">
-                    <div class="room-image">
-                        <img src="{{ asset('images/room4.jpg') }}" alt="room-image">
-                    </div>
-                    <div class="room-text">
-                        <h3>Room Title</h3>
-                        <p>room description</h3>
-                        <p class="d-flex justify-content-between"><span><i class="fa fa-map-marker"
-                                aria-hidden="true"></i> Location</span><span>Nrs.12000/month</span></p>
-                    </div>
-                    <div class="room-btns">
-                        <button><a href="#">View Room</a></button>
-                    </div>
-                </div>
-                <div class="room">
-                    <div class="room-image">
-                        <img src="{{ asset('images/room4.jpg') }}" alt="room-image">
-                    </div>
-                    <div class="room-text">
-                        <h3>Room Title</h3>
-                        <p>room description</h3>
-                        <p class="d-flex justify-content-between"><span><i class="fa fa-map-marker"
-                                aria-hidden="true"></i> Location</span><span>Nrs.12000/month</span></p>
-                    </div>
-                    <div class="room-btns">
-                        <button><a href="#">View Room</a></button>
-                    </div>
-                </div>
-                <div class="room">
-                    <div class="room-image">
-                        <img src="{{ asset('images/room4.jpg') }}" alt="room-image">
-                    </div>
-                    <div class="room-text">
-                        <h3>Room Title</h3>
-                        <p>room description</h3>
-                        <p class="d-flex justify-content-between"><span><i class="fa fa-map-marker"
-                                aria-hidden="true"></i> Location</span><span>Nrs.12000/month</span></p>
-                    </div>
-                    <div class="room-btns">
-                        <button><a href="#">View Room</a></button>
-                    </div>
-                </div> --}}
             </div>
         </div>
     </div>

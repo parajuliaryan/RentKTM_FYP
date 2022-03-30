@@ -31,6 +31,13 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('admin.room-types.index') }}"
+                                aria-expanded="false">
+                                <i class="fas fa-home" aria-hidden="true"></i>
+                                <span class="hide-menu">Room Types</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('admin.roommates.index') }}"
                                 aria-expanded="false">
                                 <i class="fas fa-user-friends" aria-hidden="true"></i>
