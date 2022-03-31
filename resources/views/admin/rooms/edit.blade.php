@@ -47,12 +47,9 @@
                             <form action="{{ route('admin.rooms.update', $room->id) }}" method="POST">
                                 @csrf
                                 <div class="form-group">
-                                    <select name="user_type" class="form-control" id="usertype" required>
-                                        <option value="user">User</option>
-                                        <option value="admin">Admin</option>
-                                        <option value="student">Student</option>
-                                    </select>
-                                </div>
+                                    <label for="room_title">Room Title</label>
+                                    <input type="text" class="form-control" value="{{ old('room_title', $room->room_title) }}" id="room_title" name="room_title" placeholder="Room Title">
+                                  </div>
                                 <div class="form-group">
                                   <label for="room_description">Room Description</label>
                                   <textarea class="form-control" id="room_description" name="room_description" placeholder="Room Description"></textarea>

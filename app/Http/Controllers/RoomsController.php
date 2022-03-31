@@ -13,7 +13,6 @@ class RoomsController extends Controller
     public function index()
     {
         $ads = Ads::all()->where('ad_type','=','room');
-        // $rooms = Rooms::all();
         $roomTypes = RoomType::all();
         return view('rooms', compact('ads', 'roomTypes'));
     }
@@ -70,6 +69,18 @@ class RoomsController extends Controller
 
         return redirect()->back()->with('Success', 'Room added Successfully.');
     }
+
+        /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Rooms  $room
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Rooms $room)
+    {
+        return view('rooms.show-room', $room);
+    }
+
 
     public function edit()
     {

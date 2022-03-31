@@ -49,24 +49,26 @@
                 </div>
             </div>
             <div class="roommates-holder">
-                @foreach ($roommates as $roommate )
-                <div class="roommate">
-                    <div class="roommate-image">
-                        <img src="{{ asset('images/roommate.jpg') }}" alt="roommate-image">
+                @foreach ($ads as $ad )
+                @if ($ad->status != 'pending')
+                    <div class="roommate">
+                        <div class="roommate-image">
+                            <img src="{{ asset('images/roommate.jpg') }}" alt="roommate-image">
+                        </div>
+                        <div class="roommate-texts">
+                            <div class="roommate-name">
+                                <h4>{{ $ad->roommate->roommate_name }}</h4>
+                                <a href="{{ route('post-ads.roommates.show', $ad->roommate->id) }}">View Roommate</a>
+                            </div>
+                            <div class="roommate-description">
+                                <p>{{ $ad->roommate->roommate_description }}</p>
+                            </div>
+                            <div class="roommate-rent-price">
+                                <p>Price: Nrs.{{ $ad->roommate->roommate_rent_price }}/month</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="roommate-texts">
-                        <div class="roommate-name">
-                            <h4>{{ $roommate->roommate_name }}</h4>
-                            <a href="#">View Roommate</a>
-                        </div>
-                        <div class="roommate-description">
-                            <p>{{ $roommate->roommate_description }}</p>
-                        </div>
-                        <div class="roommate-rent-price">
-                            <p>Price: Nrs.{{ $roommate->roommate_rent_price }}/month</p>
-                        </div>
-                    </div>
-                </div>
+                @endif
                 @endforeach
             </div>
         </div>

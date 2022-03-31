@@ -9,8 +9,8 @@ use Illuminate\Http\Request;
 class RoommatesController extends Controller
 {
     public function index(){
-        $roommates = Roommates::all();
-        return view('roommates', compact('roommates'));
+        $ads = Ads::all()->where('ad_type','=','roommate');
+        return view('roommates', compact('ads'));
     }
 
     public function create(){
@@ -75,7 +75,7 @@ class RoommatesController extends Controller
      */
     public function show(Roommates $roommate)
     {
-        return view('admin.roommates.show', $roommate);
+        return view('roommates.show-roommate', $roommate);
     }
 
     /**

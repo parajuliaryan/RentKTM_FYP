@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ads;
 use App\Models\Roommates;
 use Illuminate\Http\Request;
 
@@ -51,6 +52,7 @@ class AdminRoommatesController extends Controller
             'roommate_image'=> 'required',
         ]);
 
+        $user_id = auth()->user()->id;
         $imageName = time().'.'.$request->roommate_image->extension();  
         $request->roommate_image->move(public_path('images'), $imageName);
         Roommates::create([
@@ -66,6 +68,13 @@ class AdminRoommatesController extends Controller
             'area' => $request->area,
             'tole' => $request->tole,
             'roommate_image'=> $imageName,
+        ]);
+
+        $newRoommate = Roommates::latest()->first();
+        Ads::create([
+            'ad_type'=> 'roommate',
+            'user_id' => $user_id,
+            'roommate_id' => $newRoommate->id
         ]);
 
         return redirect()->route('admin.roommates.index')->with('Success','Roommate added Successfully.');

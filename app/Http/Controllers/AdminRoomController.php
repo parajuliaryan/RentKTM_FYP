@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ads;
 use App\Models\RoomImages;
 use App\Models\Rooms;
 use App\Models\RoomType;
@@ -54,6 +55,7 @@ class AdminRoomController extends Controller
         Rooms::create($request->all());
         $room = Rooms::latest()->first();
         $room_id = $room->id;
+        $user_id = auth()->user()->id;
 
         $images = array();
         if ($room_images = $request->file('room_images')) {
@@ -71,6 +73,13 @@ class AdminRoomController extends Controller
         RoomImages::create([
             'room_id'=>$room_id,
             'image_url'=> implode('|', $images)
+        ]);
+
+        Ads::create([
+            'ad_type' => 'room',
+            'user_id' => $user_id,
+            'room_id' => $room_id,
+            'status' => 'pending',
         ]);
 
         return redirect()->route('admin.rooms.index')->with('Success','Room added Successfully.');
