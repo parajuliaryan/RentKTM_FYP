@@ -42,16 +42,16 @@
                 </div>
             </div>
             <div class="rooms-holder">
-                @foreach ($rooms as $room )
+                @foreach ($ads as $ad )
                 <div class="room">
                     <div class="room-image">
                         <img src="{{ asset('images/room4.jpg') }}" alt="room-image">
                     </div>
                     <div class="room-text">
-                        <h3>{{ $room->room_type }}</h3>
-                        <p>{{ $room->room_description }}</p>
+                        <h4>{{ $ad->room->room_title }}</h4>
+                        <p>{{ $ad->room->room_description }}</p>
                         <p class="d-flex justify-content-between"><span><i class="fa fa-map-marker"
-                                aria-hidden="true"></i> {{ $room->area }}</span><span>Nrs.{{ $room->room_price }}/month</span></p>
+                                aria-hidden="true"></i> {{ $ad->room->area }}</span><span>Nrs.{{ $ad->room->room_price }}/month</span></p>
                     </div>
                     <div class="room-btns">
                         <button><a href="#">View Room</a></button>

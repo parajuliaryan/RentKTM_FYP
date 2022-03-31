@@ -12,19 +12,22 @@ class RoomsController extends Controller
 {
     public function index()
     {
-        $rooms = Rooms::all();
+        $ads = Ads::all()->where('ad_type','=','room');
+        // $rooms = Rooms::all();
         $roomTypes = RoomType::all();
-        return view('rooms', compact('rooms', 'roomTypes'));
+        return view('rooms', compact('ads', 'roomTypes'));
     }
 
     public function create()
     {
-        return view('rooms.create-room-ads');
+        $roomTypes = RoomType::all();
+        return view('rooms.create-room-ads', compact('roomTypes'));
     }
 
     public function store(Request $request)
     {
         $request->validate([
+            'room_title'=> 'required',
             'room_description' => 'required',
             'room_price' => 'required',
             'room_type' => 'required',
@@ -76,6 +79,7 @@ class RoomsController extends Controller
     public function update(Request $request, Rooms $room)
     {
         $request->validate([
+            'room_title' => 'required',
             'room_description' => 'required',
             'room_price' => 'required',
             'room_type' => 'required',

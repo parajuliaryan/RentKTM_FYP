@@ -10,6 +10,10 @@
             <form action="{{ route('post-ads.rooms.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
+                    <label for="room_title">Room Title</label>
+                    <input type="text" class="form-control" id="room_title" name="room_title" placeholder="Room Title">
+                </div>
+                <div class="form-group">
                     <label for="room_description">Room Description</label>
                     <textarea class="form-control" id="room_description" name="room_description" placeholder="Room Description"></textarea>
                 </div>
@@ -21,9 +25,13 @@
                     <label for="student_price">Student Price</label>
                     <input type="text" class="form-control" id="student_price" name="student_price" placeholder="Price for Students">
                 </div>
-                <div class="form-group">
+                <div class="form-group d-flex flex-column">
                     <label for="room_type">Room Type</label>
-                    <input type="text" class="form-control" id="room_type" name="room_type" placeholder="Room Type (Eg: 1BHK, 2BHK etc.)">
+                    <select name="room_type" id="room_type" style="width: 20%;">
+                        @foreach ($roomTypes as $roomType)
+                            <option value="{{ $roomType->room_type }}">{{ $roomType->room_type }}</option>    
+                        @endforeach
+                    </select>
                 </div>
                 <div class="form-group">
                     <label for="contact_number">Contact Number</label>

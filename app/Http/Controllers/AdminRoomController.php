@@ -40,6 +40,7 @@ class AdminRoomController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'room_title' => 'required',
             'room_description' => 'required',
             'room_price' => 'required',
             'room_type' => 'required',
@@ -108,6 +109,7 @@ class AdminRoomController extends Controller
     public function update(Request $request, Rooms $room)
     {
         $request->validate([
+            'room_title'=> 'required',
             'room_description' => 'required',
             'room_price' => 'required',
             'room_type' => 'required',
