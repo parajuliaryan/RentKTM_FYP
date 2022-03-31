@@ -72,23 +72,18 @@
     font-weight: bold;
 }
 
-.room-btns button{
-    border: none;
+.room-btns a{
+    padding: 5px;
     background-color: #000000;
+    color: #ffffff;
+    text-decoration: none;
 }
 
-.room-btns button:hover{
+.room-btns a:hover{
     background-color: #ffffff;
-}
-
-.room-btns button a:hover{
     color: #000000;
 }
 
-.room-btns button a{
-    text-decoration: none;
-    color: #ffffff;
-}
 
 @media (min-width: 600px) {
     .rooms-holder {

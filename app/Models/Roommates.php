@@ -13,7 +13,6 @@ class Roommates extends Model
         'roommate_age',
         'roommate_rent_price',
         'roommate_description',
-        'roommate_features',
         'gender',
         'contact_number',
         'city',
@@ -22,4 +21,8 @@ class Roommates extends Model
         'tole',
         'roommate_image'
     ];
+
+    public function features(){
+        $this->hasMany(RoommateFeatures::class, 'roommate_id');
+    }
 }

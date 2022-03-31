@@ -50,10 +50,10 @@
             </div>
             <div class="roommates-holder">
                 @foreach ($ads as $ad )
-                @if ($ad->status != 'pending')
+                @if ($ad->status == 'approved')
                     <div class="roommate">
                         <div class="roommate-image">
-                            <img src="{{ asset('images/roommate.jpg') }}" alt="roommate-image">
+                            <img src="{{ asset($ad->roommate->roommate_image) }}" alt="roommate-image">
                         </div>
                         <div class="roommate-texts">
                             <div class="roommate-name">

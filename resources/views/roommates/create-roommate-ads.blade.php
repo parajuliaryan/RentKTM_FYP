@@ -29,7 +29,7 @@
                     <textarea class="form-control" id="roommate_description" name="roommate_description"
                         placeholder="Roommate Description"></textarea>
                 </div>
-                <div class="form-group">
+                <div class="form-group features">
                     <label for="roommate_feature">Roommate Feature</label>
                     <input type="text" name="roommate_feature[]" class="form-control" placeholder="Add Feature (Eg: Non-Smoker)" value="" maxlength="255" />
                     <button type="button" class="btn btn-warning addMore">New Feature</button>
@@ -70,33 +70,35 @@
     </div>
 </div>
 @include('layouts.footer')
-<script>
-        $(document).ready(function () {
+<script type="text/javascript" src="{{ asset('js/admin-js/jquery.min.js') }}">
+            $(document).ready(function () {
             console.log('Document works');
-            // var addButton = $('.addMore'); //Add button selector
-            // var wrapper = $('.sizes'); //Input field wrapper
-            // var fieldHTML = 
-            // '<div class="form-group">'+
-            //     '<label for="roommate_feature">Roommate Feature</label>'+
-            //     '<input type="text" name="roommate_feature[]" class="form-control" placeholder="Add Feature (Eg: Non-Smoker)" value="" maxlength="255" />'+
-            //     '<button type="button" class="btn btn-warning addMore">New Feature</button>'+
-            //     '<button type="button" class="btn btn-danger remove_button"><i class="fa fa-trash"></i></button>'+
-            // '</div>';    
+            var addButton = $('.addMore'); //Add button selector
+            var wrapper = $('.features'); //Input field wrapper
+            var fieldHTML = 
+            '<div class="form-group">'+
+                '<label for="roommate_feature">Roommate Feature</label>'+
+                '<input type="text" name="roommate_feature[]" class="form-control" placeholder="Add Feature (Eg: Non-Smoker)" value="" maxlength="255" />'+
+                '<button type="button" class="btn btn-warning addMore">New Feature</button>'+
+                '<button type="button" class="btn btn-danger remove_button"><i class="fa fa-trash"></i></button>'+
+            '</div>';    
 
-            // var x = 1; //Initial field counter is 1
+            var x = 1; //Initial field counter is 1
             
-            // //Once remove button is clicked
-            // $(wrapper).on('click', '.remove_button', function (e) {
-            //     e.preventDefault();
-            //     $(this).parent('div').parent('div').remove(); //Remove field html
-            //     x--; //Decrement field counter
-            // });
+            //Once remove button is clicked
+            $(wrapper).on('click', '.remove_button', function (e) {
+                e.preventDefault();
+                $(this).parent('div').parent('div').remove(); //Remove field html
+                x--; //Decrement field counter
+            });
 
-            // //Once add button is clicked
-            // $(wrapper).on('click', '.addMore', function (e) {
-            //     e.preventDefault();
-            //     $(wrapper).append(fieldHTML);
-            //     x++; //Increment field counter
-            // });            
+            //Once add button is clicked
+            $(wrapper).on('click', '.addMore', function (e) {
+                e.preventDefault();
+                $(wrapper).append(fieldHTML);
+                x++; //Increment field counter
+            }); 
+                       
             });
 </script>
+

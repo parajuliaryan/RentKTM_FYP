@@ -10,8 +10,10 @@ class RoommateFeatures extends Model
     use HasFactory;
     protected $fillable = [
         'roommate_id',
-        'feature_title',
-        'feature_description',
-        'roommate_id'
+        'feature',
     ];
+
+    public function roommate(){
+        $this->belongsTo(Roommates::class);
+    }
 }

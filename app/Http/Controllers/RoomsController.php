@@ -48,7 +48,7 @@ class RoomsController extends Controller
                 $image_name = md5(rand(1000, 10000));
                 $ext = strtolower($room_image->getClientOriginalExtension());
                 $image_full_name = $image_name . '.' . $ext;
-                $upload_path = 'public/room_images/';
+                $upload_path = "room_images/";
                 $image_url = $upload_path . $image_full_name;
                 $room_image->move($upload_path, $image_full_name);
                 $images[] = $image_url;

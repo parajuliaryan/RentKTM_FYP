@@ -43,10 +43,13 @@
             </div>
             <div class="rooms-holder">
                 @foreach ($ads as $ad )
-                @if ($ad->status !=  'pending')
+                @if ($ad->status == 'approved')
+                @php
+                    $image_src = $ad->room->image[0]->image_url;
+                @endphp
                 <div class="room">
                     <div class="room-image">
-                        <img src="{{ asset('images/room4.jpg') }}" alt="room-image">
+                        <img src="{{ asset($image_src) }}" alt="room-image">
                     </div>
                     <div class="room-text">
                         <h4>{{ $ad->room->room_title }}</h4>
@@ -55,7 +58,7 @@
                                 aria-hidden="true"></i> {{ $ad->room->area }}</span><span>Nrs.{{ $ad->room->room_price }}/month</span></p>
                     </div>
                     <div class="room-btns">
-                        <button><a href="{{ route('post-ads.rooms.show', $ad->room->id) }}">View Room</a></button>
+                        <a href="{{ route('post-ads.rooms.show', $ad->room->id) }}">View Room</a>
                     </div>
                 </div>
                 @endif

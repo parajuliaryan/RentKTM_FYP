@@ -16,8 +16,7 @@ class CreateRoommateFeaturesTable extends Migration
         Schema::create('roommate_features', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('roommate_id');
-            $table->string('feature_title');
-            $table->string('feature_description');
+            $table->string('feature');
             $table->foreign('roommate_id')->references('id')->on('roommates')->onDelete('cascade');
             $table->timestamps();
         });
