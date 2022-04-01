@@ -65,7 +65,6 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        
         if (isset($data['student_check'])) {
             return User::create([
                 'user_type' => 'student',

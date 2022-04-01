@@ -1,6 +1,7 @@
 @include('layouts.app')
 @include('layouts.nav')
 <link rel="stylesheet" href="{{ asset('css/frontend-css/roommate-ads.css') }}">
+@section('content')
 <div class="main-container">
     <div class="roommate-ad-holder">
         <div class="image-holder">
@@ -70,7 +71,7 @@
     </div>
 </div>
 @include('layouts.footer')
-<script type="text/javascript" src="{{ asset('js/admin-js/jquery.min.js') }}">
+<script type="text/javascript">
             $(document).ready(function () {
             console.log('Document works');
             var addButton = $('.addMore'); //Add button selector
@@ -101,4 +102,3 @@
                        
             });
 </script>
-

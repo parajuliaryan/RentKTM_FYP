@@ -10,7 +10,7 @@
             <div>
                 <h2>Sign Up</h2>
             </div>
-            <form method="POST" action="{{ route('register') }}" class="register-form d-flex flex-column">
+            <form method="POST" action="{{ route('register') }}" class="register-form d-flex flex-column" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                     <label for="first_name">First Name</label>
@@ -75,7 +75,7 @@
                     </a>
                     @endif
                     <br>
-                    <button type="submit" class="btn btn-dark btn-block btn-outline btn-lg mt-3 sign-up-btn">Sign
+                    <button type="submit" class="btn btn-dark btn-block btn-outline btn-lg mt-3 sign-up-btn" id="signup_btn">Sign
                         Up</button>
                 </div>
                 <div class="divider d-flex align-items-center my-4">
@@ -85,8 +85,45 @@
                     <i class="fab fa-facebook-f"></i> Continue with Facebook</a>
                 <a class="btn btn-lg btn-block social-btn google" href="{{ route('google') }}" role="button">
                     <i class="fab fa-google"></i> Continue with Google</a>
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                        Launch demo modal
+                    </button>
+                    
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Upload a proper identification document</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true" class="btn btn-danger">&times;</span>
+                            </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label for="roommate_image">Upload your photo</label><br>
+                                    <input type="file" name="student_image" id="student_image">
+                                </div>
+                            </div>
+                            <div class="modal-footer d-flex flex-column">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
             </form>
         </div>
     </div>
 </div>
+<script>
+        $('#signup_btn').click(function (e) {
+            if ($('#student_check').is(":checked")) {
+                e.preventDefault();
+                $('#exampleModal').modal('toggle');
+            } 
+        });
+
+</script>
 @endsection
