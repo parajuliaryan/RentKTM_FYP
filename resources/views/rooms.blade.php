@@ -44,23 +44,49 @@
             <div class="rooms-holder">
                 @foreach ($ads as $ad )
                 @if ($ad->status == 'approved')
-                @php
-                    $image_src = $ad->room->image[0]->image_url;
-                @endphp
-                <div class="room">
-                    <div class="room-image">
-                        <img src="{{ asset($image_src) }}" alt="room-image">
-                    </div>
-                    <div class="room-text">
-                        <h4>{{ $ad->room->room_title }}</h4>
-                        <p>{{ $ad->room->room_description }}</p>
-                        <p class="d-flex justify-content-between"><span><i class="fa fa-map-marker"
-                                aria-hidden="true"></i> {{ $ad->room->area }}</span><span>Nrs.{{ $ad->room->room_price }}/month</span></p>
-                    </div>
-                    <div class="room-btns">
-                        <a href="{{ route('post-ads.rooms.show', $ad->room->id) }}">View Room</a>
-                    </div>
-                </div>
+                    @if (isset($search))
+                        @php
+                            $room=$ad->room->where('area','LIKE', "%$search%")->first();
+                            $image_src = $ad->room->image[0]->image_url;
+                        @endphp
+                        @if ($room != null)
+                            <div class="room">
+                                <div class="room-image">
+                                    <img src="{{ asset($image_src) }}" alt="room-image">
+                                </div>
+                                
+                                    <div class="room-text">
+                                        <h4>{{ $room->room_title }}</h4>
+                                        <p>{{ $room->room_description }}</p>
+                                        <p class="d-flex justify-content-between"><span><i class="fa fa-map-marker"
+                                                aria-hidden="true"></i> {{ $room->area }}</span><span>Nrs.{{ $room->room_price }}/month</span></p>
+                                    </div>
+                                    <div class="room-btns">
+                                        <a href="{{ route('post-ads.rooms.show', $room->id) }}">View Room</a>
+                                    </div>
+                            </div>
+                        @else
+                            <h2 class="text-danger">No results found.</h2>
+                        @endif
+                    @else
+                        @php
+                            $image_src = $ad->room->image[0]->image_url;
+                        @endphp
+                        <div class="room">
+                            <div class="room-image">
+                                <img src="{{ asset($image_src) }}" alt="room-image">
+                            </div>
+                            <div class="room-text">
+                                <h4>{{ $ad->room->room_title }}</h4>
+                                <p>{{ $ad->room->room_description }}</p>
+                                <p class="d-flex justify-content-between"><span><i class="fa fa-map-marker"
+                                        aria-hidden="true"></i> {{ $ad->room->area }}</span><span>Nrs.{{ $ad->room->room_price }}/month</span></p>
+                            </div>
+                            <div class="room-btns">
+                                <a href="{{ route('post-ads.rooms.show', $ad->room->id) }}">View Room</a>
+                            </div>
+                        </div>
+                    @endif
                 @endif
                 @endforeach
             </div>
