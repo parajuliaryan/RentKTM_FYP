@@ -47,6 +47,18 @@
                                         <th scope="row">Email</th>
                                         <td>{{ $email }}</td>
                                     </tr>
+                                    <tr>
+                                        <th scope="row">Identification</th>
+                                        @if ($student_check != null)
+                                            <td>
+                                                <img src="{{ asset('images/'.$identification) }}" alt="Id Image" style="height: 300px; width: 300px; object-fit:cover;">
+                                            </td>
+                                        @else
+                                            <td>
+                                                null
+                                            </td>
+                                        @endif
+                                    </tr>
                                 </tbody>
                               </table>
                         </div>

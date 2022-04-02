@@ -42,6 +42,9 @@
                 </div>
             </div>
             <div class="rooms-holder">
+                @php
+                    $elseCount = 0;
+                @endphp
                 @foreach ($ads as $ad )
                 @if ($ad->status == 'approved')
                     @if (isset($search))
@@ -54,7 +57,6 @@
                                 <div class="room-image">
                                     <img src="{{ asset($image_src) }}" alt="room-image">
                                 </div>
-                                
                                     <div class="room-text">
                                         <h4>{{ $room->room_title }}</h4>
                                         <p>{{ $room->room_description }}</p>
@@ -66,7 +68,9 @@
                                     </div>
                             </div>
                         @else
-                            <h2 class="text-danger">No results found.</h2>
+                            @php
+                                $elseCount = $elseCount + 1;
+                            @endphp
                         @endif
                     @else
                         @php
@@ -89,6 +93,9 @@
                     @endif
                 @endif
                 @endforeach
+                @if (isset($elseCount) && $elseCount > 0)
+                    <h2 class="text-danger">No results found.</h2>
+                @endif 
             </div>
         </div>
     </div>

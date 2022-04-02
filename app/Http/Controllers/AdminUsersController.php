@@ -41,14 +41,14 @@ class AdminUsersController extends Controller
             'user_type' => 'required',
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8'],
+            'email' => ['required', 'string', 'email', 'max:255'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
 
         if ($request->user_type == "student") {
-            if ($request->roommate_image) {
-                $imageName = time() . '.' . $request->roommate_image->extension();
-                $request->roommate_image->move(public_path('images'), $imageName);
+            if ($request->identification) {
+                $imageName = time() . '.' . $request->identification->extension();
+                $request->identification->move(public_path('images'), $imageName);
                 User::create([
                     'user_type' => $request->user_type,
                     'first_name' => $request->first_name,
@@ -69,9 +69,9 @@ class AdminUsersController extends Controller
                 ]);
             }
         } else {
-            if ($request->roommate_image) {
-                $imageName = time() . '.' . $request->roommate_image->extension();
-                $request->roommate_image->move(public_path('images'), $imageName);
+            if ($request->identification) {
+                $imageName = time() . '.' . $request->identification->extension();
+                $request->identification->move(public_path('images'), $imageName);
                 User::create([
                     'user_type' => $request->user_type,
                     'first_name' => $request->first_name,
@@ -129,21 +129,17 @@ class AdminUsersController extends Controller
             'user_type' => 'required',
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'email' => ['required', 'string', 'email', 'max:255'],
         ]);
 
         if ($request->user_type == "student") {
-            if ($request->roommate_image) {
-                $imageName = time() . '.' . $request->roommate_image->extension();
-                $request->roommate_image->move(public_path('images'), $imageName);
+            if ($request->identification) {
                 $user->update([
                     'user_type' => $request->user_type,
                     'first_name' => $request->first_name,
                     'last_name' => $request->last_name,
                     'email' => $request->email,
-                    'password' => Hash::make($request->password),
-                    'identification' => $imageName,
+                    'identification' => $request->identification,
                     'student_check' => "on",
                 ]);
             } else {
@@ -152,21 +148,17 @@ class AdminUsersController extends Controller
                     'first_name' => $request->first_name,
                     'last_name' => $request->last_name,
                     'email' => $request->email,
-                    'password' => Hash::make($request->password),
                     'student_check' => "on",
                 ]);
             }
         }else{
-            if ($request->roommate_image) {
-                $imageName = time() . '.' . $request->roommate_image->extension();
-                $request->roommate_image->move(public_path('images'), $imageName);
+            if ($request->identification) {
                 $user->update([
                     'user_type' => $request->user_type,
                     'first_name' => $request->first_name,
                     'last_name' => $request->last_name,
                     'email' => $request->email,
-                    'password' => Hash::make($request->password),
-                    'identification' => $imageName,
+                    'identification' => $request->identification,
                 ]);
             } else {
                 $user->update([
@@ -174,12 +166,9 @@ class AdminUsersController extends Controller
                     'first_name' => $request->first_name,
                     'last_name' => $request->last_name,
                     'email' => $request->email,
-                    'password' => Hash::make($request->password),
                 ]);
             }
         }
-
-
         return redirect()->route('admin.users.index')->with('Success', 'User Updated Successfully.');
     }
 

@@ -66,13 +66,15 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         if (isset($data['student_check'])) {
+            $imageName = time().'.'.$data['identification']->extension();  
+            $data['identification']->move(public_path('images'), $imageName);
             return User::create([
-                'user_type' => 'student',
                 'first_name' => $data['first_name'],
                 'last_name' => $data['last_name'],
                 'email' => $data['email'],
                 'password' => Hash::make($data['password']),
-                'student_check' => $data['student_check']
+                'student_check' => $data['student_check'],
+                'identification' => $imageName,
             ]);
         }else{
             return User::create([
@@ -82,7 +84,5 @@ class RegisterController extends Controller
                 'password' => Hash::make($data['password']),
             ]);
         }
-
-
     }
 }

@@ -18,21 +18,6 @@
                     <label for="high-low">Price Low to High</label>
                 </div>
             </div>
-            <div class="filter-option">
-                <p>Room Type</p>
-                <div class="form-group">
-                    <input type="checkbox" name="room_type" id="room_type">
-                    <label for="room_type">1BHK</label>
-                </div>
-                <div class="form-group">
-                    <input type="checkbox" name="room_type" id="room_type">
-                    <label for="room_type">2BHK</label>
-                </div>
-                <div class="form-group">
-                    <input type="checkbox" name="room_type" id="room_type">
-                    <label for="room_type">3BHK</label>
-                </div>
-            </div>
         </div>
 
         <div class="roommates-container">
@@ -49,6 +34,9 @@
                 </div>
             </div>
             <div class="roommates-holder">
+                @php
+                    $elseCount = 0;
+                 @endphp
                 @foreach ($ads as $ad )
                     @if ($ad->status == 'approved')
                         @if (isset($search))
@@ -58,6 +46,7 @@
                             @if ($roommate != null)
                                 <div class="roommate">
                                     <div class="roommate-image">
+                                        {{$roommate->roommate_image}}
                                         <img src="{{ asset($roommate->roommate_image) }}" alt="roommate-image">
                                     </div>
                                     <div class="roommate-texts">
@@ -74,12 +63,14 @@
                                     </div>
                                 </div>
                             @else
-                                <h2 class="text-danger">No results found.</h2>
+                                @php
+                                    $elseCount +=1;
+                                @endphp
                             @endif
                         @else
                             <div class="roommate">
                                 <div class="roommate-image">
-                                    <img src="{{ asset($ad->roommate->roommate_image) }}" alt="roommate-image">
+                                    <img src="{{ asset('images/'.$ad->roommate->roommate_image) }}" alt="roommate-image">
                                 </div>
                                 <div class="roommate-texts">
                                     <div class="roommate-name">
@@ -97,6 +88,9 @@
                         @endif
                     @endif
                 @endforeach
+                    @if ($elseCount>0)
+                        <h2 class="text-danger">No results found.</h2>
+                    @endif 
             </div>
         </div>
     </div>

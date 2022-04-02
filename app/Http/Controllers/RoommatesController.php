@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ads;
+use App\Models\RoommateFeatures;
 use App\Models\Roommates;
 use Illuminate\Http\Request;
 
@@ -30,7 +31,6 @@ class RoommatesController extends Controller
             'roommate_age' => 'required',
             'roommate_rent_price' => 'required',
             'roommate_description' => 'required',
-            'roommate_features' => 'required',
             'contact_number' => 'required',
             'gender' => 'required',
             'city' => 'required',
@@ -48,7 +48,6 @@ class RoommatesController extends Controller
             'roommate_age' => $request->roommate_age,
             'roommate_rent_price' => $request->roommate_rent_price,
             'roommate_description' => $request->roommate_description,
-            'roommate_features' => $request->roommate_features,
             'gender' => $request->gender,
             'contact_number' => $request->contact_number,
             'city' => $request->city,
@@ -59,6 +58,13 @@ class RoommatesController extends Controller
         ]);
 
         $newRoommate = Roommates::latest()->first();
+        $features = $request->roommate_feature;
+        foreach ($features as $feature) {
+            RoommateFeatures::create([
+                'roommate_id' => $newRoommate->id,
+                'feature' => $feature,
+            ]);
+        }
         Ads::create([
             'ad_type'=> 'roommate',
             'user_id' => $user_id,
@@ -103,7 +109,6 @@ class RoommatesController extends Controller
             'roommate_age' => 'required',
             'roommate_rent_price' => 'required',
             'roommate_description' => 'required',
-            'roommate_features' => 'required',
             'contact_number' => 'required',
             'gender' => 'required',
             'city' => 'required',
@@ -120,7 +125,6 @@ class RoommatesController extends Controller
             'roommate_age' => $request->roommate_age,
             'roommate_rent_price' => $request->roommate_rent_price,
             'roommate_description' => $request->roommate_description,
-            'roommate_features' => $request->roommate_features,
             'gender' => $request->gender,
             'contact_number' => $request->contact_number,
             'city' => $request->city,
@@ -129,6 +133,9 @@ class RoommatesController extends Controller
             'tole' => $request->tole,
             'roommate_image'=> $imageName,
         ]);
+        
+        $features = RoommateFeatures::where('roommate_id','=', $roommate->id)->get();
+        
 
         return redirect()->route('user.index')->with('Success','Roommate Updated Successfully.');
     }

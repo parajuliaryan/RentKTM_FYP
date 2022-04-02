@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ads;
+use App\Models\RoommateFeatures;
 use App\Models\Roommates;
 use Illuminate\Http\Request;
 
@@ -71,6 +72,13 @@ class AdminRoommatesController extends Controller
         ]);
 
         $newRoommate = Roommates::latest()->first();
+        $features = $request->roommate_feature;
+        foreach ($features as $feature) {
+            RoommateFeatures::create([
+                'roommate_id' => $newRoommate->id,
+                'feature' => $feature,
+            ]);
+        }
         Ads::create([
             'ad_type'=> 'roommate',
             'user_id' => $user_id,

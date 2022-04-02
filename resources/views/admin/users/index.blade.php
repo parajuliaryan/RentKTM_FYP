@@ -52,6 +52,7 @@
                                             <th class="border-top-0">User Type</th>
                                             <th class="border-top-0">First Name</th>
                                             <th class="border-top-0">Last Name</th>
+                                            <th class="border-top-0">Student Request</th>
                                             <th class="border-top-0">Actions</th>
                                         </tr>
                                     </thead>
@@ -62,6 +63,11 @@
                                                 <td>{{ $user->user_type }}</td>
                                                 <td>{{ $user->first_name }}</td>
                                                 <td>{{ $user->last_name }}</td>
+                                                @if ($user->student_check != null)
+                                                    <td>{{ $user->student_check }}</td>
+                                                @else
+                                                    <td>null</td>    
+                                                @endif
                                             <td class="d-flex">
                                                 <a href="{{ route('admin.users.edit',$user->id) }}"><i class="fa fa-edit"></i></a>
                                                 <a href="{{ route('admin.users.show', $user->id) }}"><i class="fa fa-eye"></i></a>
