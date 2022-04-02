@@ -91,7 +91,7 @@ class AdminUsersController extends Controller
             }
         }
 
-        return redirect()->route('admin.users.index')->with('Success', 'User Added Successfully.');
+        return redirect()->route('admin.users.index')->with('message', 'User Added Successfully.');
     }
 
     /**
@@ -169,7 +169,7 @@ class AdminUsersController extends Controller
                 ]);
             }
         }
-        return redirect()->route('admin.users.index')->with('Success', 'User Updated Successfully.');
+        return redirect()->route('admin.users.index')->with('message', 'User Updated Successfully.');
     }
 
     /**
@@ -181,6 +181,6 @@ class AdminUsersController extends Controller
     public function destroy(User $user)
     {
         $user->delete();
-        return redirect()->route('admin.users.index')->with('Success', 'User Deleted Successfully.');
+        return redirect()->route('admin.users.index')->with('message', 'User Deleted Successfully.');
     }
 }

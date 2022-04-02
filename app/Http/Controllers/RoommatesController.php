@@ -70,7 +70,7 @@ class RoommatesController extends Controller
             'user_id' => $user_id,
             'roommate_id' => $newRoommate->id
         ]);
-        return redirect()->back()->with('Success','Roommate added Successfully.');
+        return redirect()->back()->with('message','Roommate added Successfully.');
     }
 
     /**
@@ -137,7 +137,7 @@ class RoommatesController extends Controller
         $features = RoommateFeatures::where('roommate_id','=', $roommate->id)->get();
         
 
-        return redirect()->route('user.index')->with('Success','Roommate Updated Successfully.');
+        return redirect()->route('user.index')->with('message','Roommate Updated Successfully.');
     }
 
     /**
@@ -149,6 +149,6 @@ class RoommatesController extends Controller
     public function destroy(Roommates $roommate)
     {
         $roommate->delete();
-        return redirect()->route('user.index')->with('Success','Roommate Deleted Successfully.');
+        return redirect()->route('user.index')->with('message','Roommate Deleted Successfully.');
     }
 }

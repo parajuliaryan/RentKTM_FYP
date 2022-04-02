@@ -67,7 +67,7 @@ class RoomsController extends Controller
             'status' => 'pending',
         ]);
 
-        return redirect()->back()->with('Success', 'Room added Successfully.');
+        return redirect()->back()->with('message', 'Room added Successfully.');
     }
 
         /**
@@ -115,12 +115,12 @@ class RoomsController extends Controller
             }
         }
 
-        return redirect()->back()->with('Success', 'Room Updated Successfully.');
+        return redirect()->back()->with('message', 'Room Updated Successfully.');
     }
 
     public function destroy(Rooms $room)
     {
         $room->delete();
-        return redirect()->back()->with('Success', 'Room Deleted Successfully.');
+        return redirect()->back()->with('message', 'Room Deleted Successfully.');
     }
 }

@@ -85,7 +85,7 @@ class AdminRoommatesController extends Controller
             'roommate_id' => $newRoommate->id
         ]);
 
-        return redirect()->route('admin.roommates.index')->with('Success','Roommate added Successfully.');
+        return redirect()->route('admin.roommates.index')->with('message','Roommate added Successfully.');
     }
 
     /**
@@ -151,7 +151,7 @@ class AdminRoommatesController extends Controller
             'roommate_image'=> $imageName,
         ]);
 
-        return redirect()->route('admin.roommates.index')->with('Success','Roommate Updated Successfully.');
+        return redirect()->route('admin.roommates.index')->with('message','Roommate Updated Successfully.');
     }
 
     /**
@@ -163,6 +163,6 @@ class AdminRoommatesController extends Controller
     public function destroy(Roommates $roommate)
     {
         $roommate->delete();
-        return redirect()->route('admin.roommates.index')->with('Success','Roommate Deleted Successfully.');
+        return redirect()->route('admin.roommates.index')->with('message','Roommate Deleted Successfully.');
     }
 }

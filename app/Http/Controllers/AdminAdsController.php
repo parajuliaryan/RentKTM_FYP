@@ -74,7 +74,7 @@ class AdminAdsController extends Controller
             'status' => $request->status,
         ]);
 
-        return redirect()->route('admin.ads.index')->with('Success','Roommate Updated Successfully.');
+        return redirect()->route('admin.ads.index')->with('message','Roommate Updated Successfully.');
     }
 
     /**
@@ -104,6 +104,6 @@ class AdminAdsController extends Controller
             'status' => $request->status,
         ]);
 
-        return redirect()->route('admin.ad-requests')->with('Success','Roommate Updated Successfully.');
+        return redirect()->route('admin.ad-requests')->with('message','Roommate Updated Successfully.');
     }
 }

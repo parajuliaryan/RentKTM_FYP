@@ -82,7 +82,7 @@ class AdminRoomController extends Controller
             'status' => 'pending',
         ]);
 
-        return redirect()->route('admin.rooms.index')->with('Success','Room added Successfully.');
+        return redirect()->route('admin.rooms.index')->with('message','Room added Successfully.');
     }
 
     /**
@@ -131,7 +131,7 @@ class AdminRoomController extends Controller
     
         $room->update($request->all());
 
-        return redirect()->route('admin.rooms.index')->with('Success','Room Updated Successfully.');
+        return redirect()->route('admin.rooms.index')->with('message','Room Updated Successfully.');
     }
 
     /**
@@ -143,6 +143,6 @@ class AdminRoomController extends Controller
     public function destroy(Rooms $room)
     {
         $room->delete();
-        return redirect()->route('admin.rooms.index')->with('Success','Room Deleted Successfully.');
+        return redirect()->route('admin.rooms.index')->with('message','Room Deleted Successfully.');
     }
 }

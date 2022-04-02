@@ -44,7 +44,7 @@ class RoomTypeController extends Controller
             'room_type' => $request->room_type,
         ]);
 
-        return redirect()->back()->with('Success', 'Room Type added Successfully.');
+        return redirect()->back()->with('message', 'Room Type added Successfully.');
     }
 
     /**
