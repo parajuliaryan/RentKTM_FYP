@@ -3,6 +3,11 @@
 <link rel="stylesheet" href="{{ asset('css/frontend-css/roommate-ads.css') }}">
 @section('content')
 <div class="main-container">
+    @if(session()->has('message'))
+        <div class="alert alert-success">
+            {{ session()->get('message') }}
+        </div>
+    @endif
     @if(count($errors) > 0)
         <div class="p-1">
             @foreach($errors->all() as $error)

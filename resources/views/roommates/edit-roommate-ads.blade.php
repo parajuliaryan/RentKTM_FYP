@@ -1,6 +1,22 @@
 @include('layouts.app')
 @include('layouts.nav')
-
+<div class="main-container">
+    @if(session()->has('message'))
+    <div class="alert alert-success">
+        {{ session()->get('message') }}
+    </div>
+    @endif
+    @if(count($errors) > 0)
+    <div class="p-1">
+        @foreach($errors->all() as $error)
+        <div class="alert alert-warning alert-danger fade show" role="alert">{{$error}} <button
+                type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button></div>
+        @endforeach
+    </div>
+    @endif
+</div>
 <form action="{{ route('post-ads.rooms.update') }}" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="form-group">

@@ -44,6 +44,11 @@
                 <div class="col-sm-12">
                     <div class="white-box">
                         <h3 class="box-title">User Details</h3>
+                        @if(session()->has('message'))
+                        <div class="alert alert-success">
+                            {{ session()->get('message') }}
+                        </div>
+                        @endif
                         @if(count($errors) > 0)
                         <div class="p-1">
                             @foreach($errors->all() as $error)
