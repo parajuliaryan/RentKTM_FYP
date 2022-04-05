@@ -9,6 +9,7 @@ use App\Http\Controllers\Auth\FacebookController;
 use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostAdsController;
+use App\Http\Controllers\RatingReviewController;
 use App\Http\Controllers\RoommatesController;
 use App\Http\Controllers\RoomsController;
 use App\Http\Controllers\RoomTypeController;
@@ -44,6 +45,7 @@ Route::get('/search', [HomeController::class, 'search'])->name('search');
 Route::get('/rooms', [RoomsController::class, 'index'])->name('rooms');
 Route::get('/roommates', [RoommatesController::class, 'index'])->name('roommates');
 Route::get('/post-ads', [PostAdsController::class, 'index'])->name('postAds');
+Route::resource('/reviews', RatingReviewController::class);
 Route::prefix('post-ads')->name('post-ads.')->group(function(){
     Route::get('/',[PostAdsController::class , 'index'])->name('index');
     Route::resource('/rooms', RoomsController::class);

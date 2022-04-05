@@ -8,10 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class RatingReview extends Model
 {
     use HasFactory;
+
     protected $fillable = [
         'room_id',
         'room_rating',
         'room_review',
         'user_id'
     ];
+
+    public function user(){
+        return $this->belongsTo(User::class,'user_id');
+    }
 }

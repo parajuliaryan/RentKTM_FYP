@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ads;
+use App\Models\RatingReview;
 use App\Models\RoomImages;
 use App\Models\Rooms;
 use App\Models\RoomType;
@@ -80,7 +81,8 @@ class RoomsController extends Controller
     {
         $images = RoomImages::where('room_id',$room->id)->first();
         $ads = Ads::where('room_id', $room->id)->first();
-        return view('rooms.show-room', compact('room', 'images', 'ads'));
+        $reviews = RatingReview::where('room_id', $room->id)->get();
+        return view('rooms.show-room', compact('room', 'images', 'ads', 'reviews'));
     }
 
 

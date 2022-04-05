@@ -29,4 +29,8 @@ class Rooms extends Model
     public function ads(){
         return $this->belongsTo(Ads::class);
     }
+
+    public function Review(){
+        return $this->hasMany(RatingReview::class,'room_id');
+    }
 }

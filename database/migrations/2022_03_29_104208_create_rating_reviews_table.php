@@ -17,7 +17,7 @@ class CreateRatingReviewsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('room_id');
             $table->unsignedBigInteger('user_id');
-            $table->string('room_rating');
+            $table->integer('room_rating');
             $table->text('room_review');
             $table->foreign('room_id')->references('id')->on('rooms')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
