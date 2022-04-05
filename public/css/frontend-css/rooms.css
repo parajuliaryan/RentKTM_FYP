@@ -10,7 +10,7 @@
     display: flex;
     flex-direction: column;
     min-width: 320px;
-    max-width: 1400px;
+    max-width: 1600px;
     width: 100%;
     margin: 20px 0px;
 }
@@ -19,6 +19,7 @@
     display: flex;
     justify-content: space-around;
     background: #FAFAFA;
+    padding-left: 15px;
 }
 
 .filter-title{
@@ -52,15 +53,15 @@
 .room{
     background: #FAFAFA;
     display: flex;
-    flex-direction: column;
     padding: 1rem;
+    flex-direction: column;
     border-radius: 10px;
 }
 
 .room img{
     height: 200px;
     width: 100%;
-    object-fit: contain;
+    object-fit: cover;
 }
 
 .room-title{
@@ -68,7 +69,16 @@
     justify-content: space-between;
 }
 
-.room-title h4{
+.room-title h3{
+    font-weight: bold;
+}
+
+.room-text{
+    margin-top: 10px;
+    padding: 5px;
+}
+
+.room-text h4{
     font-weight: bold;
 }
 
@@ -82,6 +92,11 @@
 .room-btns a:hover{
     background-color: #ffffff;
     color: #000000;
+}
+
+.rate-text{
+    font-size: 1rem;
+    font-weight: 500;
 }
 
 

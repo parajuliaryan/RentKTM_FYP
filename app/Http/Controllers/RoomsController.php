@@ -78,7 +78,9 @@ class RoomsController extends Controller
      */
     public function show(Rooms $room)
     {
-        return view('rooms.show-room', $room);
+        $images = RoomImages::where('room_id',$room->id)->first();
+        $ads = Ads::where('room_id', $room->id)->first();
+        return view('rooms.show-room', compact('room', 'images', 'ads'));
     }
 
 

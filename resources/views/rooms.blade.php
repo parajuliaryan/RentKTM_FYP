@@ -49,23 +49,23 @@
                 @if ($ad->status == 'approved')
                     @if (isset($search))
                         @php
-                            $room=$ad->room->where('area','LIKE', "%$search%")->first();
+                            $rooms = $ad->room->where('area','LIKE', "%$search%")->get();
                             $image_src = $ad->room->image[0]->image_url;
                         @endphp
-                        @if ($room != null)
+                        @if ($rooms != null)
                             <div class="room">
                                 <div class="room-image">
                                     <img src="{{ asset($image_src) }}" alt="room-image">
                                 </div>
-                                    <div class="room-text">
-                                        <h4>{{ $room->room_title }}</h4>
-                                        <p>{{ $room->room_description }}</p>
-                                        <p class="d-flex justify-content-between"><span><i class="fa fa-map-marker"
-                                                aria-hidden="true"></i> {{ $room->area }}</span><span>Nrs.{{ $room->room_price }}/month</span></p>
-                                    </div>
-                                    <div class="room-btns">
-                                        <a href="{{ route('post-ads.rooms.show', $room->id) }}">View Room</a>
-                                    </div>
+                                <div class="room-text">
+                                    <h4>{{ $room->room_title }}</h4>
+                                    <p class="rate-text">{{ Str::limit($room->room_description , 20) }}</p>
+                                    <p class="d-flex justify-content-between"><span class="rate-text"><i class="fa fa-map-marker"
+                                            aria-hidden="true"></i> {{ $room->area }}</span><span class="rate-text">Nrs.{{ $room->room_price }}/month</span></p>
+                                </div>
+                                <div class="room-btns">
+                                    <a href="{{ route('post-ads.rooms.show', $room->id) }}">View Room</a>
+                                </div>
                             </div>
                         @else
                             @php
@@ -74,17 +74,22 @@
                         @endif
                     @else
                         @php
-                            $image_src = $ad->room->image[0]->image_url;
+                            $images = explode('|',$ad->room->image[0]->image_url); 
                         @endphp
                         <div class="room">
                             <div class="room-image">
-                                <img src="{{ asset($image_src) }}" alt="room-image">
+                                @foreach ($images as $item )
+                                    @php
+                                        $img = $images[0];
+                                    @endphp
+                                @endforeach
+                                <img src="{{ URL::to($img) }}" alt="room-image">
                             </div>
                             <div class="room-text">
                                 <h4>{{ $ad->room->room_title }}</h4>
-                                <p>{{ $ad->room->room_description }}</p>
-                                <p class="d-flex justify-content-between"><span><i class="fa fa-map-marker"
-                                        aria-hidden="true"></i> {{ $ad->room->area }}</span><span>Nrs.{{ $ad->room->room_price }}/month</span></p>
+                                <p class="rate-text">{{ Str::limit($ad->room->room_description , 100) }}</p>
+                                <p class="d-flex justify-content-between"><span class="rate-text"><i class="fa fa-map-marker"
+                                        aria-hidden="true"></i> {{ $ad->room->area }}</span><span class="rate-text">Nrs.{{ $ad->room->room_price }}/month</span></p>
                             </div>
                             <div class="room-btns">
                                 <a href="{{ route('post-ads.rooms.show', $ad->room->id) }}">View Room</a>

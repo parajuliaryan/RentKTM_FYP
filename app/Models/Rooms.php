@@ -25,4 +25,8 @@ class Rooms extends Model
     public function image(){
         return $this->hasMany(RoomImages::class, 'room_id');
     }
+
+    public function ads(){
+        return $this->belongsTo(Ads::class);
+    }
 }

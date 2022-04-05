@@ -105,7 +105,8 @@ class AdminRoomController extends Controller
      */
     public function edit(Rooms $room)
     {
-        return view('admin.rooms.edit',compact('room'));
+        $roomTypes = RoomType::all();
+        return view('admin.rooms.edit',compact('room', 'roomTypes'));
     }
 
     /**
@@ -128,6 +129,7 @@ class AdminRoomController extends Controller
             'area' => 'required',
             'tole' => 'required',
         ]);
+        
     
         $room->update($request->all());
 

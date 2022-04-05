@@ -61,6 +61,7 @@
                             @endif
                             <form action="{{ route('admin.rooms.update', $room->id) }}" method="POST">
                                 @csrf
+                                @method('PUT')
                                 <div class="form-group">
                                     <label for="room_title">Room Title</label>
                                     <input type="text" class="form-control" value="{{ old('room_title', $room->room_title) }}" id="room_title" name="room_title" placeholder="Room Title">
@@ -74,8 +75,16 @@
                                   <input type="text" class="form-control" value="{{ old('room_price', $room->room_price) }}" id="room_price" name="room_price" placeholder="Room Price">
                                 </div>
                                 <div class="form-group">
+                                  <label for="student_price">Student Price</label>
+                                  <input type="text" class="form-control" value="{{ old('student_price', $room->student_price) }}" id="student_price" name="student_price" placeholder="Student Price">
+                                </div>
+                                <div class="form-group d-flex flex-column">
                                     <label for="room_type">Room Type</label>
-                                    <input type="text" class="form-control" value="{{ old('room_type', $room->room_type) }}" id="room_type" name="room_type" placeholder="Room Type (Eg: 1BHK, 2BHK etc.)">
+                                    <select name="room_type" id="room_type" style="width: 20%;">
+                                        @foreach ($roomTypes as $roomType)
+                                            <option value="{{ $roomType->room_type }}">{{ $roomType->room_type }}</option>    
+                                        @endforeach
+                                    </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="contact_number">Contact Number</label>

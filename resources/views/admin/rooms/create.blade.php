@@ -74,8 +74,8 @@
                                   <input type="text" class="form-control" id="room_price" name="room_price" placeholder="Room Price (per month)">
                                 </div>
                                 <div class="form-group">
-                                  <label for="student_price">Room Price</label>
-                                  <input type="text" class="form-control" id="student_price" name="student_price" placeholder="Price for Students">
+                                    <label for="student_price">Student Price</label>
+                                    <input type="text" class="form-control" value="{{ old('student_price', $room->student_price) }}" id="student_price" name="student_price" placeholder="Student Price">
                                 </div>
                                 <div class="form-group d-flex flex-column">
                                     <label for="room_type">Room Type</label>

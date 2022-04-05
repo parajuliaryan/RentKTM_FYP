@@ -68,7 +68,8 @@ class RoommatesController extends Controller
         Ads::create([
             'ad_type'=> 'roommate',
             'user_id' => $user_id,
-            'roommate_id' => $newRoommate->id
+            'roommate_id' => $newRoommate->id,
+            'status' => 'pending',
         ]);
         return redirect()->back()->with('message','Roommate added Successfully.');
     }
@@ -81,7 +82,9 @@ class RoommatesController extends Controller
      */
     public function show(Roommates $roommate)
     {
-        return view('roommates.show-roommate', $roommate);
+        $features = RoommateFeatures::all()->where('roommate_id','=', $roommate->id);
+        $ads = Ads::where('roommate_id', $roommate->id)->first();
+        return view('roommates.show-roommate', compact('roommate', 'ads', 'features'));
     }
 
     /**

@@ -47,19 +47,22 @@
                                 <div class="roommate">
                                     <div class="roommate-image">
                                         {{$roommate->roommate_image}}
-                                        <img src="{{ asset($roommate->roommate_image) }}" alt="roommate-image">
+                                        <img src="{{ asset('images/'.$roommate->roommate_image) }}" alt="roommate-image">
                                     </div>
                                     <div class="roommate-texts">
                                         <div class="roommate-name">
                                             <h4>{{ $roommate->roommate_name }}</h4>
-                                            <a href="{{ route('post-ads.roommates.show', $roommate->id) }}">View Roommate</a>
                                         </div>
                                         <div class="roommate-description">
-                                            <p>{{ $roommate->roommate_description }}</p>
+                                            <p>{{ Str::limit($roommate->roommate_description, 100) }}</p>
+                                        </div>
+                                        <div class="roommate-area">
+                                            <p><i class="fa fa-map-marker" aria-hidden="true"></i> {{ $ad->roommate->area}}</p></span>
                                         </div>
                                         <div class="roommate-rent-price">
-                                            <p>Price: Nrs.{{ $roommate->roommate_rent_price }}/month</p>
+                                            <p>Rent Price: Nrs.{{ $roommate->roommate_rent_price }}/month</p>
                                         </div>
+                                        <a href="{{ route('post-ads.roommates.show', $roommate->id) }}" class="roommate-view">View Roommate</a>
                                     </div>
                                 </div>
                             @else
@@ -75,14 +78,17 @@
                                 <div class="roommate-texts">
                                     <div class="roommate-name">
                                         <h4>{{ $ad->roommate->roommate_name }}</h4>
-                                        <a href="{{ route('post-ads.roommates.show', $ad->roommate->id) }}">View Roommate</a>
                                     </div>
                                     <div class="roommate-description">
-                                        <p>{{ $ad->roommate->roommate_description }}</p>
+                                        <p>{{ Str::limit($ad->roommate->roommate_description, 100) }}</p>
                                     </div>
                                     <div class="roommate-rent-price">
-                                        <p>Price: Nrs.{{ $ad->roommate->roommate_rent_price }}/month</p>
+                                        <p> Rent Price: Nrs.{{ $ad->roommate->roommate_rent_price }}/month</p>
                                     </div>
+                                    <div class="roommate-area">
+                                        <p><i class="fa fa-map-marker" aria-hidden="true"></i> {{ $ad->roommate->area}}</p></span>
+                                    </div>
+                                    <a href="{{ route('post-ads.roommates.show', $ad->roommate->id) }}" class="roommate-view">View Roommate</a>
                                 </div>
                             </div>    
                         @endif

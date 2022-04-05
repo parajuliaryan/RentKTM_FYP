@@ -49,7 +49,6 @@
                     <label for="roommate_feature">Roommate Feature</label>
                     <input type="text" name="roommate_feature[]" class="form-control" placeholder="Add Feature (Eg: Non-Smoker)" value="" maxlength="255" />
                     <button type="button" class="btn btn-warning addMore">New Feature</button>
-                    <button type="button" class="btn btn-danger remove_button"><i class="fa fa-trash"></i></button>
                 </div>
                 <select name="gender" class="form-control" id="gender" required>
                     <option value="male">Male</option>
@@ -92,7 +91,7 @@
             var addButton = $('.addMore'); //Add button selector
             var wrapper = $('.features'); //Input field wrapper
             var fieldHTML = 
-            '<div class="form-group">'+
+            '<div class="form-group features">'+
                 '<label for="roommate_feature">Roommate Feature</label>'+
                 '<input type="text" name="roommate_feature[]" class="form-control" placeholder="Add Feature (Eg: Non-Smoker)" value="" maxlength="255" />'+
                 '<button type="button" class="btn btn-warning addMore">New Feature</button>'+
@@ -104,7 +103,7 @@
             //Once remove button is clicked
             $(wrapper).on('click', '.remove_button', function (e) {
                 e.preventDefault();
-                $(this).parent('div').parent('div').remove(); //Remove field html
+                $(this).parent('div').remove(); //Remove field html
                 x--; //Decrement field counter
             });
 
