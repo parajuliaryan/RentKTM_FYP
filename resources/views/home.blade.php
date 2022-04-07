@@ -11,7 +11,7 @@
         <img src="{{ asset('images/home.jpg') }}" class="img-fluid">
     </div>
     <div class="search-box form-group d-flex flex-direction-column justify-content-center align-items-center">
-        <form action="{{ route('search') }}">
+        <form action="{{ route('search-items') }}">
             <div class="form-group search-group">
                 <input type="search" name="search" id="search" placeholder="Search by Location">
                 <button type="submit">Search</button>

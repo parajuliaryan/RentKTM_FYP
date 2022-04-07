@@ -41,7 +41,7 @@ Route::prefix('user')->name('user.')->group(function(){
     Route::put('/profile/{id}', [UserProfileController::class, 'update'])->name('update');
 });
 
-Route::get('/search', [HomeController::class, 'search'])->name('search');
+Route::get('/searchItems', [HomeController::class, 'search'])->name('search-items');
 Route::get('/rooms', [RoomsController::class, 'index'])->name('rooms');
 Route::get('/roommates', [RoommatesController::class, 'index'])->name('roommates');
 Route::get('/post-ads', [PostAdsController::class, 'index'])->name('postAds');
