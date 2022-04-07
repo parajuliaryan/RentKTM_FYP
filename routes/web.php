@@ -14,6 +14,7 @@ use App\Http\Controllers\RoommatesController;
 use App\Http\Controllers\RoomsController;
 use App\Http\Controllers\RoomTypeController;
 use App\Http\Controllers\UserProfileController;
+use App\Models\Rooms;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -43,7 +44,9 @@ Route::prefix('user')->name('user.')->group(function(){
 
 Route::get('/searchItems', [HomeController::class, 'search'])->name('search-items');
 Route::get('/rooms', [RoomsController::class, 'index'])->name('rooms');
+Route::get('/rooms/filter',[RoomsController::class, 'filter'])->name('rooms.filter');
 Route::get('/roommates', [RoommatesController::class, 'index'])->name('roommates');
+Route::get('/roommates/filter',[RoommatesController::class, 'filter'])->name('roommates.filter');
 Route::get('/post-ads', [PostAdsController::class, 'index'])->name('postAds');
 Route::resource('/reviews', RatingReviewController::class);
 Route::prefix('post-ads')->name('post-ads.')->group(function(){

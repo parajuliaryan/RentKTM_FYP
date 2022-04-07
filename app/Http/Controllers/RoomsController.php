@@ -8,6 +8,8 @@ use App\Models\RoomImages;
 use App\Models\Rooms;
 use App\Models\RoomType;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\DB;
 
 class RoomsController extends Controller
 {
@@ -126,5 +128,41 @@ class RoomsController extends Controller
     {
         $room->delete();
         return redirect()->back()->with('message', 'Room Deleted Successfully.');
+    }
+
+    public function filter(Request $request)
+    {
+        if ($request->sort == 'latest') {
+            if ($request->room_type) {
+                $room_type = array();
+                $room_type = $request->room_type;
+                $ads = Ads::whereHas('room', function($q) use ($room_type)
+                {
+                    $q->whereIn('room_type', $room_type);
+                })->latest()->get();
+                $roomTypes = RoomType::all();
+                return view('rooms', compact('ads', 'roomTypes'));
+            }else{
+                $ads = Ads::where('ad_type','=','room')->latest()->get();
+                $roomTypes = RoomType::all();
+                return view('rooms', compact('ads', 'roomTypes'));
+            }
+        }else if ($request->sort == 'oldest') {
+            if ($request->room_type) {
+                $room_type = array();
+                $room_type = $request->room_type;
+                $ads = Ads::whereHas('room', function($q) use ($room_type)
+                {
+                    $q->whereIn('room_type', $room_type);
+                })->oldest()->get();
+                $roomTypes = RoomType::all();
+                return view('rooms', compact('ads', 'roomTypes'));
+            }else{
+                $ads = Ads::where('ad_type','=','room')->oldest()->get();
+                $roomTypes = RoomType::all();
+                return view('rooms', compact('ads', 'roomTypes'));
+            }
+        }
+        
     }
 }

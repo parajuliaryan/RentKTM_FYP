@@ -180,14 +180,11 @@ body{
   color: #c59b08;
   }
 
-  /* .rating-container .form-control:hover, .rating-container .form-control:focus{
-  background: #fff;
-  border: 1px solid #ced4da;
+  .send-message a{
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: bold;
   }
-
-  .rating-container textarea:focus, .rating-container input:focus {
-  color: #000;
-  } */
 
 @media all and (max-width: 767px) {
   .carousel-container #carousel-thumbs img {

@@ -109,6 +109,18 @@
     color: #000000;
 }
 
+.filter-button button{
+    padding: 5px;
+    background-color: #000000;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.filter-button button:hover{
+    background-color: #ffffff;
+    color: #000000;
+}
+
 @media (min-width: 769px) {
     .page-wrapper{
         flex-direction: row;

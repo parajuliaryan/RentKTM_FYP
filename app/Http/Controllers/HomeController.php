@@ -35,8 +35,10 @@ class HomeController extends Controller
         if ($request['search-value'] == 'roommates') {
             $search = $request['search'] ?? "";
             if ($search != "") {
-                $ads = Ads::all()->where('ad_type','=', 'roommate');
-                $roommates = Roommates::where('area','LIKE', "%$search%")->get();
+                $ads = Ads::whereHas('roommate', function($q) use ($search)
+                {
+                    $q->where('area','LIKE',"%$search%");
+                })->get();
             }else{
                 $ads = Ads::all()->where('ad_type','=', 'roommate');
             }
@@ -45,8 +47,11 @@ class HomeController extends Controller
         }elseif ($request['search-value'] == 'rooms') {
             $search = $request['search'] ?? "";
             if ($search != "") {
-                $ads = Ads::all()->where('ad_type','=', 'room');
-                $rooms = Rooms::where('area','LIKE', "%$search%")->get();
+                $ads = Ads::whereHas('room', function($q) use ($search)
+                {
+                    $q->where('area','LIKE',"%$search%");
+                })->get();
+
             }else{
                 $ads = Ads::all()->where('ad_type','=', 'room');
             }

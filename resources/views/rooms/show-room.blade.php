@@ -98,33 +98,33 @@ $index = 0;
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="exampleModalLabel">Room Review</h5>
-              <button type="button" class="close btn-danger" data-dismiss="modal" aria-label="Close" >
+              <button type="button" class="close btn-danger" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <form action="{{ route('reviews.store') }}" method="POST">
               @csrf
-            <div class="modal-body">
+              <div class="modal-body">
                 <div class="rate">
                   <input type="hidden" name="room_id" value="{{ $room->id }}">
-                  <input type="radio" id="star5" class="rate" name="rating" value="5"/>
+                  <input type="radio" id="star5" class="rate" name="rating" value="5" />
                   <label for="star5" title="text">5 stars</label>
-                  <input type="radio" checked id="star4" class="rate" name="rating" value="4"/>
+                  <input type="radio" checked id="star4" class="rate" name="rating" value="4" />
                   <label for="star4" title="text">4 stars</label>
-                  <input type="radio" id="star3" class="rate" name="rating" value="3"/>
+                  <input type="radio" id="star3" class="rate" name="rating" value="3" />
                   <label for="star3" title="text">3 stars</label>
                   <input type="radio" id="star2" class="rate" name="rating" value="2">
                   <label for="star2" title="text">2 stars</label>
-                  <input type="radio" id="star1" class="rate" name="rating" value="1"/>
+                  <input type="radio" id="star1" class="rate" name="rating" value="1" />
                   <label for="star1" title="text">1 star</label>
+                </div>
+                <textarea name="room_review" id="room_review" cols="50" rows="10" placeholder="Write Review"></textarea>
               </div>
-              <textarea name="room_review" id="room_review" cols="50" rows="10" placeholder="Write Review"></textarea>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary">Save changes</button>
-            </div>
-          </form>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save changes</button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
@@ -153,6 +153,9 @@ $index = 0;
       <div class="room-type">
         <h4>Room Type</h4>
         <p>{{ $room->room_type }}</p>
+      </div>
+      <div class="send-message">
+        <i class="fa fa-message"></i> <a href="{{ route('chatify') }}">Send Message</a>
       </div>
     </div>
   </div>
