@@ -15,7 +15,7 @@ class RoomsController extends Controller
 {
     public function index()
     {
-        $ads = Ads::all()->where('ad_type','=','room');
+        $ads = Ads::all()->where('ad_type', '=', 'room');
         $roomTypes = RoomType::all();
         return view('rooms', compact('ads', 'roomTypes'));
     }
@@ -29,7 +29,7 @@ class RoomsController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'room_title'=> 'required',
+            'room_title' => 'required',
             'room_description' => 'required',
             'room_price' => 'required',
             'room_type' => 'required',
@@ -73,7 +73,7 @@ class RoomsController extends Controller
         return redirect()->back()->with('message', 'Room added Successfully.');
     }
 
-        /**
+    /**
      * Display the specified resource.
      *
      * @param  \App\Models\Rooms  $room
@@ -81,7 +81,7 @@ class RoomsController extends Controller
      */
     public function show(Rooms $room)
     {
-        $images = RoomImages::where('room_id',$room->id)->first();
+        $images = RoomImages::where('room_id', $room->id)->first();
         $ads = Ads::where('room_id', $room->id)->first();
         $reviews = RatingReview::where('room_id', $room->id)->get();
         return view('rooms.show-room', compact('room', 'images', 'ads', 'reviews'));
@@ -134,35 +134,82 @@ class RoomsController extends Controller
     {
         if ($request->sort == 'latest') {
             if ($request->room_type) {
-                $room_type = array();
-                $room_type = $request->room_type;
-                $ads = Ads::whereHas('room', function($q) use ($room_type)
-                {
-                    $q->whereIn('room_type', $room_type);
-                })->latest()->get();
-                $roomTypes = RoomType::all();
-                return view('rooms', compact('ads', 'roomTypes'));
-            }else{
-                $ads = Ads::where('ad_type','=','room')->latest()->get();
-                $roomTypes = RoomType::all();
-                return view('rooms', compact('ads', 'roomTypes'));
+                if ($request->min_price && $request->max_price) {
+                    $room_type = array();
+                    $room_type = $request->room_type;
+                    $max_price = $request->max_price;
+                    $min_price = $request->min_price;
+                    $ads = Ads::whereHas('room', function ($q) use ($room_type, $min_price, $max_price) {
+                        $q = $q->whereIn('room_type', $room_type);
+                        $q = $q->where('room_price','<=',$max_price);
+                        $q = $q->where('room_price','>=', $min_price); 
+                    })->latest()->get();
+                    $roomTypes = RoomType::all();
+                    return view('rooms', compact('ads', 'roomTypes'));
+                } else {
+                    $room_type = array();
+                    $room_type = $request->room_type;
+                    $ads = Ads::whereHas('room', function ($q) use ($room_type) {
+                        $q->whereIn('room_type', $room_type);
+                    })->latest()->get();
+                    $roomTypes = RoomType::all();
+                    return view('rooms', compact('ads', 'roomTypes'));
+                }
+            } else {
+                if ($request->min_price && $request->max_price) {
+                    $max_price = $request->max_price;
+                    $min_price = $request->min_price;
+                    $ads = Ads::whereHas('room', function ($q) use ($min_price, $max_price) {
+                        $q = $q->where('room_price','<=',$max_price);
+                        $q = $q->where('room_price','>=', $min_price); 
+                    })->latest()->get();
+                    $roomTypes = RoomType::all();
+                    return view('rooms', compact('ads', 'roomTypes'));
+                }else{
+                    $ads = Ads::where('ad_type', '=', 'room')->latest()->get();
+                    $roomTypes = RoomType::all();
+                    return view('rooms', compact('ads', 'roomTypes'));
+                }
             }
-        }else if ($request->sort == 'oldest') {
+        } else if ($request->sort == 'oldest') {
             if ($request->room_type) {
-                $room_type = array();
-                $room_type = $request->room_type;
-                $ads = Ads::whereHas('room', function($q) use ($room_type)
-                {
-                    $q->whereIn('room_type', $room_type);
-                })->oldest()->get();
-                $roomTypes = RoomType::all();
-                return view('rooms', compact('ads', 'roomTypes'));
-            }else{
-                $ads = Ads::where('ad_type','=','room')->oldest()->get();
-                $roomTypes = RoomType::all();
-                return view('rooms', compact('ads', 'roomTypes'));
+                if ($request->min_price && $request->max_price) {
+                    $room_type = array();
+                    $room_type = $request->room_type;
+                    $max_price = $request->max_price;
+                    $min_price = $request->min_price;
+                    $ads = Ads::whereHas('room', function ($q) use ($room_type, $min_price, $max_price) {
+                        $q = $q->whereIn('room_type', $room_type);
+                        $q = $q->where('room_price','<=',$max_price);
+                        $q = $q->where('room_price','>=', $min_price); 
+                    })->oldest()->get();
+                    $roomTypes = RoomType::all();
+                    return view('rooms', compact('ads', 'roomTypes'));
+                } else {
+                    $room_type = array();
+                    $room_type = $request->room_type;
+                    $ads = Ads::whereHas('room', function ($q) use ($room_type) {
+                        $q->whereIn('room_type', $room_type);
+                    })->oldest()->get();
+                    $roomTypes = RoomType::all();
+                    return view('rooms', compact('ads', 'roomTypes'));
+                }
+            } else {
+                if ($request->min_price && $request->max_price) {
+                    $max_price = $request->max_price;
+                    $min_price = $request->min_price;
+                    $ads = Ads::whereHas('room', function ($q) use ($min_price, $max_price) {
+                        $q = $q->where('room_price','<=',$max_price);
+                        $q = $q->where('room_price','>=', $min_price); 
+                    })->oldest()->get();
+                    $roomTypes = RoomType::all();
+                    return view('rooms', compact('ads', 'roomTypes'));
+                }else{
+                    $ads = Ads::where('ad_type', '=', 'room')->oldest()->get();
+                    $roomTypes = RoomType::all();
+                    return view('rooms', compact('ads', 'roomTypes'));
+                }
             }
         }
-        
     }
 }

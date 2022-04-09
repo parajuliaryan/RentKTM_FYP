@@ -1,4 +1,4 @@
-.page-wrapper{
+.page-wrapper {
     display: flex;
     flex-direction: column;
     min-width: 320px;
@@ -6,7 +6,7 @@
     width: 100%;
 }
 
-.main-container{
+.main-container {
     display: flex;
     flex-direction: column;
     min-width: 320px;
@@ -15,141 +15,236 @@
     margin: 20px 0px;
 }
 
-.filterbar{
+.filterbar {
     display: flex;
     justify-content: space-around;
-    background: #FAFAFA;
+    background: #fafafa;
     padding-left: 15px;
+    padding-right: 15px;
 }
 
-.filter-title{
+.filter-title {
     display: none;
 }
 
-.filter-option{
+.filter-option {
     margin-bottom: 20px;
 }
 
-.filter-option p{
+.filter-option p {
     font-weight: 500;
     font-size: 1.2rem;
 }
 
-.filter-option .form-group label{
+.filter-option .form-group label {
     font-size: 1rem;
 }
 
-.rooms-container{
+.rooms-container {
     max-width: 1200px;
     margin: 0 auto;
 }
 
-.rooms-holder{
+.rooms-holder {
     max-width: 1200px;
     display: grid;
     grid-gap: 1rem;
 }
 
-.room{
-    background: #FAFAFA;
+.room {
+    background: #fafafa;
     display: flex;
     padding: 1rem;
     flex-direction: column;
     border-radius: 10px;
 }
 
-.room img{
+.room img {
     height: 200px;
     width: 100%;
     object-fit: cover;
 }
 
-.room-title{
+.room-title {
     display: flex;
     justify-content: space-between;
 }
 
-.room-title h3{
+.room-title h3 {
     font-weight: bold;
 }
 
-.room-text{
+.room-text {
     margin-top: 10px;
     padding: 5px;
 }
 
-.room-text h4{
+.room-text h4 {
     font-weight: bold;
 }
 
-.room-btns a{
+.room-btns a {
     padding: 5px;
     background-color: #000000;
     color: #ffffff;
     text-decoration: none;
 }
 
-.filter-button button{
+.filter-button button {
     padding: 5px;
     background-color: #000000;
     color: #ffffff;
     text-decoration: none;
 }
 
-.filter-button button:hover{
+.filter-button button:hover {
     background-color: #ffffff;
     color: #000000;
 }
 
-.room-btns a:hover{
+.room-btns a:hover {
     background-color: #ffffff;
     color: #000000;
 }
 
-.rate-text{
+.rate-text {
     font-size: 1rem;
     font-weight: 500;
     text-align: justify;
 }
 
+/* Filter price */
+.price-input {
+    width: 100%;
+    display: flex;
+    margin: 30px 0 35px;
+}
+
+.price-input .field {
+    display: flex;
+    width: 100%;
+    height: 45px;
+    align-items: center;
+}
+
+.field input {
+    width: 100%;
+    height: 100%;
+    outline: none;
+    font-size: 19px;
+    margin-left: 12px;
+    border-radius: 5px;
+    text-align: center;
+    border: 1px solid #999;
+    -moz-appearance: textfield;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+.price-input .separator {
+    width: 130px;
+    display: flex;
+    font-size: 19px;
+    align-items: center;
+    justify-content: center;
+}
+
+.slider {
+    height: 5px;
+    position: relative;
+    background: #ddd;
+    border-radius: 5px;
+}
+
+.slider .progress {
+    height: 100%;
+    left: 25%;
+    right: 25%;
+    position: absolute;
+    border-radius: 5px;
+    background: #17a2b8;
+}
+
+.range-input {
+    position: relative;
+}
+
+.range-input input {
+    position: absolute;
+    width: 100%;
+    height: 5px;
+    top: -5px;
+    background: none;
+    pointer-events: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    height: 17px;
+    width: 17px;
+    border-radius: 50%;
+    background: #17a2b8;
+    pointer-events: auto;
+    -webkit-appearance: none;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.05);
+}
+
+input[type="range"]::-moz-range-thumb {
+    height: 17px;
+    width: 17px;
+    border: none;
+    border-radius: 50%;
+    background: #17a2b8;
+    pointer-events: auto;
+    -moz-appearance: none;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.05);
+}
 
 @media (min-width: 600px) {
     .rooms-holder {
-        grid-template-columns: repeat(2, 1fr); 
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media (min-width: 900px) {
-    .page-wrapper{
+    .page-wrapper {
         flex-direction: row;
         justify-content: center;
     }
 
-    .main-container{
+    .main-container {
         flex-direction: row;
         padding: 24px;
     }
 
-    .filterbar{
+    .filterbar {
         justify-content: flex-start;
         flex-direction: column;
         min-width: 280px;
     }
 
-    .filter-title{
+    .filter-option{
+        max-width: 280px;
+    }
+
+    .filter-title {
         display: flex;
         margin-bottom: 20px;
     }
 
-    .filter-option p{
-        border-bottom: 2px solid #E5E7EB;
+    .filter-option p {
+        border-bottom: 2px solid #e5e7eb;
     }
 
-    .filter-title h3{
+    .filter-title h3 {
         font-weight: bold;
     }
 
-    .rooms-holder { 
-        grid-template-columns: repeat(3, 1fr); 
+    .rooms-holder {
+        grid-template-columns: repeat(3, 1fr);
     }
 }

@@ -154,4 +154,15 @@ class RoommatesController extends Controller
         $roommate->delete();
         return redirect()->route('user.index')->with('message','Roommate Deleted Successfully.');
     }
+
+    public function filter(Request $request)
+    {
+        if ($request->sort == 'latest') {
+            $ads = Ads::where('ad_type', '=', 'roommate')->latest()->get();
+            return view('roommates', compact('ads'));
+        } else if ($request->sort == 'oldest') {
+            $ads = Ads::where('ad_type', '=', 'roommate')->oldest()->get();
+            return view('roommates', compact('ads'));
+        }
+    }
 }
