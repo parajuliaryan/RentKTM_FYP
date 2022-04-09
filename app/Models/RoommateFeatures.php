@@ -14,6 +14,6 @@ class RoommateFeatures extends Model
     ];
 
     public function roommate(){
-        $this->belongsTo(Roommates::class);
+       return $this->belongsTo(Roommates::class);
     }
 }

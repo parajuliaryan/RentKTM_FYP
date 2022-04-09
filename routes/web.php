@@ -35,6 +35,7 @@ Route::get('/', function () {
 
 Auth::routes();
 //auth middleware for authenticated user, isAdmin for admin
+
 //user profile routes
 Route::prefix('user')->name('user.')->group(function(){
     Route::get('/profile', [UserProfileController::class, 'index'])->name('index');
@@ -48,8 +49,8 @@ Route::get('/rooms/filter',[RoomsController::class, 'filter'])->name('rooms.filt
 Route::get('/roommates', [RoommatesController::class, 'index'])->name('roommates');
 Route::get('/roommates/filter',[RoommatesController::class, 'filter'])->name('roommates.filter');
 Route::get('/post-ads', [PostAdsController::class, 'index'])->name('postAds');
-Route::resource('/reviews', RatingReviewController::class);
-Route::prefix('post-ads')->name('post-ads.')->group(function(){
+Route::resource('/reviews', RatingReviewController::class)->middleware('auth');
+Route::prefix('post-ads')->name('post-ads.')->middleware('auth')->group(function(){
     Route::get('/',[PostAdsController::class , 'index'])->name('index');
     Route::resource('/rooms', RoomsController::class);
     Route::resource('/roommates', RoommatesController::class);

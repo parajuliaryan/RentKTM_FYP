@@ -124,7 +124,6 @@ class AdminRoommatesController extends Controller
             'roommate_age' => 'required',
             'roommate_rent_price' => 'required',
             'roommate_description' => 'required',
-            'roommate_features' => 'required',
             'gender' => 'required',
             'contact_number' => 'required',
             'city' => 'required',
@@ -132,23 +131,18 @@ class AdminRoommatesController extends Controller
             'area' => 'required',
             'tole' => 'required',
         ]);
-
-        $imageName = time().'.'.$request->roommate_image->extension();  
-        $request->roommate_image->move(public_path('images'), $imageName);
-    
+  
         $roommate->update([
             'roommate_name' => $request->roommate_name,
             'roommate_age' => $request->roommate_age,
             'roommate_rent_price' => $request->roommate_rent_price,
             'roommate_description' => $request->roommate_description,
-            'roommate_features' => $request->roommate_features,
             'gender' => $request->gender,
             'contact_number' => $request->contact_number,
             'city' => $request->city,
             'ward' => $request->ward,
             'area' => $request->area,
             'tole' => $request->tole,
-            'roommate_image'=> $imageName,
         ]);
 
         return redirect()->route('admin.roommates.index')->with('message','Roommate Updated Successfully.');

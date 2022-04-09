@@ -23,6 +23,6 @@ class Roommates extends Model
     ];
 
     public function features(){
-        $this->hasMany(RoommateFeatures::class, 'roommate_id');
+        return $this->hasMany(RoommateFeatures::class, 'roommate_id');
     }
 }

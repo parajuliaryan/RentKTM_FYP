@@ -5,6 +5,9 @@
 @if(session()->has('message'))
 <div class="alert alert-success">
     {{ session()->get('message') }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
 </div>
 @endif
 @if(count($errors) > 0)
@@ -47,7 +50,8 @@
                 </div>
                 <div class="form-group features">
                     <label for="roommate_feature">Roommate Feature</label>
-                    <input type="text" name="roommate_feature[]" class="form-control" placeholder="Add Feature (Eg: Non-Smoker)" value="" maxlength="255" />
+                    <input type="text" name="roommate_feature[]" class="form-control"
+                        placeholder="Add Feature (Eg: Non-Smoker)" value="" maxlength="255" />
                     <button type="button" class="btn btn-warning addMore">New Feature</button>
                 </div>
                 <select name="gender" class="form-control" id="gender" required>
@@ -86,7 +90,7 @@
 </div>
 @include('layouts.footer')
 <script type="text/javascript">
-            $(document).ready(function () {
+    $(document).ready(function () {
             console.log('Document works');
             var addButton = $('.addMore'); //Add button selector
             var wrapper = $('.features'); //Input field wrapper

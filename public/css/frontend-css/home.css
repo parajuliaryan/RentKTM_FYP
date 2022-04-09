@@ -53,17 +53,18 @@
 }
 
 .search-group button{
-    background: #035EA5;
+    background: #000000;
     border: 1px solid #9FA5A8;
     width: 65px;
     height: 38px;
     box-sizing: border-box;
     border-radius: 4px;
-    color: #F9F9F9;
+    color: #ffffff;
 }
 
 .search-group button:hover{
-    background: #01335a;
+    background: #ffffff;
+    color: #000000;
 }
 
 .radio-group{

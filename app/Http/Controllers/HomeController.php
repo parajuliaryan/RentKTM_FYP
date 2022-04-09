@@ -42,7 +42,7 @@ class HomeController extends Controller
             }else{
                 $ads = Ads::all()->where('ad_type','=', 'roommate');
             }
-            return view('roommates', compact('ads, search')); 
+            return view('roommates', compact('ads', 'search')); 
 
         }elseif ($request['search-value'] == 'rooms') {
             $search = $request['search'] ?? "";

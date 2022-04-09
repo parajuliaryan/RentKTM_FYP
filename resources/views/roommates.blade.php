@@ -59,7 +59,6 @@
                 @if ($ad->roommate != null)
                 <div class="roommate">
                     <div class="roommate-image">
-                        {{$ad->roommate->roommate_image}}
                         <img src="{{ asset('images/'.$ad->roommate->roommate_image) }}" alt="roommate-image">
                     </div>
                     <div class="roommate-texts">

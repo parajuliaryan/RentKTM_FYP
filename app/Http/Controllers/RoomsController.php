@@ -8,8 +8,6 @@ use App\Models\RoomImages;
 use App\Models\Rooms;
 use App\Models\RoomType;
 use Illuminate\Http\Request;
-use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\DB;
 
 class RoomsController extends Controller
 {

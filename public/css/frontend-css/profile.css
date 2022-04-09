@@ -5,6 +5,7 @@
     justify-content: center;
     min-width: 320px;
     width: 100%;
+    background: #ffffff;
 }
 
 .user-info{
@@ -16,7 +17,8 @@
     margin-top: 20px;
     width: 100%;
     max-width: 400px;
-    background-color: #ffffff;
+    background: #FAFAFA;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
 }
 
 .image-container{
@@ -46,8 +48,16 @@
 
 .text-container .edit-btn a{
     border-radius: 5px;
-    padding: 5px;
+    padding: 10px;
     letter-spacing: 2px;
+    font-size: 1rem;
+    background: #000000;
+    color: #ffffff;
+}
+
+.text-container .edit-btn a:hover{
+    background: #ffffff;
+    color: #000000;
 }
 
 .ad-container{
@@ -65,7 +75,10 @@
     align-items: center;
     width: 100%;
     margin-top: 10px;
-    background-color: #ffffff;
+    margin-bottom: 40px;
+    padding: 15px;
+    background: #FAFAFA;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
 }
 
 .ad-topic{
@@ -83,12 +96,23 @@
 
 .ad-image{
     max-width: 320px;
-    /* height: 320px; */
+    min-width: 300px;
 }
 
 .ad-about{
+    text-align: justify;
     margin-top: 10px;
+    margin-left: 20px;
 }
+
+.ad-about h3{
+    font-weight: bold;
+}
+
+.ad-about p{
+    font-size: 1rem;
+}
+
 
 @media only screen and (min-width: 769px){
     .ad-container{
@@ -99,7 +123,6 @@
 
     .ad{
         flex-direction: row;
-        justify-content: space-around;
     }
 
     .ad-topic{
@@ -120,5 +143,8 @@
         align-items: flex-start;
         justify-content: space-around;
     }
-
+    
+    .user-info{
+        margin-top: 120px;
+    }
 }
