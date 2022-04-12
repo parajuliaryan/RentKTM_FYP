@@ -10,8 +10,9 @@ use Illuminate\Http\Request;
 class RoommatesController extends Controller
 {
     public function index(){
+        $max = Roommates::max('roommate_rent_price');
         $ads = Ads::all()->where('ad_type','=','roommate');
-        return view('roommates', compact('ads'));
+        return view('roommates', compact('ads', 'max'));
     }
 
     public function create(){
@@ -157,12 +158,35 @@ class RoommatesController extends Controller
 
     public function filter(Request $request)
     {
+        $max = Roommates::max('roommate_rent_price');
         if ($request->sort == 'latest') {
-            $ads = Ads::where('ad_type', '=', 'roommate')->latest()->get();
-            return view('roommates', compact('ads'));
+            if ($request->min_price && $request->max_price) {
+                $max_price = $request->max_price;
+                $min_price = $request->min_price;
+                $ads = Ads::whereHas('roommate', function ($q) use ($min_price, $max_price) {
+                    $q = $q->where('roommate_rent_price','<=',$max_price);
+                    $q = $q->where('roommate_rent_price','>=', $min_price); 
+                })->latest()->get();
+                return view('roommates', compact('ads', 'max'));
+            }else{
+                $ads = Ads::where('ad_type', '=', 'roommate')->latest()->get();
+                return view('roommates', compact('ads','max'));
+            }
         } else if ($request->sort == 'oldest') {
-            $ads = Ads::where('ad_type', '=', 'roommate')->oldest()->get();
-            return view('roommates', compact('ads'));
+            if ($request->min_price && $request->max_price) {
+                $max_price = $request->max_price;
+                $min_price = $request->min_price;
+                $ads = Ads::whereHas('roommate', function ($q) use ($min_price, $max_price) {
+                    $q = $q->where('roommate_rent_price','<=',$max_price);
+                    $q = $q->where('roommate_rent_price','>=', $min_price); 
+                })->latest()->get();
+                return view('roommates', compact('ads', 'max'));
+            }else{
+                $ads = Ads::where('ad_type', '=', 'roommate')->oldest()->get();
+                return view('roommates', compact('ads', 'max'));
+            }
+            
+
         }
     }
 }

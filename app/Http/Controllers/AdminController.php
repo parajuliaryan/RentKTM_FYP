@@ -14,7 +14,7 @@ class AdminController extends Controller
         $rooms = Rooms::all();
         $roommates = Roommates::all();
         $users = User::all();
-        $ads = Ads::all();
+        $ads = Ads::all()->where('status','pending');
         return view('admin.dashboard', compact('rooms','roommates','users','ads'));
     }
 }
