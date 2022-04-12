@@ -15,7 +15,8 @@ class RoomsController extends Controller
     {
         $ads = Ads::all()->where('ad_type', '=', 'room');
         $roomTypes = RoomType::all();
-        return view('rooms', compact('ads', 'roomTypes'));
+        $max = Rooms::max('room_price');
+        return view('rooms', compact('ads', 'roomTypes','max'));
     }
 
     public function create()
@@ -130,6 +131,7 @@ class RoomsController extends Controller
 
     public function filter(Request $request)
     {
+        $max = Rooms::max('room_price');
         if ($request->sort == 'latest') {
             if ($request->room_type) {
                 if ($request->min_price && $request->max_price) {
@@ -143,7 +145,7 @@ class RoomsController extends Controller
                         $q = $q->where('room_price','>=', $min_price); 
                     })->latest()->get();
                     $roomTypes = RoomType::all();
-                    return view('rooms', compact('ads', 'roomTypes'));
+                    return view('rooms', compact('ads', 'roomTypes', 'max'));
                 } else {
                     $room_type = array();
                     $room_type = $request->room_type;
@@ -151,7 +153,7 @@ class RoomsController extends Controller
                         $q->whereIn('room_type', $room_type);
                     })->latest()->get();
                     $roomTypes = RoomType::all();
-                    return view('rooms', compact('ads', 'roomTypes'));
+                    return view('rooms', compact('ads', 'roomTypes','max'));
                 }
             } else {
                 if ($request->min_price && $request->max_price) {
@@ -162,11 +164,11 @@ class RoomsController extends Controller
                         $q = $q->where('room_price','>=', $min_price); 
                     })->latest()->get();
                     $roomTypes = RoomType::all();
-                    return view('rooms', compact('ads', 'roomTypes'));
+                    return view('rooms', compact('ads', 'roomTypes','max'));
                 }else{
                     $ads = Ads::where('ad_type', '=', 'room')->latest()->get();
                     $roomTypes = RoomType::all();
-                    return view('rooms', compact('ads', 'roomTypes'));
+                    return view('rooms', compact('ads', 'roomTypes','max'));
                 }
             }
         } else if ($request->sort == 'oldest') {
@@ -182,7 +184,7 @@ class RoomsController extends Controller
                         $q = $q->where('room_price','>=', $min_price); 
                     })->oldest()->get();
                     $roomTypes = RoomType::all();
-                    return view('rooms', compact('ads', 'roomTypes'));
+                    return view('rooms', compact('ads', 'roomTypes','max'));
                 } else {
                     $room_type = array();
                     $room_type = $request->room_type;
@@ -190,7 +192,7 @@ class RoomsController extends Controller
                         $q->whereIn('room_type', $room_type);
                     })->oldest()->get();
                     $roomTypes = RoomType::all();
-                    return view('rooms', compact('ads', 'roomTypes'));
+                    return view('rooms', compact('ads', 'roomTypes','max'));
                 }
             } else {
                 if ($request->min_price && $request->max_price) {
@@ -201,13 +203,14 @@ class RoomsController extends Controller
                         $q = $q->where('room_price','>=', $min_price); 
                     })->oldest()->get();
                     $roomTypes = RoomType::all();
-                    return view('rooms', compact('ads', 'roomTypes'));
+                    return view('rooms', compact('ads', 'roomTypes','max'));
                 }else{
                     $ads = Ads::where('ad_type', '=', 'room')->oldest()->get();
                     $roomTypes = RoomType::all();
-                    return view('rooms', compact('ads', 'roomTypes'));
+                    return view('rooms', compact('ads', 'roomTypes','max'));
                 }
             }
         }
     }
+    
 }

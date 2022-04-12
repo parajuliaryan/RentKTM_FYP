@@ -104,36 +104,50 @@
     <div class="top-areas">
         <h2>Top Areas in Kathmandu</h2>
         <div class="cards-wrapper d-flex justify-content-between w-100">
+            <a href="#" style="text-decoration: none">
+                <div class="card area-card" style="width: 14rem;">
+                    <img class="card-img-top" src="{{ asset('images/new road.jpg') }}" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Koteshwor</h5>
+                    </div>
+                </div>
+            </a>
+
+            <a href="#" style="text-decoration: none">
+            <div class="card area-card" style="width: 14rem;">
+                <img class="card-img-top" src="{{ asset('images/new road.jpg') }}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Baneshwor</h5>
+                </div>
+            </div>
+            </a>
+
+            <a href="#" style="text-decoration: none">
             <div class="card area-card" style="width: 14rem;">
                 <img class="card-img-top" src="{{ asset('images/new road.jpg') }}" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title">New Road</h5>
                 </div>
             </div>
+            </a>
+
+            <a href="#" style="text-decoration: none">
             <div class="card area-card" style="width: 14rem;">
                 <img class="card-img-top" src="{{ asset('images/new road.jpg') }}" alt="Card image cap">
                 <div class="card-body">
-                    <h5 class="card-title">New Road</h5>
+                    <h5 class="card-title">Dillibazar</h5>
                 </div>
             </div>
+            </a>
+
+            <a href="#" style="text-decoration: none">
             <div class="card area-card" style="width: 14rem;">
                 <img class="card-img-top" src="{{ asset('images/new road.jpg') }}" alt="Card image cap">
                 <div class="card-body">
-                    <h5 class="card-title">New Road</h5>
+                    <h5 class="card-title">Sinamangal</h5>
                 </div>
             </div>
-            <div class="card area-card" style="width: 14rem;">
-                <img class="card-img-top" src="{{ asset('images/new road.jpg') }}" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">New Road</h5>
-                </div>
-            </div>
-            <div class="card area-card" style="width: 14rem;">
-                <img class="card-img-top" src="{{ asset('images/new road.jpg') }}" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">New Road</h5>
-                </div>
-            </div>
+            </a>
         </div>
     </div>
 
