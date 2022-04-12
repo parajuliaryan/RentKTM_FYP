@@ -19,8 +19,6 @@
         <!-- Page wrapper  -->
         <!-- ============================================================== -->
         <div class="page-wrapper">
-            <!-- ============================================================== -->
-            <!-- ============================================================== -->
             <!-- Container fluid  -->
             <!-- ============================================================== -->
             <div class="container-fluid">
@@ -30,39 +28,27 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="white-box">
-                            <h3 class="box-title">Ad Details</h3>
-                            <form action="{{ route('admin.ad-requests.update', $id) }}" method="POST">
-                                @method('PUT')
-                                @csrf
-                                <div class="form-group">
-                                  <label for="ad_type">Ad Type</label>
-                                  <input type="text" class="form-control" id="ad_type" value="{{ old('ad_type', $ad_type) }}" name="ad_type" readonly>
-                                </div>
-                                <div class="form-group">
-                                  <label for="user">User ID</label>
-                                  <input type="text" class="form-control" id="user" value="{{ old('user_id', $user_id) }}" name="user_id" readonly>
-                                </div>
-                                @if ($room_id != null)
-                                    <div class="form-group">
-                                        <label for="room">Room ID</label>
-                                        <input type="text" class="form-control" id="room" value="{{ old('room_id', $room_id) }}" name="room_id" readonly>
-                                    </div>
-                                @endif
-                                @if ($roommate_id != null)
-                                    <div class="form-group">
-                                        <label for="roommate">Roommate ID</label>
-                                        <input type="text" class="form-control" id="roommate" value="{{ old('roommate_id', $roommate_id) }}" name="roommate_id" readonly>
-                                    </div>
-                                @endif
-                                <div class="form-group">
-                                    <select name="status" id="status">
-                                        <option value="pending">Pending</option>
-                                        <option value="approved">Approved</option>
-                                        <option value="disapproved">Disapproved</option>
-                                    </select>
-                                </div>
-                                <button type="submit" class="btn btn-primary">Update</button>
-                              </form>
+                            <h3 class="box-title">Review Details</h3>
+                            <table class="table table-striped">
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">Room Title</th>
+                                        <td>{{ $review->room->room_title }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Posted By</th>
+                                        <td>{{ $review->user->first_name .' '. $review->user->last_name }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Rating</th>
+                                        <td>{{ $review->room_rating }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Review</th>
+                                        <td>{{ $review->room_review }}</td>
+                                    </tr>
+                                </tbody>
+                              </table>
                         </div>
                     </div>
                 </div>

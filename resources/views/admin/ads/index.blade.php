@@ -1,117 +1,138 @@
 @include('admin.backend-imports')
 @include('admin.nav')
-    <!-- ============================================================== -->
-    <!-- Preloader - style you can find in spinners.css -->
-    <!-- ============================================================== -->
-    <div class="preloader">
-        <div class="lds-ripple">
-            <div class="lds-pos"></div>
-            <div class="lds-pos"></div>
-        </div>
+<!-- ============================================================== -->
+<!-- Preloader - style you can find in spinners.css -->
+<!-- ============================================================== -->
+<div class="preloader">
+    <div class="lds-ripple">
+        <div class="lds-pos"></div>
+        <div class="lds-pos"></div>
     </div>
+</div>
+<!-- ============================================================== -->
+<!-- Main wrapper - style you can find in pages.scss -->
+<!-- ============================================================== -->
+<div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
+    data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
+    @include('admin.sidemenu')
     <!-- ============================================================== -->
-    <!-- Main wrapper - style you can find in pages.scss -->
+    <!-- Page wrapper  -->
     <!-- ============================================================== -->
-    <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
-        data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
-        @include('admin.sidemenu')
+    <div class="page-wrapper">
         <!-- ============================================================== -->
-        <!-- Page wrapper  -->
+        <!-- Bread crumb and right sidebar toggle -->
         <!-- ============================================================== -->
-        <div class="page-wrapper">
-            <!-- ============================================================== -->
-            <!-- Bread crumb and right sidebar toggle -->
-            <!-- ============================================================== -->
-            <div class="page-breadcrumb bg-white">
-                <div class="row align-items-center">
-                    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">ADS</h4>
-                    </div>
+        <div class="page-breadcrumb bg-white">
+            <div class="row align-items-center">
+                <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                    <h4 class="page-title">ADS</h4>
                 </div>
-                <!-- /.col-lg-12 -->
             </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Container fluid  -->
+        <!-- ============================================================== -->
+        <div class="container-fluid">
+            @if(session()->has('message'))
+            <div class="alert alert-success">
+                {{ session()->get('message') }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            @endif
+            @if(count($errors) > 0)
+            <div class="p-1">
+                @foreach($errors->all() as $error)
+                <div class="alert alert-warning alert-danger fade show" role="alert">{{$error}} <button type="button"
+                        class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button></div>
+                @endforeach
+            </div>
+            @endif
             <!-- ============================================================== -->
-            <!-- End Bread crumb and right sidebar toggle -->
+            <!-- Start Page Content -->
             <!-- ============================================================== -->
-            <!-- ============================================================== -->
-            <!-- Container fluid  -->
-            <!-- ============================================================== -->
-            <div class="container-fluid">
-                <!-- ============================================================== -->
-                <!-- Start Page Content -->
-                <!-- ============================================================== -->
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="white-box">
-                            <h3 class="box-title">Ads List</h3>
-                            <div class="table-responsive">
-                                <table class="table text-nowrap">
-                                    <thead>
-                                        <tr>
-                                            <th class="border-top-0">Ad ID</th>
-                                            <th class="border-top-0">Ad Type</th>
-                                            <th class="border-top-0">User Name</th>
-                                            <th class="border-top-0">Room ID</th>
-                                            <th class="border-top-0">Roomate ID</th>
-                                            <th class="border-top-0">Status</th>
-                                            <th class="border-top-0">Actions</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($ads as $ad)
-                                        <tr>
-                                            <td>{{ $ad->id }}</td>
-                                            <td>{{ $ad->ad_type }}</td>
-                                            <td>{{ $ad->user->first_name .' '. $ad->user->last_name }}</td>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="white-box">
+                        <h3 class="box-title">Ads List</h3>
+                        <div class="table-responsive">
+                            <table class="table text-nowrap">
+                                <thead>
+                                    <tr>
+                                        <th class="border-top-0">Ad ID</th>
+                                        <th class="border-top-0">Ad Type</th>
+                                        <th class="border-top-0">User Name</th>
+                                        <th class="border-top-0">Room ID</th>
+                                        <th class="border-top-0">Roomate ID</th>
+                                        <th class="border-top-0">Status</th>
+                                        <th class="border-top-0">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($ads as $ad)
+                                    <tr>
+                                        <td>{{ $ad->id }}</td>
+                                        <td>{{ $ad->ad_type }}</td>
+                                        <td>{{ $ad->user->first_name .' '. $ad->user->last_name }}</td>
+                                        @if ($ad->room != null)
+                                        <td>{{ $ad->room->id }}</td>
+                                        @else
+                                        <td>null</td>
+                                        @endif
+                                        @if ($ad->roommate != null)
+                                        <td>{{ $ad->roommate->id }}</td>
+                                        @else
+                                        <td>null</td>
+                                        @endif
+                                        <td>{{ $ad->status }}</td>
+                                        <td>
                                             @if ($ad->room != null)
-                                            <td>{{ $ad->room->id }}</td>
-                                            @else
-                                            <td>null</td>
+                                            <a href="{{ route('admin.rooms.show', $ad->room->id) }}"><i
+                                                    class="fa fa-eye"></i></a>
                                             @endif
                                             @if ($ad->roommate != null)
-                                            <td>{{ $ad->roommate->id }}</td>
-                                            @else
-                                            <td>null</td>
+                                            <a href="{{ route('admin.roommates.show', $ad->roommate->id) }}"><i
+                                                    class="fa fa-eye"></i></a>
                                             @endif
-                                            <td>{{ $ad->status }}</td>
-                                            <td>
-                                                @if ($ad->room != null)
-                                                    <a href="{{ route('admin.rooms.show', $ad->room->id) }}"><i class="fa fa-eye"></i></a>
-                                                @endif
-                                                @if ($ad->roommate != null)
-                                                    <a href="{{ route('admin.roommates.show', $ad->roommate->id) }}"><i class="fa fa-eye"></i></a>
-                                                @endif
-                                                    <a href="{{ route('admin.ads.edit', $ad->id) }}"><i class="fa fa-edit"></i></a>
-                                            </td>
-                                        </tr>               
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
+                                            <a href="{{ route('admin.ads.edit', $ad->id) }}"><i
+                                                    class="fa fa-edit"></i></a>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
-                <!-- ============================================================== -->
-                <!-- End PAge Content -->
-                <!-- ============================================================== -->
-                <!-- ============================================================== -->
-                <!-- Right sidebar -->
-                <!-- ============================================================== -->
-                <!-- .right-sidebar -->
-                <!-- ============================================================== -->
-                <!-- End Right sidebar -->
-                <!-- ============================================================== -->
             </div>
             <!-- ============================================================== -->
-            <!-- End Container fluid  -->
+            <!-- End PAge Content -->
             <!-- ============================================================== -->
             <!-- ============================================================== -->
-            @include('admin.footer')
+            <!-- Right sidebar -->
+            <!-- ============================================================== -->
+            <!-- .right-sidebar -->
+            <!-- ============================================================== -->
+            <!-- End Right sidebar -->
+            <!-- ============================================================== -->
         </div>
         <!-- ============================================================== -->
-        <!-- End Page wrapper  -->
+        <!-- End Container fluid  -->
         <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        @include('admin.footer')
     </div>
     <!-- ============================================================== -->
-    <!-- End Wrapper -->
+    <!-- End Page wrapper  -->
     <!-- ============================================================== -->
+</div>
+<!-- ============================================================== -->
+<!-- End Wrapper -->
+<!-- ============================================================== -->

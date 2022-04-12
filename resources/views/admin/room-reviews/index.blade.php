@@ -25,7 +25,7 @@
             <div class="page-breadcrumb bg-white">
                 <div class="row align-items-center">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">ROOMS</h4>
+                        <h4 class="page-title">ROOM REVIEWS</h4>
                     </div>
                 </div>
                 <!-- /.col-lg-12 -->
@@ -37,53 +37,33 @@
             <!-- Container fluid  -->
             <!-- ============================================================== -->
             <div class="container-fluid">
-                @if(session()->has('message'))
-                <div class="alert alert-success">
-                    {{ session()->get('message') }}
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                @endif
-                @if(count($errors) > 0)
-                <div class="p-1">
-                    @foreach($errors->all() as $error)
-                    <div class="alert alert-warning alert-danger fade show" role="alert">{{$error}} <button type="button"
-                            class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button></div>
-                    @endforeach
-                </div>
-                @endif
                 <!-- ============================================================== -->
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="white-box">
-                            <h3 class="box-title d-flex justify-content-between">Rooms List <a href="{{ route('admin.rooms.create') }}" class="text-success">Add Room <i class="fa fa-plus"></i></a></h3>
                             <div class="table-responsive">
                                 <table class="table text-nowrap">
                                     <thead>
                                         <tr>
-                                            <th class="border-top-0">Room ID</th>
-                                            <th class="border-top-0">Room Type</th>
-                                            <th class="border-top-0">Room Price</th>
-                                            <th class="border-top-0">Contact Number</th>
+                                            <th class="border-top-0">Room Title</th>
+                                            <th class="border-top-0">User Name</th>
+                                            <th class="border-top-0">Room Rating</th>
+                                            <th class="border-top-0">Room Review</th>
                                             <th class="border-top-0">Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($rooms as $room )
+                                        @foreach ($reviews as $review )
                                         <tr>
-                                            <td>{{ $room->id }}</td>
-                                            <td>{{ $room->room_type }}</td>
-                                            <td>{{ $room->room_price }}</td>
-                                            <td>{{ $room->contact_number }}</td>
+                                            <td>{{ $review->room->room_title }}</td>
+                                            <td>{{ $review->user->first_name .' '. $review->user->last_name }}</td>
+                                            <td>{{ $review->room_rating }}</td>
+                                            <td>{{ Str::limit($review->room_review, 20) }}</td>
                                             <td class="d-flex">
-                                                <a href="{{ route('admin.rooms.edit',$room->id) }}"><i class="fa fa-edit"></i></a>
-                                                <a href="{{ route('admin.rooms.show', $room->id) }}"><i class="fa fa-eye"></i></a>
-                                                <form action="{{route('admin.rooms.destroy',$room->id)}}" method="POST">
+                                                <a href="{{ route('admin.room-reviews.show', $review->id) }}"><i class="fa fa-eye"></i></a>
+                                                <form action="{{route('admin.room-reviews.destroy',$review->id)}}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="text-danger" style="background: none; border:none;"><i class="fa fa-trash"></i></button>

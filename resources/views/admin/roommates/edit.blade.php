@@ -30,24 +30,6 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="white-box">
-                        @if(session()->has('message'))
-                        <div class="alert alert-success">
-                            {{ session()->get('message') }}
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        @endif
-                        @if(count($errors) > 0)
-                        <div class="p-1">
-                            @foreach($errors->all() as $error)
-                            <div class="alert alert-warning alert-danger fade show" role="alert">{{$error}} <button
-                                    type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button></div>
-                            @endforeach
-                        </div>
-                        @endif
                         <h3 class="box-title">Roommate Details</h3>
                         <form action="{{ route('admin.roommates.update', $roommate->id) }}" method="POST">
                             @method('PUT')

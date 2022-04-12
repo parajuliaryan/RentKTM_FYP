@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminAdsController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdminReviewsController;
 use App\Http\Controllers\AdminRoomController;
 use App\Http\Controllers\AdminRoommatesController;
 use App\Http\Controllers\AdminUsersController;
@@ -15,6 +16,7 @@ use App\Http\Controllers\RoomsController;
 use App\Http\Controllers\RoomTypeController;
 use App\Http\Controllers\UserProfileController;
 use App\Models\Rooms;
+use App\Models\RoomsUserReviews;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -67,6 +69,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth','isAdmin'])->group(fu
     Route::put('/ad-requests/update/{id}', [AdminAdsController::class, 'updateAdRequests'])->name('ad-requests.update');
     Route::resource('/users', AdminUsersController::class);
     Route::resource('/room-types', RoomTypeController::class);
+    Route::resource('/room-reviews', AdminReviewsController::class);
 });
 
 //Google login routes
