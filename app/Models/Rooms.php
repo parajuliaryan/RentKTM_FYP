@@ -20,6 +20,7 @@ class Rooms extends Model
         'ward',
         'area',
         'tole',
+        'counter_field'
     ];
 
     public function image(){

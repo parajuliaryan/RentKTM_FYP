@@ -15,8 +15,6 @@ use App\Http\Controllers\RoommatesController;
 use App\Http\Controllers\RoomsController;
 use App\Http\Controllers\RoomTypeController;
 use App\Http\Controllers\UserProfileController;
-use App\Models\Rooms;
-use App\Models\RoomsUserReviews;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -31,9 +29,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-})->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Auth::routes();
 //auth middleware for authenticated user, isAdmin for admin
@@ -47,6 +43,7 @@ Route::prefix('user')->name('user.')->group(function(){
 
 Route::get('/searchItems', [HomeController::class, 'search'])->name('search-items');
 Route::get('/rooms', [RoomsController::class, 'index'])->name('rooms');
+Route::get('/rooms/{area}', [RoomsController::class, 'location'])->name('rooms.location');
 Route::get('/rooms/filter',[RoomsController::class, 'filter'])->name('rooms.filter');
 Route::get('/roommates', [RoommatesController::class, 'index'])->name('roommates');
 Route::get('/roommates/filter',[RoommatesController::class, 'filter'])->name('roommates.filter');

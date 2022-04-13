@@ -25,6 +25,7 @@ class CreateRoomsTable extends Migration
             $table->string('ward');
             $table->string('area');
             $table->string('tole');
+            $table->integer('counter_field')->default(0);
             $table->timestamps();
         });
     }

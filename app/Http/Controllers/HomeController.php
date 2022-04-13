@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ads;
-use App\Models\Roommates;
-use App\Models\Rooms;
 use App\Models\RoomType;
 use Illuminate\Http\Request;
 
@@ -27,7 +25,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $ads = Ads::whereHas('room', function ($q) {
+            $q = $q->orderBy('counter_field', 'DESC');
+        })->take(8)->get();
+        // dd($ads);
+        return view('home', compact('ads'));
     }
 
     public function search(Request $request){

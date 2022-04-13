@@ -34,77 +34,34 @@
             <div></div>
         </div>
         <div class="cards-wrapper d-flex justify-content-between w-100 flex-wrap">
+            @foreach ($ads as $ad)
+            @if ($ad->status == 'approved')
+            @php
+            $images = explode('|',$ad->room->image[0]->image_url);
+            @endphp
             <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="{{ asset('images/room4.jpg') }}" alt="Card image cap">
+                @foreach ($images as $item )
+                @php
+                $img = $images[0];
+                @endphp
+                @endforeach
+                <img class="card-img-top" src="{{ URL::to($img) }}" alt="Card image">
                 <div class="card-body">
-                    <p class="card-text font-weight-bold">Name of Room</p>
+                    <p class="card-text font-weight-bold">{{ $ad->room->room_title }}</p>
                     <p class="card-text d-flex justify-content-between"><span><i class="fa fa-map-marker"
-                                aria-hidden="true"></i> Location</span><span>Nrs.12000/month</span></p>
+                                aria-hidden="true"></i> {{ $ad->room->area }}</span><span>Nrs.{{ $ad->room->room_price
+                            }}/month</span></p>
                 </div>
             </div>
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="{{ asset('images/room4.jpg') }}" alt="Card image cap">
-                <div class="card-body">
-                    <p class="card-text font-weight-bold">Name of Room</p>
-                    <p class="card-text d-flex justify-content-between"><span><i class="fa fa-map-marker"
-                                aria-hidden="true"></i> Location</span><span>Nrs.12000/month</span></p>
-                </div>
-            </div>
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="{{ asset('images/room4.jpg') }}" alt="Card image cap">
-                <div class="card-body">
-                    <p class="card-text font-weight-bold">Name of Room</p>
-                    <p class="card-text d-flex justify-content-between"><span><i class="fa fa-map-marker"
-                                aria-hidden="true"></i> Location</span><span>Nrs.12000/month</span></p>
-                </div>
-            </div>
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="{{ asset('images/room4.jpg') }}" alt="Card image cap">
-                <div class="card-body">
-                    <p class="card-text font-weight-bold">Name of Room</p>
-                    <p class="card-text d-flex justify-content-between"><span><i class="fa fa-map-marker"
-                                aria-hidden="true"></i> Location</span><span>Nrs.12000/month</span></p>
-                </div>
-            </div>
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="{{ asset('images/room4.jpg') }}" alt="Card image cap">
-                <div class="card-body">
-                    <p class="card-text font-weight-bold">Name of Room</p>
-                    <p class="card-text d-flex justify-content-between"><span><i class="fa fa-map-marker"
-                                aria-hidden="true"></i> Location</span><span>Nrs.12000/month</span></p>
-                </div>
-            </div>
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="{{ asset('images/room4.jpg') }}" alt="Card image cap">
-                <div class="card-body">
-                    <p class="card-text font-weight-bold">Name of Room</p>
-                    <p class="card-text d-flex justify-content-between"><span><i class="fa fa-map-marker"
-                                aria-hidden="true"></i> Location</span><span>Nrs.12000/month</span></p>
-                </div>
-            </div>
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="{{ asset('images/room4.jpg') }}" alt="Card image cap">
-                <div class="card-body">
-                    <p class="card-text font-weight-bold">Name of Room</p>
-                    <p class="card-text d-flex justify-content-between"><span><i class="fa fa-map-marker"
-                                aria-hidden="true"></i> Location</span><span>Nrs.12000/month</span></p>
-                </div>
-            </div>
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="{{ asset('images/room4.jpg') }}" alt="Card image cap">
-                <div class="card-body">
-                    <p class="card-text font-weight-bold">Name of Room</p>
-                    <p class="card-text d-flex justify-content-between"><span><i class="fa fa-map-marker"
-                                aria-hidden="true"></i> Location</span><span>Nrs.12000/month</span></p>
-                </div>
-            </div>
+            @endif
+            @endforeach
         </div>
     </div>
 
     <div class="top-areas">
         <h2>Top Areas in Kathmandu</h2>
         <div class="cards-wrapper d-flex justify-content-between w-100">
-            <a href="#" style="text-decoration: none">
+            <a href="{{ route('rooms.location','koteshwor') }}" style="text-decoration: none">
                 <div class="card area-card" style="width: 14rem;">
                     <img class="card-img-top" src="{{ asset('images/new road.jpg') }}" alt="Card image cap">
                     <div class="card-body">
@@ -113,40 +70,40 @@
                 </div>
             </a>
 
-            <a href="#" style="text-decoration: none">
-            <div class="card area-card" style="width: 14rem;">
-                <img class="card-img-top" src="{{ asset('images/new road.jpg') }}" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Baneshwor</h5>
+            <a href="{{ route('rooms.location', 'baneshwor') }}" style="text-decoration: none">
+                <div class="card area-card" style="width: 14rem;">
+                    <img class="card-img-top" src="{{ asset('images/new road.jpg') }}" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Baneshwor</h5>
+                    </div>
                 </div>
-            </div>
             </a>
 
-            <a href="#" style="text-decoration: none">
-            <div class="card area-card" style="width: 14rem;">
-                <img class="card-img-top" src="{{ asset('images/new road.jpg') }}" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">New Road</h5>
+            <a href="{{ route('rooms.location','new road') }}" style="text-decoration: none">
+                <div class="card area-card" style="width: 14rem;">
+                    <img class="card-img-top" src="{{ asset('images/new road.jpg') }}" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">New Road</h5>
+                    </div>
                 </div>
-            </div>
             </a>
 
-            <a href="#" style="text-decoration: none">
-            <div class="card area-card" style="width: 14rem;">
-                <img class="card-img-top" src="{{ asset('images/new road.jpg') }}" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Dillibazar</h5>
+            <a href="{{ route('rooms.location', 'dillibazar') }}" style="text-decoration: none">
+                <div class="card area-card" style="width: 14rem;">
+                    <img class="card-img-top" src="{{ asset('images/new road.jpg') }}" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Dillibazar</h5>
+                    </div>
                 </div>
-            </div>
             </a>
 
-            <a href="#" style="text-decoration: none">
-            <div class="card area-card" style="width: 14rem;">
-                <img class="card-img-top" src="{{ asset('images/new road.jpg') }}" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Sinamangal</h5>
+            <a href="{{ route('rooms.location', 'sinamangal') }}" style="text-decoration: none">
+                <div class="card area-card" style="width: 14rem;">
+                    <img class="card-img-top" src="{{ asset('images/new road.jpg') }}" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Sinamangal</h5>
+                    </div>
                 </div>
-            </div>
             </a>
         </div>
     </div>

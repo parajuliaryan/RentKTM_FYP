@@ -80,6 +80,7 @@ class RoomsController extends Controller
      */
     public function show(Rooms $room)
     {
+        $room->increment('counter_field');
         $images = RoomImages::where('room_id', $room->id)->first();
         $ads = Ads::where('room_id', $room->id)->first();
         $reviews = RatingReview::where('room_id', $room->id)->get();
@@ -211,6 +212,15 @@ class RoomsController extends Controller
                 }
             }
         }
+    }
+
+    public function location($location){
+        $roomTypes = RoomType::all();
+        $max = Rooms::max('room_price');
+        $ads = Ads::whereHas('room', function ($q) use ($location) {
+            $q = $q->where('area', $location);
+        })->get();
+        return view('rooms', compact('ads','roomTypes','max'));
     }
     
 }
