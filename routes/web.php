@@ -8,6 +8,7 @@ use App\Http\Controllers\AdminRoommatesController;
 use App\Http\Controllers\AdminUsersController;
 use App\Http\Controllers\Auth\FacebookController;
 use App\Http\Controllers\Auth\GoogleController;
+use App\Http\Controllers\ChatController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostAdsController;
 use App\Http\Controllers\RatingReviewController;
@@ -54,6 +55,15 @@ Route::prefix('post-ads')->name('post-ads.')->middleware('auth')->group(function
     Route::resource('/rooms', RoomsController::class);
     Route::resource('/roommates', RoommatesController::class);
 });
+
+//Chat
+Route::middleware('auth')->group(function(){
+    Route::get('/my-chats/{id}', [ChatController::class, 'myChats'])->name('my-chats');
+    Route::get('/chat/create/{ad_owner}/{room}/{user}', [ChatController::class, 'createRoom'])->name('chat.create');
+    Route::get('/chat/{roomId}/messages', [ChatController::class, 'messages']);
+    Route::get('/chat/message/{roomId}', [ChatController::class, 'newMessage'])->name('new-message');
+});
+
 
 //Admin routes
 Route::prefix('admin')->name('admin.')->middleware(['auth','isAdmin'])->group(function(){

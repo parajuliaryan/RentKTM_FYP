@@ -11,6 +11,7 @@
         <h3>{{ $user->first_name .' ' . $user->last_name }}</h3>
         <h5>{{ $user->email }}</h5>
         <h5>{{ strtoupper($user->user_type )}}</h5>
+        <a href="{{ route('my-chats', $user->id) }}">My Messages</a>
       </div>
       <div class="edit-btn">
         <a href="{{ route('user.edit', $user->id) }}" class="btn edit-button">Edit Profile <i

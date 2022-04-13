@@ -46,6 +46,13 @@
     text-align: center;
 }
 
+.user-details a{
+    background-color: #000000;
+    text-decoration: none;
+    color: #ffffff;
+    padding: 10px;
+}
+
 .text-container .edit-btn a{
     border-radius: 5px;
     padding: 10px;
@@ -53,6 +60,7 @@
     font-size: 1rem;
     background: #000000;
     color: #ffffff;
+    margin-top: 10px;
 }
 
 .text-container .edit-btn a:hover{

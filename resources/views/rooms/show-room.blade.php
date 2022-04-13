@@ -7,6 +7,14 @@ $count = 0;
 $index = 0;
 @endphp
 <div class="main-container">
+  @if(session()->has('message'))
+  <div class="alert alert-success">
+      {{ session()->get('message') }}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+      </button>
+  </div>
+  @endif
   <div class="wrapper mt-3 mb-3">
     <div class="mt-3 carousel-wrapper">
       <div class="room-heading">
@@ -155,7 +163,7 @@ $index = 0;
         <p>{{ $room->room_type }}</p>
       </div>
       <div class="send-message">
-        <i class="fa fa-message"></i> <a href="#">Send Message</a>
+        <i class="fa fa-message"></i> <a href="{{ route('chat.create',['ad_owner'=>$ads->user->id, 'room'=>$room->id, 'user'=>auth()->user()->id]) }}">Send Message</a>
       </div>
     </div>
   </div>
