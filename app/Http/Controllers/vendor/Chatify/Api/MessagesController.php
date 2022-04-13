@@ -292,7 +292,7 @@ class MessagesController extends Controller
     {
         $input = trim(filter_var($request['input'], FILTER_SANITIZE_STRING));
         $records = User::where('id','!=',Auth::user()->id)
-                    ->where('name', 'LIKE', "%{$input}%")
+                    ->where('fist_name', 'LIKE', "%{$input}%")
                     ->paginate($request->per_page ?? $this->perPage);
         return Response::json([
             'records' => $records->items(),

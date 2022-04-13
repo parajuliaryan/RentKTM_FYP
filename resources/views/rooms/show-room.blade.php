@@ -155,7 +155,7 @@ $index = 0;
         <p>{{ $room->room_type }}</p>
       </div>
       <div class="send-message">
-        <i class="fa fa-message"></i> <a href="{{ route('chatify') }}">Send Message</a>
+        <i class="fa fa-message"></i> <a href="#">Send Message</a>
       </div>
     </div>
   </div>
