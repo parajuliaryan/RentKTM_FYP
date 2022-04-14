@@ -36,7 +36,7 @@ Auth::routes();
 //auth middleware for authenticated user, isAdmin for admin
 
 //user profile routes
-Route::prefix('user')->name('user.')->group(function(){
+Route::prefix('user')->name('user.')->middleware('auth')->group(function(){
     Route::get('/profile', [UserProfileController::class, 'index'])->name('index');
     Route::get('/profile/{id}/edit', [UserProfileController::class, 'edit'])->name('edit');
     Route::put('/profile/{id}', [UserProfileController::class, 'update'])->name('update');
@@ -60,6 +60,7 @@ Route::prefix('post-ads')->name('post-ads.')->middleware('auth')->group(function
 Route::middleware('auth')->group(function(){
     Route::get('/my-chats/{id}', [ChatController::class, 'myChats'])->name('my-chats');
     Route::get('/chat/create/{ad_owner}/{room}/{user}', [ChatController::class, 'createRoom'])->name('chat.create');
+    Route::get('/chat/{roomId}/my-room', [ChatController::class, 'myRoom'])->name('chat.my-room');
     Route::get('/chat/{roomId}/messages', [ChatController::class, 'messages']);
     Route::get('/chat/message/{roomId}', [ChatController::class, 'newMessage'])->name('new-message');
 });

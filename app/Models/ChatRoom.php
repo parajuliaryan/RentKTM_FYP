@@ -23,8 +23,12 @@ class ChatRoom extends Model
         return $this->hasOne(User::class, 'id', 'ad_owner');
     }
 
-    public function enquirer(){
+    public function adEnquirer(){
         return $this->hasOne(User::class, 'id', 'enquirer');
+    }
+
+    public function forRoom(){
+        return $this->hasOne(Rooms::class, 'id', 'for_room');
     }
 
 
