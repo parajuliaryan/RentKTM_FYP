@@ -65,6 +65,13 @@
                                 <span class="hide-menu">Ad Requests</span>
                             </a>
                         </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('my-chats', auth()->user()->id) }}"
+                                aria-expanded="false">
+                                <i class="fa fa-comment" aria-hidden="true"></i>
+                                <span class="hide-menu">Enquiry Messages</span>
+                            </a>
+                        </li>
                     </ul>
 
                 </nav>
