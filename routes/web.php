@@ -59,7 +59,7 @@ Route::prefix('post-ads')->name('post-ads.')->middleware('auth')->group(function
 //Chat
 Route::middleware('auth')->group(function(){
     Route::get('/my-chats/{id}', [ChatController::class, 'myChats'])->name('my-chats');
-    Route::get('/chat/create/{ad_owner}/{room}/{user}', [ChatController::class, 'createRoom'])->name('chat.create');
+    Route::get('/chat/create/{ad_owner}/{ad}/{user}', [ChatController::class, 'createRoom'])->name('chat.create');
     Route::get('/chat/{roomId}/my-room', [ChatController::class, 'myRoom'])->name('chat.my-room');
     Route::get('/chat/{roomId}/messages', [ChatController::class, 'messages']);
     Route::get('/chat/message/{roomId}', [ChatController::class, 'newMessage'])->name('new-message');

@@ -17,10 +17,10 @@ class CreateChatRoomsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('ad_owner');
             $table->unsignedBigInteger('enquirer');
-            $table->unsignedBigInteger('for_room');
+            $table->unsignedBigInteger('for_ad');
             $table->foreign('ad_owner')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('enquirer')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('for_room')->references('id')->on('rooms')->onDelete('cascade');
+            $table->foreign('for_ad')->references('id')->on('ads')->onDelete('cascade');
             $table->timestamps();
         });
     }

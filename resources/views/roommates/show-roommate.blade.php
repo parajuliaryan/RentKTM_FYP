@@ -39,6 +39,9 @@
         <h4>Gender</h4>
         <p>{{ strtoupper($roommate->gender) }}</p>
       </div>
+      <div class="send-message">
+        <i class="fa fa-message"></i> <a href="{{ route('chat.create',['ad_owner'=>$ads->user->id, 'ad'=>$ads->id, 'user'=>auth()->user()->id]) }}">Send Message</a>
+      </div>
     </div>
   </div>
 </div>

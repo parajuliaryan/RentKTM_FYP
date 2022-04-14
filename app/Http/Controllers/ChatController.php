@@ -19,7 +19,6 @@ class ChatController extends Controller
         $messages = ChatMessage::where('chat_room_id', $id)
         ->with('user')
         ->get();
-        // $chatRoom = ChatRoom::where('id', $id)->first();
         $roomId = $id;
         return view('chat.room', compact('roomId', 'messages'));
     }
@@ -38,8 +37,8 @@ class ChatController extends Controller
         ]); 
     }
 
-    public function createRoom($ad_owner, $room, $user){
-        $roomExisted = ChatRoom::where('ad_owner', $ad_owner)->where('for_room', $room)->where('enquirer', $user)->first();
+    public function createRoom($ad_owner, $ad, $user){
+        $roomExisted = ChatRoom::where('ad_owner', $ad_owner)->where('for_ad', $ad)->where('enquirer', $user)->first();
         if ($roomExisted) {
             $id = auth()->user()->id;
             $chatRooms = ChatRoom::where('ad_owner', $id)->orWhere('enquirer', $id)->latest()->get();
@@ -48,7 +47,7 @@ class ChatController extends Controller
             $newChatRoom = new ChatRoom;
             $newChatRoom->ad_owner = $ad_owner;
             $newChatRoom->enquirer = $user;
-            $newChatRoom->for_room = $room;
+            $newChatRoom->for_ad = $ad;
             $newChatRoom->save();
             $createdChatRoom = ChatRoom::latest()->first();
             return view('chat.room', compact('createdChatRoom'));

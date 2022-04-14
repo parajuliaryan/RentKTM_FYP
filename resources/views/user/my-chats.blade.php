@@ -11,31 +11,43 @@
         @endphp
         @if (auth()->user()->id == $chatRoom->adOwner->id)
         <a href="{{ route('chat.my-room', $chatRoom->id) }}">
-        <div class="chat">
-            <h3>{{ $chatRoom->adEnquirer->first_name.' '. $chatRoom->adEnquirer->last_name }} for {{ $chatRoom->forRoom->room_title }}</h3>
-            @foreach ($chatRoom->messages as $messageItem)
-            @if ($count == $length)
-            <p>{{ $messageItem->message }}</p>
-            @endif
-            @php
-            $count += 1;
-            @endphp
-            @endforeach
-        </div>
+            <div class="chat">
+                @if ($chatRoom->forAd->room != null)
+                <h3>{{ $chatRoom->adEnquirer->first_name.' '. $chatRoom->adEnquirer->last_name }} for {{
+                    $chatRoom->forAd->room->room_title }}</h3>
+                @else
+                <h3>{{ $chatRoom->adEnquirer->first_name.' '. $chatRoom->adEnquirer->last_name }} for {{
+                    $chatRoom->forAd->user->first_name.' '.$chatRoom->forAd->user->last_name }}</h3>
+                @endif
+                @foreach ($chatRoom->messages as $messageItem)
+                @if ($count == $length)
+                <p>{{ $messageItem->message }}</p>
+                @endif
+                @php
+                $count += 1;
+                @endphp
+                @endforeach
+            </div>
         </a>
         @else
         <a href="{{ route('chat.my-room', $chatRoom->id) }}">
-        <div class="chat">
-            <h3>{{ $chatRoom->adOwner->first_name.' '. $chatRoom->adOwner->last_name }} for {{ $chatRoom->forRoom->room_title }}</h3>
-            @foreach ($chatRoom->messages as $messageItem)
-            @if ($count == $length)
-            <p>{{ $messageItem->message }}</p>
-            @endif
-            @php
-            $count += 1;
-            @endphp
-            @endforeach
-        </div>
+            <div class="chat">
+                @if ($chatRoom->forAd->room != null)
+                <h3>{{ $chatRoom->adEnquirer->first_name.' '. $chatRoom->adEnquirer->last_name }} for {{
+                    $chatRoom->forAd->room->room_title }}</h3>
+                @else
+                <h3>{{ $chatRoom->adEnquirer->first_name.' '. $chatRoom->adEnquirer->last_name }} for {{
+                    $chatRoom->forAd->user->first_name.' '.$chatRoom->forAd->user->last_name }}</h3>
+                @endif
+                @foreach ($chatRoom->messages as $messageItem)
+                @if ($count == $length)
+                <p>{{ $messageItem->message }}</p>
+                @endif
+                @php
+                $count += 1;
+                @endphp
+                @endforeach
+            </div>
         </a>
         @endif
         @endforeach

@@ -12,7 +12,7 @@ class ChatRoom extends Model
     protected $fillable = [
         'ad_owner',
         'enquirer',
-        'for_room'
+        'for_ad'
     ];
 
     public function messages(){
@@ -27,8 +27,8 @@ class ChatRoom extends Model
         return $this->hasOne(User::class, 'id', 'enquirer');
     }
 
-    public function forRoom(){
-        return $this->hasOne(Rooms::class, 'id', 'for_room');
+    public function forAd(){
+        return $this->hasOne(Ads::class, 'id', 'for_ad');
     }
 
 

@@ -81,6 +81,12 @@ body{
   object-fit: cover;
 }
 
+.send-message a{
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
 @media all and (max-width: 1000px) {
   .text-contents{
     max-width: 700px;
