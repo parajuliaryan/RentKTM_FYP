@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ads;
+use App\Models\RoommateFeatures;
 use App\Models\RoomType;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -93,6 +94,19 @@ class UserProfileController extends Controller
                 'area' => $request->area,
                 'tole' => $request->tole,
             ]);
+
+            $features =  RoommateFeatures::where('roommate_id', $adRoommate->roommate->id)->get();
+
+            if(count($request->roommate_feature) > 0){
+            
+                for($i = 0; $i < count($request->roommate_feature); $i++){
+                    
+                    $features[$i]->roommate_id = $adRoommate->roommate->id;
+                    $features[$i]->feature = $request->roommate_feature[$i];
+                    $features[$i]->update();
+            
+                } 
+            }
         }
 
         return redirect()->route('user.index')->with('message', 'Ad Updated Successfully.');

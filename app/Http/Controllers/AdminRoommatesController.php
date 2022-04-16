@@ -43,7 +43,6 @@ class AdminRoommatesController extends Controller
             'roommate_age' => 'required',
             'roommate_rent_price' => 'required',
             'roommate_description' => 'required',
-            'roommate_features' => 'required',
             'gender' => 'required',
             'contact_number' => 'required',
             'city' => 'required',
@@ -61,7 +60,6 @@ class AdminRoommatesController extends Controller
             'roommate_age' => $request->roommate_age,
             'roommate_rent_price' => $request->roommate_rent_price,
             'roommate_description' => $request->roommate_description,
-            'roommate_features' => $request->roommate_features,
             'gender' => $request->gender,
             'contact_number' => $request->contact_number,
             'city' => $request->city,
@@ -96,7 +94,8 @@ class AdminRoommatesController extends Controller
      */
     public function show(Roommates $roommate)
     {
-        return view('admin.roommates.show', $roommate);
+        $roommateFeatures = RoommateFeatures::all()->where('roommate_id', $roommate->id);
+        return view('admin.roommates.show', compact('roommateFeatures', 'roommate'));
     }
 
     /**
@@ -131,7 +130,7 @@ class AdminRoommatesController extends Controller
             'area' => 'required',
             'tole' => 'required',
         ]);
-  
+
         $roommate->update([
             'roommate_name' => $request->roommate_name,
             'roommate_age' => $request->roommate_age,
@@ -144,6 +143,19 @@ class AdminRoommatesController extends Controller
             'area' => $request->area,
             'tole' => $request->tole,
         ]);
+
+        $features =  RoommateFeatures::where('roommate_id', $roommate->id)->get();
+
+        if(count($request->roommate_feature) > 0){
+        
+            for($i = 0; $i < count($request->roommate_feature); $i++){
+                
+                $features[$i]->roommate_id = $roommate->id;
+                $features[$i]->feature = $request->roommate_feature[$i];
+                $features[$i]->update();
+        
+            } 
+        }
 
         return redirect()->route('admin.roommates.index')->with('message','Roommate Updated Successfully.');
     }

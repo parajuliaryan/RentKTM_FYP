@@ -33,43 +33,45 @@
                                 <tbody>
                                     <tr>
                                         <th scope="row">Name</th>
-                                        <td>{{ $roommate_name }}</td>
+                                        <td>{{ $roommate->roommate_name }}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">Age</th>
-                                        <td>{{ $roommate_age }}</td>
+                                        <td>{{ $roommate->roommate_age }}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">Rent Price</th>
-                                        <td>{{ $roommate_rent_price }}</td>
+                                        <td>{{ $roommate->roommate_rent_price }}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">Description</th>
-                                        <td>{{ $roommate_description }}</td>
+                                        <td>{{ $roommate->roommate_description }}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">Features</th>
-                                        <td>{{ $roommate_features }}</td>
+                                        @foreach ($roommateFeatures as $feature)
+                                            <td>{{ $feature->feature}}</td>
+                                        @endforeach
                                     </tr>
                                     <tr>
                                         <th scope="row">Contact</th>
-                                        <td>{{ $contact_number }}</td>
+                                        <td>{{ $roommate->contact_number }}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">City</th>
-                                        <td>{{ $city }}</td>
+                                        <td>{{ $roommate->city }}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">Ward</th>
-                                        <td>{{ $ward }}</td>
+                                        <td>{{ $roommate->ward }}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">Area</th>
-                                        <td>{{ $area }}</td>
+                                        <td>{{ $roommate->area }}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">Tole</th>
-                                        <td>{{ $tole }}</td>
+                                        <td>{{ $roommate->tole }}</td>
                                     </tr>
                                 </tbody>
                               </table>
