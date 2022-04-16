@@ -35,6 +35,9 @@
             @enderror
           </div>
           <div class="form-check">
+            <input class="form-check-input" type="checkbox" onclick="myFunction()">
+            <label for="check-password">Show Password</label>
+            <br>
             <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember')
                 ? 'checked' : '' }}>
             <label class="form-check-label" for="remember">
@@ -63,4 +66,14 @@
       </div>
     </div>
 </div>
+<script>
+function myFunction() {
+  var x = document.getElementById("exampleInputPassword1");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+</script>
 @endsection
