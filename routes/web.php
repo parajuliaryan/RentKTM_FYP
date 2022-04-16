@@ -40,6 +40,9 @@ Route::prefix('user')->name('user.')->middleware('auth')->group(function(){
     Route::get('/profile', [UserProfileController::class, 'index'])->name('index');
     Route::get('/profile/{id}/edit', [UserProfileController::class, 'edit'])->name('edit');
     Route::put('/profile/{id}', [UserProfileController::class, 'update'])->name('update');
+    Route::get('/profile/ads/{id}/edit', [UserProfileController::class, 'editAds'])->name('ads.edit');
+    Route::put('/profile/ads/{id}', [UserProfileController::class, 'updateAds'])->name('ads.update');
+    Route::delete('/profile/ads/{id}', [UserProfileController::class, 'destroyAds'])->name('ads.destroy');
 });
 
 Route::get('/searchItems', [HomeController::class, 'search'])->name('search-items');

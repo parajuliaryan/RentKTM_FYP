@@ -2,6 +2,24 @@
 @include('layouts.nav')
 <link rel="stylesheet" href="{{ asset('css/frontend-css/profile.css') }}">
 <div class="main-container">
+  @if(session()->has('message'))
+  <div class="alert alert-success">
+      {{ session()->get('message') }}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+      </button>
+  </div>
+  @endif
+  @if(count($errors) > 0)
+  <div class="p-1">
+      @foreach($errors->all() as $error)
+      <div class="alert alert-warning alert-danger fade show" role="alert">{{$error}} <button type="button"
+              class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+          </button></div>
+      @endforeach
+  </div>
+  @endif
   <div class="user-info">
     <div class="image-container">
       <img src="{{ asset('images/user-avatar.png') }}" class="img-fluid" alt="user-avatar">
@@ -30,7 +48,18 @@
         <img src="{{ asset('images').'/'.$ad->roommate->roommate_image }}" class="img-fluid" alt="user-avatar">
       </div>
       <div class="ad-about">
-        <h3>{{ $ad->roommate->roommate_name }}, {{ $ad->roommate->roommate_age }}</h3>
+        <div class="title-holder">
+          <h3>{{ $ad->roommate->roommate_name }}, {{ $ad->roommate->roommate_age }}</h3>
+          <div class="btns">
+            <a href="{{ route('user.ads.edit', $ad->id) }}"><i class="fa fa-edit"></i></a>
+            <form action="{{ route('user.ads.destroy', $ad->id) }}" method="POST">
+              @csrf
+              @method('DELETE')
+              <button type="submit" class="text-danger" style="background: none; border:none;"><i
+                  class="fa fa-trash"></i></button>
+            </form>
+          </div>
+        </div>
         <p><i class="fa fa-map-marker" aria-hidden="true"></i> {{ $ad->roommate->city.'-'.$ad->roommate->ward.',
           '.$ad->roommate->area.', '.$ad->roommate->tole }}</p>
         <p>Nrs. {{ $ad->roommate->roommate_rent_price }}/month</p>
@@ -40,6 +69,7 @@
         @endforeach
         <p>{{ strtoupper($ad->roommate->gender) }}</p>
         <p>{{ $ad->roommate->contact_number }}</p>
+        <p class="text-danger">Status: {{ strtoupper( $ad->status) }}</p>
       </div>
       @else
       @php
@@ -54,11 +84,24 @@
         <img src="{{ URL::to($img) }}" class="img-fluid" alt="room-image">
       </div>
       <div class="ad-about">
-        <h3>{{ $ad->room->room_title }}</h3>
-        <p><i class="fa fa-map-marker" aria-hidden="true"></i> {{ $ad->room->city.'-'.$ad->room->ward.', '.$ad->room->area.', '.$ad->room->tole }}</p>
+        <div class="title-holder">
+          <h3>{{ $ad->room->room_title }}</h3>
+          <div class="btns">
+            <a href="{{ route('user.ads.edit', $ad->id) }}"><i class="fa fa-edit"></i></a>
+            <form action="{{ route('user.ads.destroy', $ad->id) }}" method="POST">
+              @csrf
+              @method('DELETE')
+              <button type="submit" class="text-danger" style="background: none; border:none;"><i
+                  class="fa fa-trash"></i></button>
+            </form>
+          </div>
+        </div>
+        <p><i class="fa fa-map-marker" aria-hidden="true"></i> {{ $ad->room->city.'-'.$ad->room->ward.',
+          '.$ad->room->area.', '.$ad->room->tole }}</p>
         <p>{{ $ad->room->room_description }}</p>
         <p>Nrs.{{ $ad->room->room_price }}/month</p>
         <p>{{ $ad->room->contact_number }}</p>
+        <p class="text-danger">Status: {{ strtoupper( $ad->status) }}</p>
       </div>
       @endif
     </div>
