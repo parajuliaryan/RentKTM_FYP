@@ -92,6 +92,8 @@
 
 .card-img-top{
     border-radius: 0px !important;
+    object-fit: cover;
+    height: 200px;
 }
 
 .popular-rooms-heading div{
