@@ -148,11 +148,13 @@ $index = 0;
         <h4>Price</h4>
         <p>Nrs.{{ $room->room_price }}/month </p>
       </div>
-      @if ($room->student_price != null)
-      <div class="student-price">
-        <h4>Price for students</h4>
-        <p>Nrs.{{ $room->student_price }}/month</p>
-      </div>
+      @if (auth()->user()->user_type == 'student')
+        @if ($room->student_price != null)
+        <div class="student-price">
+          <h4>Price for students</h4>
+          <p>Nrs.{{ $room->student_price }}/month</p>
+        </div>
+        @endif
       @endif
       <div class="contact-number">
         <h4>For Enquiry</h4>
