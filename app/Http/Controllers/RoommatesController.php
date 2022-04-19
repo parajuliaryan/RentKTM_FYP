@@ -138,7 +138,18 @@ class RoommatesController extends Controller
             'roommate_image'=> $imageName,
         ]);
         
-        $features = RoommateFeatures::where('roommate_id','=', $roommate->id)->get();
+        $features =  RoommateFeatures::where('roommate_id', $roommate->id)->get();
+
+        if(count($request->roommate_feature) > 0){
+        
+            for($i = 0; $i < count($request->roommate_feature); $i++){
+                
+                $features[$i]->roommate_id = $roommate->id;
+                $features[$i]->feature = $request->roommate_feature[$i];
+                $features[$i]->update();
+        
+            } 
+        }
         
 
         return redirect()->route('user.index')->with('message','Roommate Updated Successfully.');
