@@ -133,6 +133,7 @@ class RoomsController extends Controller
     public function filter(Request $request)
     {
         $max = Rooms::max('room_price');
+        
         if ($request->sort == 'latest') {
             if ($request->room_type) {
                 if ($request->min_price && $request->max_price) {

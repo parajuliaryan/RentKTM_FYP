@@ -25,19 +25,21 @@ class UserProfileController extends Controller
         return view('user.edit', $user);
     }
 
-    public function update(Request $request, User $user)
+    public function update(Request $request)
     {
+        $user = User::where('id', $request->id)->first();
         $request->validate([
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'email' => ['required', 'string', 'email', 'max:255'],
         ]);
-
         $user->update([
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
             'email' => $request->email,
         ]);
+
+        return redirect()->back()->with('message', 'Profile updated');
     }
 
     public function editAds(Request $request)
@@ -50,7 +52,6 @@ class UserProfileController extends Controller
     public function updateAds(Request $request)
     {
         $id = $request->id;
-
         $adRoom = Ads::where('id', $id)->whereHas('room')->first();
         $adRoommate = Ads::where('id', $id)->whereHas('roommate')->first();
         if ($adRoom) {

@@ -31,9 +31,10 @@ class GoogleController extends Controller
                     'email'=>$user->email,
                     'oauth_id'=>$user->id,
                     'oauth_type'=> static::DRIVER_TYPE,
+                    'email_verified_at' => now(),
                     'password'=> Hash::make($user->id),
                 ]);
-
+                
                 Auth::login($newUser);
             }
         } catch (Exception $e) {

@@ -32,6 +32,7 @@ class FacebookController extends Controller
                     'oauth_id'=>$user->id,
                     'oauth_type'=> static::DRIVER_TYPE,
                     'password'=> Hash::make($user->id),
+                    'email_verified_at' => now(),
                 ]);
                 Auth::login($newUser);
             }

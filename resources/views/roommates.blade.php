@@ -7,7 +7,7 @@
             <div class="filter-title">
                 <h3>Filter Options</h3>
             </div>
-            <form action="{{ route('roommates.filter') }}" method="GET">
+            <form action="{{ route('roommates.filter') }}" method="POST">
                 @csrf
                 <div class="filter-option">
                     <p>Price Filter</p>

@@ -36,7 +36,7 @@ Auth::routes(['verify'=> true]);
 //auth middleware for authenticated user, isAdmin for admin
 
 //user profile routes
-Route::prefix('user')->name('user.')->middleware('auth')->group(function(){
+Route::prefix('user')->name('user.')->middleware(['auth', 'verified'])->group(function(){
     Route::get('/profile', [UserProfileController::class, 'index'])->name('index');
     Route::get('/profile/{id}/edit', [UserProfileController::class, 'edit'])->name('edit');
     Route::put('/profile/{id}', [UserProfileController::class, 'update'])->name('update');
@@ -48,9 +48,9 @@ Route::prefix('user')->name('user.')->middleware('auth')->group(function(){
 Route::get('/searchItems', [HomeController::class, 'search'])->name('search-items');
 Route::get('/rooms', [RoomsController::class, 'index'])->name('rooms');
 Route::get('/rooms/{area}', [RoomsController::class, 'location'])->name('rooms.location');
-Route::get('/rooms/filter',[RoomsController::class, 'filter'])->name('rooms.filter');
+Route::post('/rooms/filter',[RoomsController::class, 'filter'])->name('rooms.filter');
 Route::get('/roommates', [RoommatesController::class, 'index'])->name('roommates');
-Route::get('/roommates/filter',[RoommatesController::class, 'filter'])->name('roommates.filter');
+Route::post('/roommates/filter',[RoommatesController::class, 'filter'])->name('roommates.filter');
 Route::get('/post-ads', [PostAdsController::class, 'index'])->name('postAds');
 Route::resource('/reviews', RatingReviewController::class)->middleware('auth');
 Route::prefix('post-ads')->name('post-ads.')->middleware('auth')->group(function(){
@@ -60,7 +60,7 @@ Route::prefix('post-ads')->name('post-ads.')->middleware('auth')->group(function
 });
 
 //Chat
-Route::middleware('auth')->group(function(){
+Route::middleware(['auth', 'verified'])->group(function(){
     Route::get('/my-chats/{id}', [ChatController::class, 'myChats'])->name('my-chats');
     Route::get('/chat/create/{ad_owner}/{ad}/{user}', [ChatController::class, 'createRoom'])->name('chat.create');
     Route::get('/chat/{roomId}/my-room', [ChatController::class, 'myRoom'])->name('chat.my-room');
