@@ -77,7 +77,7 @@
                                     <tr>
                                         <td>{{ $roomType->room_type }}</td>
                                         <td>
-                                            <form action="{{route('admin.rooms.destroy',$roomType->id)}}" method="POST">
+                                            <form action="{{route('admin.room-types.destroy',$roomType->id)}}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="text-danger"

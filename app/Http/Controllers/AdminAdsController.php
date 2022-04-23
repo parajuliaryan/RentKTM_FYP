@@ -74,7 +74,7 @@ class AdminAdsController extends Controller
             'status' => $request->status,
         ]);
 
-        return redirect()->route('admin.ads.index')->with('message','Roommate Updated Successfully.');
+        return redirect()->route('admin.ads.index')->with('message','Ad Updated Successfully.');
     }
 
     /**

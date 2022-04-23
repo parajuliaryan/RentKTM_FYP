@@ -60,19 +60,19 @@ class AdminRoomController extends Controller
         $images = array();
         if ($room_images = $request->file('room_images')) {
             foreach ($room_images as $room_image) {
-                $image_name = md5(rand(1000,10000));
+                $image_name = md5(rand(1000, 10000));
                 $ext = strtolower($room_image->getClientOriginalExtension());
-                $image_full_name = $image_name.'.'.$ext;
-                $upload_path = "/room_images/";
-                $image_url = $upload_path.$image_full_name;
+                $image_full_name = $image_name . '.' . $ext;
+                $upload_path = "room_images/";
+                $image_url = $upload_path . $image_full_name;
                 $room_image->move($upload_path, $image_full_name);
                 $images[] = $image_url;
             }
         }
 
         RoomImages::create([
-            'room_id'=>$room_id,
-            'image_url'=> implode('|', $images)
+            'room_id' => $room_id,
+            'image_url' => implode('|', $images)
         ]);
 
         Ads::create([

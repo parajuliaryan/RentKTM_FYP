@@ -40,8 +40,8 @@
             @if(count($errors) > 0)
             <div class="p-1">
                 @foreach($errors->all() as $error)
-                <div class="alert alert-warning alert-danger fade show" role="alert">{{$error}} <button
-                        type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <div class="alert alert-warning alert-danger fade show" role="alert">{{$error}} <button type="button"
+                        class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button></div>
                 @endforeach
@@ -73,9 +73,8 @@
                             </div>
                             <div class="form-group">
                                 <label for="student_price">Student Price</label>
-                                <input type="text" class="form-control"
-                                    value="{{ old('student_price', $room->student_price) }}" id="student_price"
-                                    name="student_price" placeholder="Student Price">
+                                <input type="text" class="form-control" id="student_price" name="student_price"
+                                    placeholder="Student Price">
                             </div>
                             <div class="form-group d-flex flex-column">
                                 <label for="room_type">Room Type</label>

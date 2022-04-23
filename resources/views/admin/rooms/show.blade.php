@@ -32,6 +32,10 @@
                             <table class="table table-striped">
                                 <tbody>
                                     <tr>
+                                        <th scope="row">Title</th>
+                                        <td>{{ $room->room_title }}</td>
+                                    </tr>
+                                    <tr>
                                         <th scope="row">Description</th>
                                         <td>{{ $room->room_description }}</td>
                                     </tr>

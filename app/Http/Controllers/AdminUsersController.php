@@ -57,6 +57,7 @@ class AdminUsersController extends Controller
                     'email' => $request->email,
                     'password' => Hash::make($request->password),
                     'student_check' => "on",
+                    'email_verified_at'=> now(),
                     'identification' => $imageName,
                 ]);
             } else {
@@ -67,6 +68,7 @@ class AdminUsersController extends Controller
                     'email' => $request->email,
                     'password' => Hash::make($request->password),
                     'student_check' => "on",
+                    'email_verified_at'=> now(),
                 ]);
             }
         } else {
@@ -80,6 +82,7 @@ class AdminUsersController extends Controller
                     'email' => $request->email,
                     'password' => Hash::make($request->password),
                     'identification' => $imageName,
+                    'email_verified_at'=> now(),
                 ]);
             } else {
                 User::create([
@@ -88,6 +91,7 @@ class AdminUsersController extends Controller
                     'last_name' => $request->last_name,
                     'email' => $request->email,
                     'password' => Hash::make($request->password),
+                    'email_verified_at'=> now(),
                 ]);
             }
         }
