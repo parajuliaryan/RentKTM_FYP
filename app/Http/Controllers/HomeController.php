@@ -61,6 +61,8 @@ class HomeController extends Controller
                 $ads = Ads::all()->where('ad_type','=', 'room');
             }
             return view('rooms', compact('ads', 'roomTypes', 'search', 'max')); 
+        }else{
+            return redirect()->back()->with('message', 'Please select room or roommate option');
         }
  
     }
