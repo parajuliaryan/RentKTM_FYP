@@ -18,6 +18,9 @@ use App\Http\Controllers\RoomTypeController;
 use App\Http\Controllers\UserProfileController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Events\Message;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 /*
 |--------------------------------------------------------------------------
@@ -66,6 +69,17 @@ Route::middleware(['auth', 'verified'])->group(function(){
     Route::get('/chat/{roomId}/my-room', [ChatController::class, 'myRoom'])->name('chat.my-room');
     Route::get('/chat/{roomId}/messages', [ChatController::class, 'messages']);
     Route::get('/chat/message/{roomId}', [ChatController::class, 'newMessage'])->name('new-message');
+    Route::post('/send-message', function (Request $request){
+        event(
+            new Message(
+                $request->input('username'), 
+                $request->input('message'),
+                $request->input('roomId')
+                )
+        );
+
+        return ["success" =>true];
+    });
 });
 
 

@@ -1,6 +1,9 @@
 @include('layouts.app')
 @include('layouts.nav')
 <link rel="stylesheet" href="{{ asset('css/frontend-css/room.css') }}">
+@php
+    $user = auth()->user();
+@endphp
 <div class="page-content page-container" id="page-content">
     <div class="padding">
         <div class="row container d-flex justify-content-center">
@@ -15,7 +18,7 @@
                         <div class="media media-chat media-chat-reverse">
                                 @if (isset($messages))
                                 @foreach ($messages as $message)
-                                    <div class="media-body">
+                                    <div class="media-body" id="messages">
                                         <span>{{ $message->user->first_name.' '. $message->user->last_name }}</span>
                                         <p>{{ $message->message }}</p>
                                     </div>
@@ -39,14 +42,16 @@
                                 @csrf
                                 <input type="text" name="message" id="message">
                                 <input type="hidden" name="room_id" id="roomId" value="{{ $createdChatRoom->id }}">
-                                <button type="submit" class="btn btn-primary">send</button>
+                                <input type="hidden" name="username" id="username" value="{{ $user->first_name.' '. $user->last_name }}">
+                                <button type="submit" class="btn btn-primary" id="message_send">send</button>
                             </form>
                         @else
                             <form method="GET" id="new_message">
                                 @csrf
                                 <input type="text" name="message" id="message">
                                 <input type="hidden" name="room_id" id="roomId" value="{{ $roomId }}">
-                                <button type="submit" class="btn btn-primary"><i class="fa fa-paper-plane"></i></button>
+                                <input type="hidden" name="username" id="username" value="{{ $user->first_name.' '. $user->last_name }}">
+                                <button type="submit" class="btn btn-primary" id="message_send"><i class="fa fa-paper-plane"></i></button>
                             </form>
                         @endif
                     </div>
@@ -60,7 +65,18 @@
     $(document).ready(function () {
         $(document).on('submit','#new_message', function(e){
                 e.preventDefault();
+                console.log("working");
+                var username = $('#username').val();
+                let has_errors = false;
                 var message = $('#message').val();
+                var roomId = $('#roomId').val();
+                if (message == ''){
+                    alert("Please enter a message");
+                    has_errors = true;
+                }
+                if (has_errors){
+                    return;
+                }
                 var roomId = $('#roomId').val();
                 var messageHolder = $('.media-chat');
                 $.ajax({
@@ -69,13 +85,33 @@
                     data:{'message': message},
                     success:function(response){
                           var newMessage = response.data.message;
-                          var fieldHTML =   '<div class="media-body">' +
-                          '<span>'+response.name+'</span>'+
-                           '<p>'+ newMessage + '</p>'+
-                           '</div>';
-                          $(messageHolder).append(fieldHTML); 
                     }
-                });    
-            });
+                });
+                
+                const options = {
+                    method: 'post',
+                    url: '/send-message',
+                    data:{
+                        username: username,
+                        message: message,
+                        roomId: roomId
+                    }
+                }
+
+                axios(options);
+
+                window.Echo.private('chat')
+                .listen('.message', (e)=>{
+                    var fieldHTML =   '<div class="media-body">' +
+                          '<span>'+e.username+'</span>'+
+                           '<p>'+ e.message + '</p>'+
+                           '</div>';
+
+                          $(messageHolder).append(fieldHTML); 
+                });
+                
+                $("#new_message")[0].reset();
+            });     
+            
     });
 </script>

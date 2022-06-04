@@ -4048,11 +4048,9 @@ textarea.form-control-lg {
   padding-top: 0.32rem;
   padding-bottom: 0.32rem;
   margin-right: 1rem;
-  font-size: 1.5rem;
-  font-weight: bolder;
+  font-size: 1.125rem;
   text-decoration: none;
   white-space: nowrap;
-  letter-spacing: 1px;
 }
 .navbar-nav {
   display: flex;
