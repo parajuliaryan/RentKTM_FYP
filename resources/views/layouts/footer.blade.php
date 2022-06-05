@@ -7,7 +7,7 @@
                 <p><a href="#">Contact Us</a></p>
                 <p><a href="#">Help Center</a></p>
                 <p><a href="#">Safety Information</a></p>
-                <p><a href="#">Covid-19 Resources</a></p>
+                <p><a href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019">Covid-19 Resources</a></p>
             </div>
         </div>
         <div class="d-flex flex-column align-items-start justify-content-start w-50">

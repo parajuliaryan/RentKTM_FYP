@@ -100,13 +100,12 @@
 
                 axios(options);
 
-                window.Echo.private('chat')
+                window.Echo.channel('chat')
                 .listen('.message', (e)=>{
                     var fieldHTML =   '<div class="media-body">' +
                           '<span>'+e.username+'</span>'+
                            '<p>'+ e.message + '</p>'+
                            '</div>';
-
                           $(messageHolder).append(fieldHTML); 
                 });
                 

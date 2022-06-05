@@ -14,7 +14,7 @@
                     <div class="price-input">
                         <div class="field">
                             <span>Min</span>
-                            <input type="number" class="input-min" name="min_price">
+                            <input type="number" class="input-min" name="min_price" id="input_min">
                         </div>
                         <div class="separator">-</div>
                         <div class="field">
@@ -26,8 +26,8 @@
                         <div class="progress"></div>
                     </div>
                     <div class="range-input">
-                        <input type="range" class="range-min" min="0" max="{{ $max }}" value="2500" step="100">
-                        <input type="range" class="range-max" min="0" max="{{ $max }}" value="7500" step="100">
+                        <input type="range" class="range-min" min="1000" max="{{ $max }}" value="2500" step="100">
+                        <input type="range" class="range-max" min="1000" max="{{ $max }}" value="7500" step="100">
                     </div>
                 </div>
                 <div class="sort-btns">
@@ -40,7 +40,7 @@
                     </div>
                 </div>
                 <div class="filter-button mb-3">
-                    <button type="submit">Apply Filters</button>
+                    <button type="submit" id="filter_btn">Apply Filters</button>
                 </div>
             </form>
         </div>
@@ -116,7 +116,15 @@
     </div>
 </div>
 <script>
-        const rangeInput = document.querySelectorAll(".range-input input"),
+        $('#filter_btn').click(function (e) {
+            var inputMin = $("#input_min").val();
+            if (inputMin == "0") {
+                e.preventDefault();    
+                alert("0 cannot be entered, begin minimum price from 1");
+                return;
+            }
+        });
+    const rangeInput = document.querySelectorAll(".range-input input"),
     priceInput = document.querySelectorAll(".price-input input"),
     range = document.querySelector(".slider .progress");
     let priceGap = 1000;

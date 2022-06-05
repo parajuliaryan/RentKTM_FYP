@@ -56,7 +56,7 @@
                             <div class="form-group">
                                 <label for="room_description">Room Description</label>
                                 <textarea class="form-control" id="room_description" name="room_description"
-                                    placeholder="Room Description"></textarea>
+                                    placeholder="Room Description">{{ $room->room_description }}</textarea>
                             </div>
                             <div class="form-group">
                                 <label for="room_price">Room Price</label>

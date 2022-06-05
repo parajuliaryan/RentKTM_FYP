@@ -169,8 +169,8 @@ input[type="number"]::-webkit-inner-spin-button {
 
 .slider .progress {
     height: 100%;
-    left: 25%;
-    right: 25%;
+    left: 5%;
+    right: 100%;
     position: absolute;
     border-radius: 5px;
     background: #17a2b8;
@@ -290,5 +290,6 @@ input[type="range"]::-moz-range-thumb {
         align-items: flex-start;
         margin-left: 10px;
     }
+    
 }
 

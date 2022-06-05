@@ -1,6 +1,16 @@
 @extends('layouts.app')
 <link rel="stylesheet" href="{{ asset('css/register.css') }}">
 @section('content')
+@if(count($errors) > 0)
+<div class="p-1">
+    @foreach($errors->all() as $error)
+    <div class="alert alert-warning alert-danger fade show" role="alert">{{$error}} <button type="button"
+            class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button></div>
+    @endforeach
+</div>
+@endif
 <div class="main-div">
     <div class="register-card">
         <div class="image-holder">
@@ -84,14 +94,14 @@
                         <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Upload a proper identification document</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Upload a proper identification image </h5>
                             <button type="button" class="close btn btn-danger" data-dismiss="modal" aria-label="Close" id="cross_btn" style="max-width: 50px;">
                                 <span aria-hidden="true" >&times;</span>
                             </button>
                             </div>
                             <div class="modal-body">
                                 <div class="form-group">
-                                    <label for="identification">Upload your photo</label><br>
+                                    <label for="identification">Upload your id image</label><br>
                                     <span class="text-danger" id="upload_warning">Cannot Proceed until a file is uploaded</span>
                                     <input type="file" name="identification" id="identification">
                                 </div>

@@ -55,7 +55,7 @@
                             <div class="form-group">
                                 <label for="roommate_description">Roommate Description</label>
                                 <textarea class="form-control" id="roommate_description" name="roommate_description"
-                                    placeholder="Roommate Description"></textarea>
+                                    placeholder="Roommate Description">{{ $roommate->roommate_description }}</textarea>
                             </div>
                             <div class="form-group features">
                                 <label for="roommate_feature">Roommate Feature</label>
