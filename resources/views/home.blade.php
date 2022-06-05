@@ -142,7 +142,7 @@
             </div>
         </div>
     </div>
-
+    
     <div class="room-holder">
         <div class="room-image-holder">
             <img src="{{ asset('images/post-ads.jpg') }}" alt="Post an Ad">
