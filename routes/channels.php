@@ -20,7 +20,7 @@ Broadcast::channel('App.Models.User.{id}', function ($user, $id) {
 });
 
 Broadcast::channel('chat.{roomId}', function ($user, $roomId) {
-   if ($user->canJoinRoom($roomId)) {
-    return ['id' => $user->id, 'name' => $user->first_name];
-   }
+    if (Auth::check()) {
+        return ['id'=> $user->id];
+    }
 });

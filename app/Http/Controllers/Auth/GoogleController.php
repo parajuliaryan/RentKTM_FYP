@@ -25,9 +25,12 @@ class GoogleController extends Controller
                 Auth::login($userExisted);
                 return redirect()->route('home');
             }else{
+                $name = explode(" ", $user->name);
+                $firstname = $name[0];
+                $lastname = $name[1];
                 $newUser = User::create([
-                    'first_name' => $user->name,
-                    'last_name' => $user->name,
+                    'first_name' => $firstname,
+                    'last_name' => $lastname,
                     'email'=>$user->email,
                     'oauth_id'=>$user->id,
                     'oauth_type'=> static::DRIVER_TYPE,
@@ -36,6 +39,7 @@ class GoogleController extends Controller
                 ]);
                 
                 Auth::login($newUser);
+                return redirect()->route('home');
             }
         } catch (Exception $e) {
             dd($e);

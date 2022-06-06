@@ -61,6 +61,7 @@
     </div>
 </div>
 @include('layouts.footer')
+<script src="https://js.pusher.com/7.0.3/pusher.min.js"></script>
 <script>
     $(document).ready(function () {
         $(document).on('submit','#new_message', function(e){
@@ -77,7 +78,7 @@
                 if (has_errors){
                     return;
                 }
-                var roomId = $('#roomId').val();
+     
                 var messageHolder = $('.media-chat');
                 $.ajax({
                     url:"{{route('new-message', $roomId)}}",
