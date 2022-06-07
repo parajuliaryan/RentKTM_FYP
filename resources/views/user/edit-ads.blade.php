@@ -99,19 +99,33 @@
             <div class="form-group">
                 <label for="roommate_price">Roommate Price (Per Month)</label>
                 <input type="text" class="form-control" id="roommate_rent_price"
-                    value="{{ old('roommate_rent_price', $ad->roommate->roommate_rent_price) }}" name="roommate_rent_price"
-                    placeholder="Roommate Price">
+                    value="{{ old('roommate_rent_price', $ad->roommate->roommate_rent_price) }}"
+                    name="roommate_rent_price" placeholder="Roommate Price">
             </div>
             <div class="form-group">
                 <label for="roommate_description">Roommate Description</label>
                 <textarea class="form-control" id="roommate_description" name="roommate_description"
                     placeholder="Roommate Description">{{ $ad->roommate->roommate_description }}</textarea>
             </div>
-            <div class="form-group features">
+            {{-- <div class="form-group features">
                 <label for="roommate_feature">Roommate Feature</label>
                 <input type="text" name="roommate_feature[]" class="form-control"
                     placeholder="Add Feature (Eg: Non-Smoker)" value="" maxlength="255" />
                 <button type="button" class="btn btn-warning addMore">New Feature</button>
+            </div> --}}
+            @php
+            $features = $ad->roommate->features;
+            @endphp
+            <div class="form-group features">
+                <label for="">Roommate Feature</label>
+                @for ($i=0;$i < count($features);$i++) <input type="text" class="form-control"
+                    name="roommate_feature[{{ $i }}]" placeholder="Add Feature (Eg: Non-Smoker)"
+                    value="{{ $features[$i]->feature }}">
+
+                    @if ($i == count($features)-1)
+                    {{-- <button type="button" class="btn btn-warning addMore">New Feature</button> --}}
+                    @endif
+                    @endfor
             </div>
             <select name="gender" class="form-control" id="gender" required>
                 <option value="male">Male</option>
@@ -125,23 +139,23 @@
             </div>
             <div class="form-group">
                 <label for="city">City</label>
-                <input type="text" class="form-control" id="city" value="{{ old('city', $ad->roommate->city) }}" name="city"
-                    placeholder="City">
+                <input type="text" class="form-control" id="city" value="{{ old('city', $ad->roommate->city) }}"
+                    name="city" placeholder="City">
             </div>
             <div class="form-group">
                 <label for="ward">Ward</label>
-                <input type="text" class="form-control" id="ward" value="{{ old('ward', $ad->roommate->ward) }}" name="ward"
-                    placeholder="Ward">
+                <input type="text" class="form-control" id="ward" value="{{ old('ward', $ad->roommate->ward) }}"
+                    name="ward" placeholder="Ward">
             </div>
             <div class="form-group">
                 <label for="area">Area</label>
-                <input type="text" class="form-control" id="area" value="{{ old('area', $ad->roommate->area) }}" name="area"
-                    placeholder="Area">
+                <input type="text" class="form-control" id="area" value="{{ old('area', $ad->roommate->area) }}"
+                    name="area" placeholder="Area">
             </div>
             <div class="form-group">
                 <label for="tole">Tole</label>
-                <input type="text" class="form-control" id="tole" value="{{ old('tole', $ad->roommate->tole) }}" name="tole"
-                    placeholder="Tole">
+                <input type="text" class="form-control" id="tole" value="{{ old('tole', $ad->roommate->tole) }}"
+                    name="tole" placeholder="Tole">
             </div>
             <button type="submit" class="btn btn-primary">Update</button>
         </form>

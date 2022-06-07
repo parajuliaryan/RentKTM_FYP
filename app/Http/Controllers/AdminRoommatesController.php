@@ -106,7 +106,8 @@ class AdminRoommatesController extends Controller
      */
     public function edit(Roommates $roommate)
     {
-        return view('admin.roommates.edit', compact('roommate'));
+        $features =  RoommateFeatures::where('roommate_id', $roommate->id)->get();
+        return view('admin.roommates.edit', compact('roommate','features'));
     }
 
     /**

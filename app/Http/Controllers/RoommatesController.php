@@ -96,6 +96,7 @@ class RoommatesController extends Controller
      */
     public function edit(Roommates $roommate)
     {
+        
         return view('admin.roommates.edit', compact('roommate'));
     }
 

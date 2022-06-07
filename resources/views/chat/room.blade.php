@@ -61,7 +61,6 @@
     </div>
 </div>
 @include('layouts.footer')
-<script src="https://js.pusher.com/7.0.3/pusher.min.js"></script>
 <script>
     $(document).ready(function () {
         $(document).on('submit','#new_message', function(e){
@@ -74,7 +73,8 @@
                 if (message == ''){
                     alert("Please enter a message");
                     has_errors = true;
-                }
+                }.
+                
                 if (has_errors){
                     return;
                 }
@@ -101,16 +101,17 @@
 
                 axios(options);
 
-                window.Echo.channel('chat')
-                .listen('.message', (e)=>{
+                const channel = window.Echo.channel('chat');
+                channel.listen('.message', (e)=>{
                     var fieldHTML =   '<div class="media-body">' +
                           '<span>'+e.username+'</span>'+
                            '<p>'+ e.message + '</p>'+
                            '</div>';
                           $(messageHolder).append(fieldHTML); 
                 });
-                
+
                 $("#new_message")[0].reset();
+
             });     
             
     });

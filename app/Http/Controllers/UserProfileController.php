@@ -14,7 +14,7 @@ class UserProfileController extends Controller
     {
         $user_id = auth()->user()->id;
         $user = User::select('*')->where('id', $user_id)->first();
-        $ads = Ads::select('*')->where('user_id', $user_id)->get();
+        $ads = Ads::select('*')->where('user_id', $user_id)->latest()->get();
         return view('user.profile', compact('user', 'ads'));
     }
 

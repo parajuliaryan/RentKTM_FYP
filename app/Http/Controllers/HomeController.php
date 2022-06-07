@@ -27,10 +27,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $ads = Ads::whereHas('room', function ($q) {
-            $q = $q->orderBy('counter_field', 'DESC');
-        })->take(8)->get();
-        return view('home', compact('ads'));
+        $rooms = Rooms::orderBy('counter_field','desc')->take(8)->get();
+        return view('home', compact('rooms'));
     }
 
     public function search(Request $request){

@@ -57,11 +57,23 @@
                                 <textarea class="form-control" id="roommate_description" name="roommate_description"
                                     placeholder="Roommate Description">{{ $roommate->roommate_description }}</textarea>
                             </div>
-                            <div class="form-group features">
+                            {{-- <div class="form-group features">
                                 <label for="roommate_feature">Roommate Feature</label>
                                 <input type="text" name="roommate_feature[]" class="form-control"
                                     placeholder="Add Feature (Eg: Non-Smoker)" value="" maxlength="255" />
                                 <button type="button" class="btn btn-warning addMore">New Feature</button>
+                            </div> --}}
+                            <div class="form-group features">
+                                <label for="">Roommate Feature</label>
+                                @for ($i=0;$i < count($features);$i++) 
+                                
+                                    <input type="text" class="form-control" name="roommate_feature[{{ $i }}]"
+                                            placeholder="Add Feature (Eg: Non-Smoker)" value="{{ $features[$i]->feature }}">
+                              
+                                    @if ($i == count($features)-1)
+                                    {{-- <button type="button" class="btn btn-warning addMore">New Feature</button> --}}
+                                    @endif
+                                @endfor
                             </div>
                             <select name="gender" class="form-control" id="gender" required>
                                 <option value="male">Male</option>

@@ -52,12 +52,11 @@
             <div></div>
         </div>
         <div class="cards-wrapper d-flex justify-content-between w-100 flex-wrap">
-            @foreach ($ads as $ad)
-            @if ($ad->status == 'approved')
+            @foreach ($rooms as $room)
             @php
-            $images = explode('|',$ad->room->image[0]->image_url);
+            $images = explode('|',$room->image[0]->image_url);
             @endphp
-            <a href="{{ route('post-ads.rooms.show', $ad->room->id) }}" style="text-decoration:none; color: #000000;">
+            <a href="{{ route('post-ads.rooms.show', $room->id) }}" style="text-decoration:none; color: #000000;">
                 <div class="card" style="width: 18rem;">
                     @foreach ($images as $item )
                     @php
@@ -66,15 +65,14 @@
                     @endforeach
                     <img class="card-img-top" src="{{ URL::to($img) }}" alt="Card image">
                     <div class="card-body">
-                        <p class="card-text font-weight-bold">{{ $ad->room->room_title }}</p>
+                        <p class="card-text font-weight-bold">{{ $room->room_title }}</p>
                         <p class="card-text d-flex justify-content-between"><span><i class="fa fa-map-marker"
-                                    aria-hidden="true"></i> {{ $ad->room->area }}</span><span>Nrs.{{
-                                $ad->room->room_price
+                                    aria-hidden="true"></i> {{ $room->area }}</span><span>Nrs.{{
+                                $room->room_price
                                 }}/month</span></p>
                     </div>
                 </div>
             </a>
-            @endif
             @endforeach
         </div>
     </div>

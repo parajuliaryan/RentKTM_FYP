@@ -30,4 +30,5 @@ class Ads extends Model
     public function roommate(){
         return $this->belongsTo(Roommates::class);
     }
+
 }

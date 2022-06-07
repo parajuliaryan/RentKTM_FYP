@@ -56,7 +56,7 @@ Route::get('/roommates', [RoommatesController::class, 'index'])->name('roommates
 Route::post('/roommates/filter',[RoommatesController::class, 'filter'])->name('roommates.filter');
 Route::get('/post-ads', [PostAdsController::class, 'index'])->name('postAds');
 Route::resource('/reviews', RatingReviewController::class)->middleware('auth');
-Route::prefix('post-ads')->name('post-ads.')->middleware('auth')->group(function(){
+Route::prefix('post-ads')->name('post-ads.')->middleware(['auth', 'verified'])->group(function(){
     Route::get('/',[PostAdsController::class , 'index'])->name('index');
     Route::resource('/rooms', RoomsController::class);
     Route::resource('/roommates', RoommatesController::class);
@@ -69,12 +69,11 @@ Route::middleware(['auth', 'verified'])->group(function(){
     Route::get('/chat/{roomId}/my-room', [ChatController::class, 'myRoom'])->name('chat.my-room');
     Route::get('/chat/{roomId}/messages', [ChatController::class, 'messages']);
     Route::get('/chat/message/{roomId}', [ChatController::class, 'newMessage'])->name('new-message');
-    Route::post('/send-message', function (Request $request){
+    Route::post('/send-message/{roomId}', function (Request $request){
         event(
             new Message(
                 $request->input('username'), 
                 $request->input('message'),
-                $request->input('roomId')
                 )
         );
 
