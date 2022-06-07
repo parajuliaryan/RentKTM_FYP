@@ -99,13 +99,10 @@ class UserProfileController extends Controller
             $features =  RoommateFeatures::where('roommate_id', $adRoommate->roommate->id)->get();
 
             if(count($request->roommate_feature) > 0){
-            
-                for($i = 0; $i < count($request->roommate_feature); $i++){
-                    
+                for($i = 0; $i < count($request->roommate_feature); $i++){ 
                     $features[$i]->roommate_id = $adRoommate->roommate->id;
                     $features[$i]->feature = $request->roommate_feature[$i];
                     $features[$i]->update();
-            
                 } 
             }
         }
