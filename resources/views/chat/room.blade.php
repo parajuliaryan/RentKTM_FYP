@@ -73,7 +73,7 @@
                 if (message == ''){
                     alert("Please enter a message");
                     has_errors = true;
-                }.
+                }
                 
                 if (has_errors){
                     return;
