@@ -19,7 +19,7 @@ class GoogleController extends Controller
 
     public function handleGoogleCallback(){
         try {
-            $user = Socialite::driver(static::DRIVER_TYPE)->user();
+            $user = Socialite::driver(static::DRIVER_TYPE)->stateless()->user();
             $userExisted = User::where('oauth_id',$user->id)->where('oauth_type',static::DRIVER_TYPE)->first();
             if ($userExisted) {
                 Auth::login($userExisted);
