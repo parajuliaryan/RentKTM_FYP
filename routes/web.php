@@ -33,6 +33,7 @@ use Illuminate\Http\Response;
 |
 */
 
+//Home Route
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Auth::routes(['verify'=> true]);
